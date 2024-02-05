@@ -1,0 +1,437 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Risoluzione grafica}
+
+\begin{frame}{Ipotesi risoluzione grafica}
+  \begin{itemize}
+  \item Quando un problema di P.L. presenta due variabili decisionali \`e possibile
+      impiegare un metodo di risoluzione basato su considerazioni geometriche e 
+      rappresentabile graficamente sul piano cartesiano $Ox_1x_2$
+  \item tale metodo pu\`o essere esteso a problemi in tre variabili decisionali
+  \item \`e, in generale, possibile risolvere graficamente problemi con funzione obiettivo
+    lineare e insieme ammissibile convesso
+  \end{itemize}
+\end{frame}
+
+\section{Programma lineare di esempio}
+
+\begin{frame}[allowframebreaks]{Problema di esempio}
+\fontsize{7}{8.4}{
+\begin{block}{Mix ottimo di produzione}
+Un'azienda di produzione vuole determinare il tasso di produzione mensile di due prodotti
+in modo da massimizzare il profitto netto totale,  sapendo che:
+ \begin{itemize}
+  \item per produrre un quintale di prodotto 1 occorrono 40 quintali di materia prima e 8 ore di lavoro;
+  \item per produrre un quintale di prodotto 2 occorrono 20 quintali di materia prima e 2 ore di lavoro;
+  \item il commerciale ha stabilito che la produzione totale mensile non pu\`o superare 100 quintali;
+  \item la disponibilit\`a mensile di materia prima \`e di 2200 quintali e quella di lavoro di 320 ore;
+  \item il profitto netto per la vendita dei prodotti 1 e 2 sia rispettivamente 120 e 40 euro.
+ \end{itemize}
+\end{block}
+}
+
+\framebreak
+
+\begin{block}{Definizione delle variabili}
+si deve determinare un tasso di produzione mensile di due prodotti,
+per cui definiamo due variabili che rappresentano la quantit\`a di
+prodotto di tipo 1 e di tipo 2 realizzate (e vendute) mensilmente
+
+\begin{description}
+\item[$\quad x_1$]	quantit\`a di prodotto 1 da produrre (q/mese)
+\item[$\quad x_2$]	quantit\`a di prodotto 2 da produrre (q/mese)
+\end{description}
+
+Le variabili sono continue e non negative.
+\end{block}
+
+\framebreak
+
+\begin{block}{Definizione dell'obiettivo}
+  si deve determinare un tasso di produzione mensile di due prodotti,
+  che massimizzi il profitto totale.
+  Il profitto, espresso in funzione delle variabili decisionale \`e:
+
+\begin{description}
+ \item[$\quad z = 120 x_1 + 40 x_2$]	funzione obiettivo: massimo profitto totale
+\end{description}
+
+  Il profitto \`e espresso da una funzione lineare
+\end{block}
+
+\begin{block}{Definizione dei vincoli}
+la produzione deve rispettare  le condizioni rilevate
+in fase di analisi del problema.\\
+
+La quantit\`a di materia prima consumata in un mese non pu\`o superare la disponibilit\`a
+\begin{description}
+ \item[$\quad 40 x_1 + 20 x_2 \leq 2200$]
+      vincoli sull'uso delle materie prime
+\end{description}
+
+Il numero di ore necessario per completare la produzione mensile non pu\`o eccedere
+la disponibilit\`a oraria
+\begin{description}
+ \item[$\quad \phantom{4}8 x_1 + \phantom{2}2 x_2 \leq \phantom{2}320$]
+      vincoli sull'uso della forza lavoro
+\end{description}
+ 
+ L'offerta non pu\`o superare la domanda
+\begin{description}
+ \item[$\quad \phantom{40} x_1 + \phantom{20} x_2 \leq \phantom{2}100$]
+      vincoli conseguenti le indagini di mercato
+\end{description}
+
+La produzione non pu\`o essere negativa
+\begin{description}
+ \item[$\quad x_1 \geq 0,\ x_2 \geq 0$]
+      vincoli di non negativit\`a delle variabili
+\end{description}
+
+  I vincoli sono espressi da funzioni lineari
+\end{block}
+
+\framebreak
+
+\modelbox{Modello}{%
+\[\begin{array}{crrrcr}
+\max z=& 120 x_1 &+& 40 x_2\\
+{\rm s.t.} & 40 x_1 &+& 20 x_2 & \leq & 2200 \\
+           &  8 x_1 &+&  8 x_2 & \leq &  320  \\
+           &    x_1 &+&    x_2 & \leq &  100  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+\]%
+}
+\end{frame}
+
+\section{Rappresentazione dei vincoli}
+
+\begin{frame}[allowframebreaks]{Rappresentazione geometrica}
+\small{
+
+\begin{itemize}
+\item 
+Il problema ha variabili decisionali $x_1$ e $x_2$:
+la risoluzione grafica verr\`a effettuate su di un piano cartesiano con assi
+coordinati $x_1$ e $x_2$, che si indica con $Ox_1x_2$.
+Essendo le variabili non negative, la soluzione sar\`a una coppia di punti
+all'interno del primo quadrante
+
+\item 
+Ogni equazione rappresenta una retta sul piano cartesiano $Ox_1x_2$.
+Una disequazione corrisponde ad un semipiano che ha come frontiera la retta
+associata all'uguaglianza e comprende tutti i punti che soddisfano la
+disequazione
+
+\item 
+L'insieme delle soluzioni ammissibili \`e dato dall'intersezione dei semipiani
+individuati dalle disequazioni, ovvero l'insieme delle soluzioni che soddisfano
+contemporaneamente tutti i vincoli
+
+\item 
+La frontiera fa parte della regione ammissibile in quanto tutti i vincoli
+includono l'uguaglianza
+
+\item 
+\`E possibile tracciare la direzione di massima crescita della funzione obiettivo,
+determinata dal gradiente, e le curve di livello della funzione obiettivo, le quali
+sono ortogonali al gradiente
+
+\item 
+La soluzione del problema \`e la coppia di valori nel piano $Ox_1x_2$ che rende
+massima (minima) la funzione obiettivo; pu\`o essere trovata graficamente traslando
+il pi\`u possibile le curve di livello della f.o. lungo la direzione del gradiente
+della f.o. (antigradiente della f.o.) in modo che abbia una intersezione con la
+regione di ammissibilit\`a non vuota
+\end{itemize}
+}
+\end{frame}
+
+%%%%%%%%%%%
+\begin{frame}
+\definecolor{ffqqtt}{rgb}{1,0,0.2}
+\definecolor{ccqqqq}{rgb}{0.8,0,0}
+\definecolor{ttqqqq}{rgb}{0.2,0,0}
+\definecolor{uuuuuu}{rgb}{0.27,0.27,0.27}
+\definecolor{qqqqff}{rgb}{0,0,1}
+\centering
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.035cm,y=0.035cm]
+\draw[->,color=black] (-20,0) -- (165,0);
+\foreach \x in {-20,20,40,60,80,100,120,140,160}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[color=black] (155.54,1.27) node [anchor=south west] {$x_1$};
+\draw[->,color=black] (0,-20) -- (0,165);
+\foreach \y in {-20,20,40,60,80,100,120,140,160}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (1.63,158.35) node [anchor=west] {$x_2$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-20,-20) rectangle (180,170);
+
+% P0
+\onslide<2>{
+\fill[color=blue!50!white,opacity=0.3] (0,0)--(165,0)--(165,165)--(0,165)--cycle; %,pattern=north west lines
+}
+% P1
+\onslide<3>{
+\fill[color=blue!50!white,opacity=0.3] (0,0)--(55,0)--(0,110)--cycle; %,pattern=north west lines
+}
+% P2
+\onslide<4>{
+\fill[color=blue!50!white,opacity=0.3] (0,0)--(40,0)--(25,60)--(0,110)--cycle; %,pattern=north west lines
+}
+% P3
+\onslide<5->{
+\fill[color=blue!50!white,opacity=0.3] (0,0)--(40,0)--(25,60)--(10,90)--(0,100)--cycle; %,pattern=north west lines
+}
+% vincolo 1
+\onslide<3->{
+  \draw [domain=-20:80] plot(\x,{(--2200-40*\x)/20});
+}
+% vincolo 2
+\onslide<4->{
+  \draw [domain=-5:55] plot(\x,{(--320-8*\x)/2});
+}
+% vincolo 3
+\onslide<5->{
+  \draw [domain=-20:125] plot(\x,{(--100-1*\x)/1});
+}
+% gradiente
+\onslide<6->{
+  \draw [->,color=ccqqqq] (0,0) -- (120,40);
+}
+% isoprofitto z = 0
+\onslide<7>{
+  \draw [dash pattern=on 1pt off 2pt on 3pt off 4pt,domain=-20:15] plot(\x,{(-0--120*\x)/-40});
+}
+% isoprofitto z = 4800
+\onslide<8>{
+  \draw [dash pattern=on 3pt off 3pt,domain=-20:55] plot(\x,{(-4800--120*\x)/-40});
+}
+% isoprofitto <= 5400
+\onslide<9->{
+  \draw [line width=1.2pt,dash pattern=on 1pt off 2pt on 3pt off 4pt,color=ffqqtt,domain=-20:105] plot(\x,{(-5400--120*\x)/-40});
+}
+\begin{scriptsize}
+\onslide<1>{
+  \draw[color=structure] (82,160) node {Il piano cartesiano $x_1$, $x_2$};
+}
+\onslide<2-5>{
+  \draw[color=structure] (82,145) node {Il primo quadrante $x_1 \geq 0$ e $x_2 \geq 0$};
+}
+% punto O
+\onslide<2->{
+  \fill [color=qqqqff] (0,0) circle (1.5pt);
+  \draw[color=qqqqff] (-5,-8) node {$O$};
+}
+\onslide<3-5>{
+  \draw[color=structure] (82,130) node {$\cap$ il primo vincolo};
+}
+% punto E
+\onslide<3->{
+  \fill [color=uuuuuu] (55,0) circle (1.5pt);
+  \draw[color=uuuuuu] (50,-8) node {$E$};
+% punto I
+  \fill [color=uuuuuu] (0,110) circle (1.5pt);
+  \draw[color=uuuuuu] (-5,110) node {$I$};
+}
+\onslide<4-5>{
+  \draw[color=structure] (82,115) node {$\cap$ il secondo vincolo};
+}
+% punto A
+\onslide<4->{
+  \fill [color=qqqqff] (40,0) circle (1.5pt);
+  \draw[color=qqqqff] (30,-8) node {$A$};
+% punto H
+  \fill [color=uuuuuu] (0,160) circle (1.5pt);
+  \draw[color=uuuuuu] (-5,150) node {$H$};
+% punto B
+  \fill [color=qqqqff] (25,60) circle (1.5pt);
+  \draw[color=qqqqff] (30,60) node {$B$};
+}
+\onslide<5>{
+  \draw[color=structure] (82,100) node {$\cap$ il terzo vincolo};
+  \draw[color=structure] (82, 85) node {\textbf{REGIONE AMMISSIBILE}};
+}
+\onslide<5->{
+  \fill [color=uuuuuu] (100,0) circle (1.5pt);
+  \draw[color=uuuuuu] (90,-8) node {$F$};
+  \fill [color=ttqqqq] (0,100) circle (1.5pt);
+  \draw[color=ttqqqq] (-5,90) node {$D$};
+  \fill [color=uuuuuu] (10,90) circle (1.5pt);
+  \draw[color=uuuuuu] (12,95) node {$C$};
+  \fill [color=uuuuuu] (20,80) circle (1.5pt);
+  \draw[color=uuuuuu] (25,85) node {$G$};
+}
+\onslide<6>{
+  \draw[color=structure] (110,85) node {il gradiente della funzione obiettivo};
+  \draw[color=structure] (110,75) node {direzione di massima crescita};
+  \draw[color=structure] (110,65) node {di $z(x_1,x_2)$};
+}
+\onslide<6->{
+  \draw[color=ccqqqq] (120,50) node {$\nabla z$};
+}
+\onslide<7>{
+  \draw[color=structure] (110,115) node {retta isoprofitto};
+  \draw[color=structure] (110,105) node {$z(x_1, x_2) = 0$};
+  \draw[color=structure] (110, 95) node {ortogonale alla f.o.};
+  \draw[color=structure] (110, 85) node {passante per $O$};
+  \draw[color=black] (-10,30) node {$z_0 = 0$};
+}
+\onslide<8>{
+  \draw[color=structure] (110,115) node {retta isoprofitto};
+  \draw[color=structure] (110,105) node {$z(x_1, x_2) = 4800$};
+  \draw[color=structure] (110, 95) node {spostandosi in direzione di $\nabla z(x_1,x_2)$};
+  \draw[color=black] (25,-17) node {$z_1= 4800$};
+}
+\onslide<9>{
+  \draw[color=structure] (110,115) node {retta isoprofitto};
+  \draw[color=structure] (110,105) node {$z(x_1, x_2) = 5400$};
+  \draw[color=structure] (110, 95) node {$B$ ultimo punto ammissibile};
+  \draw[color=structure] (110, 85) node {spostandosi in direzione di $\nabla z(x_1,x_2)$};
+  \draw[color=structure] (110, 70) node {\textbf{OTTIMO}: $x^\star \equiv B = (25, 60),\ z^\star = 5400$};
+  \draw[color=ffqqtt] (33,97) node {$z_2 = 5400$};
+}
+\end{scriptsize}
+\end{tikzpicture}
+\end{frame}
+%%%%%%%%%%%
+
+\section{Metodo}
+
+\begin{frame}[allowframebreaks]{Presupposti}
+\begin{itemize}
+\item
+Ogni disequazione rappresenta sul piano cartesiano un semipiano,
+ogni equazione rappresenta una retta
+
+\item
+L'intersezione dei semipiani \`e la regione di ammissibilit\`a
+
+\item
+La funzione obiettivo \`e rappresentata da un fascio di rette parallele
+fra di loro e ortogonali al vettore gradiente di $z$ (direzione di massima
+crescita della funzione obiettivo)
+
+\item
+Per un problema di $\max$ ($\min$) la traslazione della funzione obiettivo
+\`e nel verso del vettore gradiente (antigradiente)
+
+\item
+Trovato graficamente il punto di ottimo risolvere il sistema di equazioni dei
+vincoli saturi per trovare la soluzione ottima che sostituita nella funzione
+obiettivo dar\`a il valore dell'ottimo
+
+\item
+Il gradiente della funzione obiettivo \`e dato dai coefficienti delle variabili,
+essendo la funzione lineare
+
+\item
+Si ricordi che la regione ammissibile pu\`o essere vuota, illimitata o limitata
+e che nel caso di regione ammissibile illimitata l'ottimo pu\`o non esistere
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Regione ammissibile}
+\scriptsize{
+I vincoli di non negativit\`a delle variabili consentono di considerare esclusivamente il
+primo quadrante del sistema di assi cartesiano.
+
+% Per rappresentare geometricamente la regione
+% ammissibile del problema di P.L. 
+Si utilizzi la seguente procedura:
+\begin{description}
+
+\item[Step 1: Trasformare la disequazione in equazione e rappresentare graficamente il vincolo] 
+Si converta il vincolo di disuguaglianza in uguaglianza. Si rappresenti %sul piano cartesiano
+tale retta
+
+\item[Step 2: Selezionare un punto di valutazione]
+
+Si scelga un punto del piano per valutare il vincolo (si consiglia di utilizzare 
+l'origine degli assi, tranne nel caso in cui il vincolo passa per l'origine)
+
+\item[Step 3: Determinare il semipiano di ammissibilit\`a]
+
+Sostituendo le coordinate del punto di valutazione nel vincolo di disuguaglianza iniziale, si
+possono verificare due casi
+
+\begin{description}
+\item[Caso 1]
+La disuguaglianza \`e verificata, allora il semipiano ammissibile \`e quello che
+contiene il punto di valutazione
+
+\item[Caso 2]
+La disuguaglianza non \`e verificata, allora il semipiano ammissibile \`e quello
+che non contiene il punto di valutazione
+\end{description}
+\end{description}
+}
+
+\framebreak
+
+\begin{description}
+\item[Step 4: Ripetere i 3 step precedenti per ciascun vincolo]
+
+\item[Step 5: Individuare la regione ammissibile]
+La regione ammissibile \`e individuata dall’intersezione dei semipiani di ammissibilit\`a di tutti i 
+vincoli, compresi quelli di non negativit\`a. Di conseguenza la regione ammissibile \`e un insieme 
+convesso
+\end{description}
+\end{frame}
+
+
+\begin{frame}{Funzione obiettivo e curve isoprofitto}
+
+\[z=c_1 x_1 + c_2 x_2\]
+
+\scriptsize{
+\begin{description}
+ \item[Step 6: Rappresentare il gradiente]
+ Si tracci il vettore $\nabla z = \left|\begin{array}{c}c_1\\c_2\end{array}\right|$
+ o un vettore paralllo
+
+ \item[Step 7: Rappresentare le curve isoprofitto]
+ Si tracci retta ortogonale al gradiente e passante per l'origine.
+ Questa \`e una curva isoprofitto appartenente al fascio di rette $c_1 x_1 + c_2 x_2 = k,\ k\in\mathbb{R}$
+ 
+ \item[Step 8: Valutazione]
+ Se il problema \`e di
+ \begin{description}
+  \item[$\min$] l'obiettivo migliora spostandosi in direzione opposta al gradiente
+  \item[$\max$] l'obiettivo migliora spostandosi in direzione del gradiente
+ \end{description}
+ \end{description}
+}
+\end{frame}
+
+\begin{frame}{Determinazione della soluzione ottima}
+\scriptsize{
+Il punto di ottimo \`e quel vertice o quel segmento in corrispondenza del
+quale la funzione obiettivo assume il valore massimo (problema di
+massimizzazione) o minimo (problema di minimizzazione)
+
+\begin{description}
+ \item[Step 9: Determinare il vertice ottimo]
+ Si determini, traslando il pi\`u possibile le curve di livello della f.o. lungo
+ la direzione di massimo miglioramento (Step 8) in modo che abbia una intersezione
+ con la regione di ammissibilit\`a non vuota. L'ultimo vertice, o segmento, \`e
+ il luogo dei punti di ottimo.
+ Si calcolino le coordinate del punto di ottimo (o di uno dei vertici nel caso
+ di un segmento) come intersezione dei vincoli soddisfatti all'uguaglianza
+ 
+
+ \item[Step 10: Determinare il valore della f.o. all'ottimo]
+ Si valuti il valore della funzione obiettivo in corrispondenza del vertice
+ determinato
+ \end{description} 
+}
+\end{frame}
+
+\end{document}

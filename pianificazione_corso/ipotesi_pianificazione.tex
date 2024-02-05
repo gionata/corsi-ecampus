@@ -1,0 +1,160 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{fontenc}
+%\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumerate}
+
+\date{\today}
+
+\newcommand{\copiare}[2]{%
+  \begin{flushright}
+  \textcolor{blue}{Copiare da }\textcolor{red}{#1}:\textcolor{orange}{#2}    
+  \end{flushright}%
+}
+
+\begin{document}
+ 
+\section{Ipotesi sui moduli del programma}
+
+\def\modIntro{\hfill\hyperlink{mod:Intro}{\textcolor{red}{Modulo 0}}}
+\def\modRichiami{\hfill\hyperlink{mod:Richiami}{\textcolor{red}{Modulo 1}}}
+\def\modSw{\hfill\hyperlink{mod:Software}{\textcolor{red}{Modulo 2}}}
+
+\begin{enumerate}
+ \item \hypertarget{mod:Intro}{Introduzione (1 lezione)}\hfill\textcolor{red}{Modulo~0}
+ 
+ \item \hypertarget{mod:Richiami}{Richiami (10 lezioni: algebra lineare e PL. Metodo grafico e simplesso, dualit\`a)}\hfill\textcolor{red}{Modulo~1}
+ 
+  \item \hypertarget{mod:Software}{Uso di strumenti software per l'ottimizzazione (5 lezioni: 1 risolutore LibreOffice, 2 LINGO e 2 AMPL)}\hfill\textcolor{red}{Modulo~2}
+  
+ \item Ottimizzazione su rete (11 lezioni:
+ 	1 teoria grafi,
+ 	3 trasporto,
+ 	inizializzazione,
+ 	Dantzig,
+ 	1 assegnamentoe Ungherese,
+ 	1 cammino minimo, Dijstra,
+ 	1 Massimo Flusso, Fork-Fulkerson,
+ 	1 Albero ricoprente di costo minimo, Prim, Kruskal,
+ 	1 CPM, 
+ 	1 Flusso a costo minimo, Simplesso su rete,
+ 	1 Ripasso.
+ ) \hfill\textcolor{red}{Modulo~3}
+ 
+ \item Modelli statistici per le decisioni di gestione della logistica della produzione\hfill\textcolor{red}{Modulo~4}
+ 
+ \item Problemi di gestione e controllo delle scorte
+ (4 lezioni. Da Gianluca 2010 lez 5 e 2011 lez 2: 1 perch\'e, classificazione e codifica, 1 analisi ABC, 1 Lotto economico EOQ, 1 Punto di riordino) \hfill\textcolor{red}{Modulo~5}
+ 
+ \item Modelli di simulazione per la gestione delle scorte
+ (Da Gianluca 2011 lez 1: ) \hfill\textcolor{red}{Modulo~6}
+ 
+ \item Metodi previsionali a breve termine
+ (Analisi delle serie storiche, smoothing, regressione lineare)
+ \hfill\textcolor{red}{Modulo~7}
+ 
+  \item Ripasso (una lezione al termine di ogni modulo e due a fine corso)
+  \hfill\textcolor{red}{Modulo~8}
+  
+  \item Esercizi svolti (ogni tanto)
+  \hfill\textcolor{red}{Modulo~9}
+\end{enumerate}
+
+\section{Ipotesi sui supporti didattici}
+
+Da \cite{winston2004};
+\begin{itemize}
+\item Cap. 7: trasporto, inizializzazione, Dantzig, assegnamento, Ungherese
+\item Cap. 8:
+	cammino minimo,Dijkstra,
+	Massimo flusso, Ford-Fulkerson,
+	Albero ricoprente di costo minimo, Prim, Kruskal
+	CPM,
+	Flusso a costo minimo,
+	Simplesso su rete
+\end{itemize}
+ 
+\section{Ipotesi sulle lezioni}
+
+\begin{enumerate}
+%  1
+ \item \textcolor{gray}{Introduzione}\modIntro
+%  2
+ \item \textcolor{gray}{Modelli e metodi per il supporto alle decisioni}\modRichiami
+%  3
+ \item \textcolor{gray}{Il modello di Programmazione Lineare}\modRichiami
+%  4
+ \item \textcolor{gray}{Risoluzione geometrica della Programmazione Lineare}\modRichiami
+%  5
+ \item \textcolor{gray}{Risoluzione geometrica della Programmazione Lineare -- Post--ottimalit\`a}\modRichiami
+%  6
+ \item \textcolor{gray}{Sistemi di equazioni lineari}\modRichiami
+%  7
+ \item \textcolor{gray}{Programmazione Lineare, la forma canonica}\modRichiami
+%  8
+ \item \textcolor{gray}{Metodo del Simplesso: il ``tableau'' e l'operazione ``pivot''}\modRichiami
+%  9
+ \item \textcolor{gray}{Metodo del Simplesso: algoritmo primale standard}\modRichiami
+% 10
+ \item \textcolor{gray}{Formulare e risolvere modelli di PL mediante fogli elettronici}\modSw
+% 11
+ \item \textcolor{gray}{Introduzione all'ambiente LINGO}\modSw
+% 12
+ \item \textcolor{gray}{Formulare e risolvere modelli di PL mediante LINGO}\modSw
+% 13
+ \item \textcolor{gray}{Linguaggio GNU MathProg -- Introduzione}\modSw
+% 14
+ \item \textcolor{gray}{Formulare e risolvere modelli di PL mediante GNU MathProg}\modSw
+% 15
+ \item  \textcolor{gray}{Esempi di problemi modellizzabili come Programmi Lineari}\modSw
+% 16 
+ \item Impostazione di modelli in programmazione lineare\modSw
+ %\item Metodo del Simplesso in forma matriciale \copiare{20}{tutto}
+ \item Teoria della dualit\`a \copiare{21--24}{sintesi}
+% \item Metodo duale del Simplesso \copiare{25}{sintesi}
+ \item Ripasso
+ \item Reti \copiare{30}{tutto} \copiare{31}{tutto}
+ \item Il problema del trasporto \copiare{32}{tutto}
+ \copiare{Modelli operativi applicati alla logistica}{203}
+ \item Inizializzazione del trasporto \copiare{33}{tutto}
+	\copiare{35}{tutto}
+% \item Esercizi trasporto Nord Ovest, Minimi Costi, Vogel
+ \item Il simplesso per problema del trasporto: metodo di Dantzing
+ \item Assegnamento e Metodo Ungherese \copiare{36}{tutto} \copiare{37}{tutto}
+ \item Albero ricoprente, Prim, Kruskal
+ \item Cammini minimi, Dijkstra
+ \item Massimo flusso Ford-Fulkerson
+ \item Flusso a costo minimo, simplesso su rete
+ \item Tecniche reticolari, CPM
+ \item Ripasso
+ 
+ \item Modelli statistici per le decisioni di gestione della logistica della produzione
+ \item Ripasso
+ \item Problemi di gestione e controllo delle scorte \copiare{Modelli operativi applicati alla logistica}{118}
+ \item Ripasso
+ \item Modelli di simulazione per la gestione delle scorte
+ \item Ripasso
+ \item Metodi previsionali a breve termine
+ \item Ripasso
+ \item Domande d'esame
+ \item Domande d'esame
+
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+\bibitem{winston2004}{
+	{Winston, W.L. and Goldberg, J.B.},
+    \emph{Operations research: applications and algorithms},
+  {9780534423582},
+  {Thomson Brooks/Cole},
+  {2004}.
+}
+
+\end{thebibliography}
+
+\end{document}

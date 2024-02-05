@@ -1,0 +1,14 @@
+MODEL:	TITLE: Un problema di investimenti;
+SETS:	Investimenti: ritorno, minimo, X;
+	Relazioni(Investimenti, Investimenti) : proporzione;
+ENDSETS
+[RITORNO_TOT] MAX = @SUM(Investimenti: ritorno*X);
+[CAPITALE_INVESTITO] @SUM(Investimenti: X) <= budget;
+@FOR(Investimenti: [INVESTIMENTO_MINIMO] X >= minimo);
+@FOR(Relazioni(i, j)  | i #NE# j:
+  [RAPPORTI] X(i) >= proporzione(i,j) * X(j));
+DATA:	Investimenti = @FILE(Investimenti.ldt);
+proporzione = @FILE(Investimenti.ldt);
+ritorno     = @FILE(Investimenti.ldt);
+minimo=@FILE(Investimenti.ldt); budget=@FILE(Investimenti.ldt);
+ENDDATA		END

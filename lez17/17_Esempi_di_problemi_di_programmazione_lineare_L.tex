@@ -1,0 +1,218 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+\setbeamertemplate{caption}[numbered]
+
+\begin{document}
+
+\generatitolo
+
+
+\section{Ciclo semaforico ottimo}
+
+\begin{frame}{Ciclo semaforico}
+
+Tratto da: Gennaro Improta, \textit{Programmazione Lineare.} \textsl{Capitolo quarto -- Impostazione di modelli in programmazione lineare}, pp. 92--100. Edizioni Scientifiche Italiane, 2004
+\\~\\
+
+Si consideri un incrocio stradale in cui un insieme di semafori dirige il traffico.
+Il flusso di attraversamento dell'incrocio da parte dei veicoli provenienti da una stessa corsia pu\`o essere modellizzato come in fig.\ref{fig:webster}.
+\end{frame}
+
+\begin{frame}{Convenzione sui tempi di verde I}
+\begin{figure}
+\includegraphics[height=0.75\textheight]{img/webster}
+\caption{Grafico di Webster}\label{fig:webster}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Convenzione sui tempi di verde II}
+
+L'andamento reale dei veicoli, rappresentato molto approssimativamente dalla linea continua, pu\`o essere semplificato utilizzando un'onda quadra di uguale area. In tal modo si semplifica il fenomeno
+considerando l'attraversamento della linea di stop da parte di un flusso costante per un tempo,
+detto di verde effettivo, minore del tempo di ciclo meno il tempo di rosso.
+\end{frame}
+
+\begin{frame}{Convenzione sui tempi di verde III}
+\begin{description}
+	\item[$G_s$] la durata del verde semaforico;
+	\item[$G_e$] la durata del verde effettivo;
+	\item[$A$] la durata del giallo;
+	\item[$L$] il tempo perso ($L=l_1+l_2$).
+\end{description}
+\end{frame}
+
+\begin{frame}{Matrice delle fasi}
+
+Si dice \emph{fase} di un ciclo semaforico un intervallo di tempo durante il quale un sottoinsieme di manovre ha verde.
+\\~\\
+Si pu\`o indicare la composizione del ciclo semaforico mediante una matrice booleana $\matr{A}$ avente un numero di righe pari alle fasi ed un numero di colonne pari agli accessi che concorrono
+all'intersezione. Il generico elemento $a_{ij}$ vale 0 se il ramo $j$ non ha verde, 1 altrimenti.
+\\~\\
+Si dice \emph{durata del ciclo semaforico} il tempo necessario affinch\'e si completino tutte le
+diverse del ciclo.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Problema}
+
+Si consideri l'intersezione della fig.~\ref{fig:intersezione} per la quale si vuole progettare un
+ciclo semaforico con durate ottime del tempo di verde, ossia che
+massimizzino la capacit\`a di smaltimento di veicolo da parte dell'intersezione, noti:
+\begin{itemize}
+  \item le portate medie in arrivo ($q_j , j=1,2,\ldots,6$);
+  \item i flussi di saturazione ($s_j , j=1,2,\ldots,6$);
+  \item la composizione delle fasi ($\matr{A}$);
+  \item la durata del ciclo semaforico ($C_0$);
+  \item altri parametri di progetto.
+\end{itemize}
+
+\begin{figure}
+\includegraphics[height=0.75\textheight]{img/incrocio_all}
+\caption{Intersezione stadale oggetto dello studio}\label{fig:intersezione}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Problema III}
+\begin{table}
+ \begin{tabular}{c|cccccc}
+  \toprule
+  \multicolumn{1}{c}{}& \multicolumn{6}{c}{\centering\textbf{Accessi}}\\
+  \textbf{Fasi} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6}\\  
+  \midrule
+  1 & 1 & 1 & 0 & 1 & 0 & 0\\
+  2 & 0 & 0 & 1 & 1 & 0 & 1\\
+  3 & 0 & 1 & 0 & 0 & 1 & 1\\
+  \bottomrule
+ \end{tabular}
+  \caption{Matrice delle fasi}\label{tbl:fasi}
+\end{table}
+In tab.~\ref{tbl:fasi} sono fornite le fasi del ciclo semaforico,
+\end{frame}
+
+\begin{frame}{Problema IV}
+\begin{figure}
+\includegraphics[height=0.75\textheight]{img/incrocio_p1}
+\caption{Fase 1}\label{fig:fase1}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Problema V}
+\begin{figure}
+\includegraphics[height=0.75\textheight]{img/incrocio_p2}
+\caption{Fase 2}\label{fig:fase2}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Problema VI}
+\begin{figure}
+\includegraphics[height=0.75\textheight]{img/incrocio_p3}
+\caption{Fase 3}\label{fig:fase3}
+\end{figure}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Simboli}
+\begin{description}
+	\item[$F$] insieme delle fasi;
+	\item[$M$] insieme delle manovre;\\~
+	\item[$i$] indice delle fasi;
+	\item[$j$] indice delle manovre;\\~
+%	\item[$G_s$] la durata del verde semaforico;
+	\item[$G_i$] la durata del verde effettivo;
+	\item[$G_{i_{miin}}$] la durata minima del verde effettivo;
+%	\item[$A$] la durata del giallo;
+	\item[$L_i$] il tempo perso complessivo;
+\end{description}
+\framebreak
+\begin{description}
+  \item[$q_j$] le portate medie in arrivo;
+  \item[$s_j$] i flussi di saturazione;
+  \item[$g_j$] la durata del verde effettivo;
+  \item[$\matr{A}$] la composizione delle fasi;
+  \item[$C_0$] la durata del ciclo semaforico;
+  \item[$N_j$] numero di veicoli che giungono all'accesso $j$ nel tempo $C_0$. ($N_j = q_j \cdot C_0$);
+  \item[$p_j$] coefficiente di sicurezza ($\leq 1$) per evitare saturazione;
+  \item[$\mu$] moltiplicatore.
+  
+\end{description}\end{frame}
+
+\section{Costruzione del modello}
+
+\begin{frame}{Insiemi}
+  \begin{description}
+	  \item[Fasi] insieme delle fasi, indice \alert{$i$};
+	  \item[Manovre] insieme delle manovre, indice \alert{$j$};
+	  \item[MatriceFasi] insieme $\rm Fasi \times \rm Manovre$, indice \alert{$(i, j)$}.
+  \end{description}
+\end{frame}
+
+ \begin{frame}{Parametri}
+		\begin{description}
+			\item[$q_j$] portata media in arrivo;
+			\item[$s_j$] flusso di saturazione;
+			\item[$p_j$] coefficiente correttivo;
+			\item[$G_{i_{min}}$] durata minima del verde effettivo;
+			\item[$L_i$] il tempo perso complessivo;
+			\item[$C_0$] la durata del ciclo semaforico;
+			\item[$b_j$] parametro calcolato: $b_j = \dfrac{q_j C_0}{p_j s_j}$;	
+			\item[$a_{ij}$] la matrice delle fasi;
+		\end{description}
+\end{frame}
+
+\begin{frame}{Variabili decisionali}
+\begin{block}{Variabili}
+	\begin{description}
+		\item[$G_i$] la durata del verde effettivo della fase $i$-esima;
+		\item[$\mu$] fattore moltiplicatore;
+	\end{description}
+\end{block}
+
+  Le variabili sono continue e non negative.
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Vincoli}
+
+\textbf{Bilancio tra verde effettivo e verde richiesto}
+
+La durata del verde visto da ogni 
+
+$$ \sum_{\parametro{i} \in \insieme{Specie}} \variabile{x}_{\indice{ij}} \leq \parametro{estensione}_{\indice{j}} \quad \indice{j} \in \insieme{Vasche}$$
+
+\textbf{Disponibilit\`a acqua di rinnovo}
+
+$$ \sum_{\indice{i} \in \insieme{Specie}} \parametro{fabb\_acqua}_{\indice{i}} \variabile{x}_{\indice{ij}} \leq \parametro{disp\_acqua}_{\indice{j}} \quad \indice{j} \in \insieme{Vasche}$$
+
+\framebreak
+
+\textbf{Disponibilit\`a di mangime}
+
+$$ \sum_{\indice{i} \in \parametro{Specie}} \parametro{fabb\_mangime}_{\indice{i}} \cdot
+      \left( \sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}} \right) \leq \parametro{disp\_mangime}$$
+
+\textbf{Domanda}
+
+$$ \sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}} \leq \parametro{quota}_{\indice{i}} \quad \indice{i} \in \insieme{Specie}$$
+
+\textbf{Equit\`a}
+
+$$ \frac{\sum\limits_{\indice{i} \in \insieme{Specie}} \variabile{x}_{\indice{i,j}}}{\parametro{estensione}_{\indice{j}}} =
+   \frac{\sum\limits_{\indice{i} \in \insieme{Specie}} \variabile{x}_{\indice{i,(j+1)\%|\insieme{Vasche}|}}}{\parametro{estensione}_{\indice{i,(j+1)\%|\insieme{Vasche}|}}}
+   \quad \indice{j} \in \insieme{Vasche}$$
+
+\textbf{Fisica realizzabilit\`a (non negativit\`a)}
+
+$$ \variabile{x}_{\indice{ij}} \geq 0 $$
+\end{frame}
+
+\begin{frame}{Funzione obiettivo}
+Si deve determinare la superficie di ogni impianto da destinare ad ogni specie ittica.
+
+In generale:
+
+$$  \sum_{\indice{i} \in \insieme{Specie}} \parametro{ricavo}_{\indice{i}}\cdot
+         \left(\sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}}\right)$$
+
+Il ricavo \`e espresso da una funzione lineare: rispetta le ipotesi di proporzionalit\`a, additivit\`a e divisibilit\`a.
+\end{frame}
+
+\end{document}

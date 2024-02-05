@@ -1,0 +1,157 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{2}
+\input{../template/savoia_benincasa}
+
+\setbeamersize{description width=10pt}
+
+\begin{document}
+
+\generatitolo
+
+\begin{frame}{Il problema dell'assegnamento -- problema}
+
+\modelbox{Problema $\mathcal{P}$}{
+Ci sono un certo numero di lavoratori ed un ugual numero di attivit\`a da svolgere.
+Ogni lavoratore pu\`o svolgere qualsiasi attivit\`a, con un costo che pu\`o variare a seconda dell'assegnazione lavoratore-compito.
+Si vogliono realizzare tutte le attivit\`a, assegnando ad ogni lavoratore una sola attivit\`a e un'attivit\`a ad ogni lavoratore, in modo tale che il costo totale dell'assegnamento sia minimizzato.
+Il costo totale della assegnamento di tutte le attività \`e pari alla somma dei costi per ogni lavoratore %
+}
+\end{frame}
+
+
+\begin{frame}{Il problema dell'assegnamento -- istanza}
+
+\modelbox{Istanza $\mathcal{I}$}{
+Il numero di lavoratori e di attivit\`a da svolgere: \[m\]
+
+I costi dell'assegnazione del lavoratore $i$-esimo al compito $j-$esimo:
+\[c_{ij},\text{ per }\ i=1,2,\ldots,m\text{ e }j=1,2,\ldots,m\]
+}
+\end{frame}
+
+\begin{frame}{Il problema dell'assegnamento -- modello}
+\modelbox{Modello matematico -- cosa cerchiamo}{
+\tiny{
+Trovare i valori
+\[x_{ij}\in\{0,1\}\text{ per }\ i=1,2,\ldots,m\text{ e }j=1,2,\ldots,m\]
+ tali che 
+  \[\sum_{j=1}^{m} x_{ij}=1\quad\text{ per }\ i=1,2,\ldots,m\]
+  \[\sum_{i=1}^{m} x_{ij}=1\quad\text{ per }\ j=1,2,\ldots,m\]
+  \[z(\vec{x}) = \sum_{i=1}^{m}\sum_{j=1}^{m} c_{ij} x_{ij}\quad\text{ sia minima}\]}}
+\end{frame}
+
+\begin{frame}{Il problema dell'assegnamento -- modello}
+\modelbox{Modello matematico -- come lo scriveremo}{
+\scriptsize{
+ \[\min z(\vec{x}) = \sum_{i=1}^{m}\sum_{j=1}^{m} c_{ij} x_{ij}\quad\quad\quad\]
+
+  \[\quad\quad\sum_{j=1}^{m} x_{ij}=1\quad i=1,2,\ldots,m\]
+  \[\quad\quad\sum_{i=1}^{m} x_{ij}=1\quad j=1,2,\ldots,m\]
+  \[\quad\quad x_{ij}\in\{0,1\} \quad i=1,2,\ldots,m\ ,\ \ j=1,2,\ldots,m\]
+  
+ }
+}
+\end{frame}
+
+\begin{frame}{Il problema dell'assegnamento -- soluzioni}
+L'insieme base delle soluzioni \`e
+  \[\mathcal{F}^\prime \equiv \{0,1\}^{m^2} \]
+  
+L'insieme delle soluzioni contiene ``solo' $m!$ soluzioni realizzabili,
+che esploreremo con l'algoritmo della ricerca esaustiva
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Il problema dell'assegnamento -- algoritmo}
+
+Si codificano le soluzioni in modo diverso da quanto
+descritto nel modello matematico delle slide precedenti,
+nelle quali le soluzioni erano elementi di una matrice
+$m\times m$ i cui elementi sono o 0 o 1
+
+Si utilizza un vettore $\vec{a} \in \mathbb{Z}^m$,
+in modo che $a_i = j$ rappresenta l'assegnamento
+del lavoratore $i$-esimo al compito $j$-esimo.
+
+Le componenti del vettore $\vec{a}$ sono numeri
+interi nell'intervallo $[1,2,\ldots,m]$ e una soluzione
+\`e realizzabile se tutte le componenti sono
+differenti tra loro.
+
+Le soluzioni realizzabili sono tutte e sole le permutazioni
+del vettore $[1, 2,\ldots,m]$. Il numero di permutazioni
+\`e $m!$.
+
+Occorre calcolare la funzione obiettivo per ogni soluzione
+realizzabile e considerare quella cui compete il minimo
+per risolvere il problema.
+
+\end{frame}
+
+\begin{frame}{Il problema dell'assegnamento -- esempio}
+
+Si consideri la seguente instanza
+
+il numero di lavoratori e di attivit\`a da svolgere: $m \gets 4$
+
+i costi dell'assegnazione
+%del lavoratore $i$-esimo al compito $j-$esimo
+come da tabella:
+
+\centering\small{
+\begin{tabular}{crrrr} \toprule
+	& \multicolumn{4}{c}{Costo [ore]}\\
+\cmidrule(r){2-5}
+Lavoratore & Compito 1 & Compito 2 & Compito 3 & Compito 4\\ \midrule
+1 & 14 &   5 & 8 &   7 \\
+2 &   2 & 12 & 6 &   5 \\
+3 &   7 &   8 & 3 &   9 \\
+4 &   2 &   4 & 6 & 10 \\ \bottomrule
+\end{tabular}
+}
+
+\end{frame}
+
+\begin{frame}{Il problema dell'assegnamento -- esempio}
+
+\modelbox{Modello matematico -- istanza}{
+\tiny{
+ \[\min z(\vec{x}) =  14 x_{11} +5x_{12} + 8 x_{13} + 7 x_{14} + 2 x_{12} + \cdots + 10 x_{44}\]
+%
+\[ x_{11} + x_{12} + x_{13} + x_{14} = 1 \]
+\[ x_{21} + x_{22} + x_{23} + x_{24} = 1 \]
+\[ x_{31} + x_{32} + x_{33} + x_{34} = 1 \]
+\[ x_{41} + x_{42} + x_{43} + x_{44} = 1 \]
+\[ x_{11} + x_{21} + x_{31} + x_{41} = 1 \]
+\[ x_{12} + x_{22} + x_{32} + x_{42} = 1 \]
+\[ x_{13} + x_{23} + x_{33} + x_{43} = 1 \]
+\[ x_{14} + x_{24} + x_{34} + x_{44} = 1 \]
+%
+ \[\quad\quad x_{11}\in\{0,1\}, x_{12}\in\{0,1\}, \ldots, x_{44}\in\{0,1\}\]
+ }
+}
+
+\end{frame}
+
+\begin{frame}
+
+\modelbox{Soluzioni ammissibili e valore della funzione obiettivo}{
+{\footnotesize 
+\begin{tabular}{llll}
+$z\left([1234]\right) = 20$ & $z\left([1243]\right) = 23$ & $z\left([1324]\right) = 13$ & $z\left([1342]\right) = 18$ \\
+$z\left([1432]\right) = 27$ & $z\left([1423]\right) = 25$ & $z\left([2134]\right) = 29$ & $z\left([2143]\right) = 32$ \\
+$z\left([2314]\right) = 21$ & $z\left([2341]\right) = 19$ & $z\left([2431]\right) = 28$ & $z\left([2413]\right) = 33$ \\
+$z\left([3214]\right) = 21$ & $z\left([3241]\right) = 19$ & $z\left([3124]\right) = 22$ & $z\left([3142]\right) = 27$ \\
+$z\left([3412]\right) = 28$ & $z\left([3421]\right) = 21$ & $z\left([4231]\right) = 21$ & $z\left([4213]\right) = 26$ \\
+$z\left([4321]\right) = 14$ & $z\left([4312]\right) = 21$ & $z\left([4132]\right) = 29$ & $z\left([4123]\right) = 27$ \\
+\end{tabular}}}
+
+La soluzione ottima \`e l'assegnamento del lavoratore
+1al compito 1, del lavoratore 2 al compito 3,
+del lavoratore 3 al compito 2 e del lavoratore 4 al
+compito 4.
+
+Il valore della soluzione ottima \`e $z\left([1324]\right) = 13$
+\end{frame}
+
+\end{document}

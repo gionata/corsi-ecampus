@@ -1,0 +1,25 @@
+! I nomi delle risorse;
+		row_mat
+		labour
+		market ~
+
+! Le disponibilita' delle risorse;
+		2200
+		320
+		100 ~
+
+! I nomi dei prodotti;
+		prod1
+		prod2 ~
+
+! I profitti unitari dei prodotti;
+		120
+		40  ~
+
+! Matrice dei coefficienti tecnologici;
+		 40 20  ! Materie prime;
+		  8  2  ! Lavoro;
+		  1  1  ! Mercato;
+
+!!! Author: Gionata Massi <gionata.massi@uniecampus.it>
+!!! Date  : 07 Sep 2013;

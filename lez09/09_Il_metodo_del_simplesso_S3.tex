@@ -1,0 +1,52 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+
+\begin{frame}[allowframebreaks]{\esercizi}
+
+{\footnotesize Mettere in corrispondenza le soluzione trovate dal metodo
+	del simplesso in forma tabellare con i vertici ottimi della
+	risoluzione grafica dei programmi lineari:}
+	
+\begin{enumerate}
+% massimo, ammissibile, illimitato, non esiste ottimo
+\item
+$$\begin{array}{crrrcr}
+\max z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} &  x_1 &-&  x_2 & \leq & 5 \\
+           &- x_1 &+&  x_2 & \leq & 5  \\
+ %          &  x_1 &+&  x_2 & \geq & 3  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+$$%
+
+% minimo, ammissibile, illimitato, segmento ottimo
+\item
+$$\begin{array}{crrrcr}
+\max z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} &  x_1 & &      & \leq &  60 \\
+           &      & &  x_2 & \leq &  30 \\
+           &  x_1 &+&2 x_2 & \geq & 120 \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+$$%
+
+\end{enumerate}
+
+\end{frame}
+
+\section{Risoluzione mediante simplesso tableau Es. \nolezione.\presentationtype.1}
+\input{./include/es931}
+
+
+\section{Risoluzione mediante simplesso tableau Es. \nolezione.\presentationtype.2}
+\input{./include/es932}
+
+\end{document}

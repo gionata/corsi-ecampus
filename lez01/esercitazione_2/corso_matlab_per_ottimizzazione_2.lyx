@@ -1,0 +1,2468 @@
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+% or ...
+  %\usetheme{Berkeley}   % left bar
+%%%\usetheme{Antibes} % tree header
+  % \usetheme{Boadilla}  % very plain
+  %\usetheme{Warsaw}
+  %\usetheme{Copenhagen}
+  %\usetheme{Madrid}
+  %\usetheme{Rochester} % I like
+  \usetheme{Goettingen}  % right bar
+  %\usetheme{Ilmenau}
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+%\usepackage{tikz}
+%\usepackage{gnuplot-lua-tikz}
+
+\usepackage{listings} %Per inserire codice
+%%\usepackage[usenames]{color} %Per permettere la colorazione dei caratteri 
+
+% seems to fix typewriter font in outline header:
+\usepackage{ae,aecompl}
+
+% \setbeameroption{show notes}
+\end_preamble
+\use_default_options false
+\language italian
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_pagemode FullScreen
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Metodi di Ottimizzazione - Funzioni, script e grafici 2D
+\end_layout
+
+\begin_layout Subtitle
+Esercitazione 2
+\end_layout
+
+\begin_layout Author
+Prof.
+ F.
+ Pezzella 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ G.
+ Massi
+\end_layout
+
+\begin_layout Institute
+Dipartimento di Ingegneria Informatica Gestionale e dell'Automazione
+\begin_inset Newline newline
+\end_inset
+
+Università Politecnica delle Marche
+\end_layout
+
+\begin_layout Date
+Scuola di Dottorato in Scienze dell’Ingegneria XI ciclo n.s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}[page number]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Indice}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection, hideothersubsections]{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Indice generale
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents[hideallsubsections]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Funzioni e script file
+\end_layout
+
+\begin_layout BeginFrame
+Funzioni matematiche elementari built-in
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+trigonometriche
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sin
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+cos
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+tan
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+asin
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+acos
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+atan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sinh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+cosh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+tanh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+asinh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+acosh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+atanh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+esponenziali
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+exp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log10
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+pow2
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sqrt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+complesse
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+abs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+arrotondamento e resto
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+floor
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ceil
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+round
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+mod
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+rem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sign
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Funzioni e script file
+\end_layout
+
+\begin_layout Itemize
+non tutte le funzioni sono predefinite
+\end_layout
+
+\begin_layout Itemize
+gli script sono sequenze di operazioni che per convenienza sono definite
+ in un file
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+operano sul workspace
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+le funzioni possono essere
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+definite su un file
+\end_layout
+
+\begin_layout Itemize
+assegnate ad una variabile (
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+script e funzioni definite su file devono avere estensione 
+\begin_inset Quotes eld
+\end_inset
+
+.m
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+edit
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+script
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+type
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+script
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+si chiamano scrivendo il nome dello script o della funzione nella linea
+ di comando o in altri script e funzioni
+\end_layout
+
+\begin_layout BeginFrame
+Funzioni definite su file
+\end_layout
+
+\begin_layout Itemize
+il file 
+\begin_inset Quotes eld
+\end_inset
+
+.m
+\begin_inset Quotes erd
+\end_inset
+
+ deve avere lo stesso nome della funzione e può contenere altre funzioni
+ o script locali alla funzione
+\end_layout
+
+\begin_layout Itemize
+la dichiarazione inizia con
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+function
+\end_layout
+
+\end_inset
+
+ [
+\emph on
+out_args
+\emph default
+] = function_name(
+\emph on
+in_args
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+le linee di commento che seguono l'intestazione costituiscono l'help della
+ funzione
+\end_layout
+
+\begin_layout Itemize
+le variabili dichiarate nella funzione sono locali alla funzione
+\end_layout
+
+\begin_layout BeginFrame
+Passaggio di funzioni a funzioni
+\end_layout
+
+\begin_layout Itemize
+E' conveniente memorizzare una funzione in una variabile
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+per passarla ad una funzione differente
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+visualizzazione
+\end_layout
+
+\begin_layout Itemize
+ottimizzazione numerica
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+tre metodi di memorizzazione
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Function Handles
+\end_layout
+
+\begin_layout Itemize
+Anonymous Functions
+\end_layout
+
+\begin_layout Itemize
+Inline Functions 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+esempi di funzioni che operano su funzioni
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+functions
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+func2str
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+str2func
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+feval
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Riferimento a funzione
+\end_layout
+
+\begin_layout Itemize
+Un 
+\emph on
+function handle
+\emph default
+ è un puntatore a una funzione
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+function-name 
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Function handle}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+f = @sin;
+\end_layout
+
+\begin_layout Itemize
+f(pi/2)
+\end_layout
+
+\begin_layout Itemize
+feval (f, pi/2) 
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Funzioni 
+\emph on
+anonime
+\end_layout
+
+\begin_layout Itemize
+Una 
+\emph on
+anonymous function
+\emph default
+ è una funzione cui non è assegnato un nome
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+@
+\end_layout
+
+\end_inset
+
+(argument-list) expression 
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Anonymous function}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+f = @(x) x.^2; 
+\end_layout
+
+\begin_layout Itemize
+f(2)
+\end_layout
+
+\begin_layout Itemize
+feval (f, 2) 
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Funzioni 
+\emph on
+inline
+\end_layout
+
+\begin_layout Itemize
+Una 
+\emph on
+inline function
+\emph default
+ è una funzione definita da una stringa usando la funzione 
+\emph on
+inline
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+f = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+ (str)
+\end_layout
+
+\begin_layout Itemize
+f = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+ (str, arg1, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+f = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+inline
+\end_layout
+
+\end_inset
+
+ (str, n)
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Inline function}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+f = inline('x(1).^2 + x(2).^2 + 2*x(1)*x(2)', 'x'); 
+\end_layout
+
+\begin_layout Itemize
+feval(f, [1;2])
+\end_layout
+
+\begin_layout Itemize
+f([2;1])
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Valutazione di una funzione
+\end_layout
+
+\begin_layout Itemize
+Per valutare la funzione 
+\emph on
+f
+\emph default
+ nel (nei) punto (punti) 
+\emph on
+x
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\color green
+f(x)
+\end_layout
+
+\begin_layout Itemize
+
+\color green
+feval(
+\emph on
+'f', x)
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Controllo del flusso
+\end_layout
+
+\begin_layout BeginFrame
+Controllo del flusso
+\end_layout
+
+\begin_layout Itemize
+sequenza
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+istruzioni una dopo l'altra separate da ritorno a capo, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+,
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+selezione
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+if, switch
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+iterazione
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+for, while, break, continue
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Il costrutto 
+\begin_inset Quotes eld
+\end_inset
+
+if
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout ColumnsCenterAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{if -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+if (condition)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+then-body
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{if -- else -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+if (condition)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+then-body
+\end_layout
+
+\begin_layout Standard
+else
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+else-body
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{if -- elseif -- else -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+if (condition)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+then-body
+\end_layout
+
+\begin_layout Standard
+elseif (condition)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+elseif-body
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+else
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+else-body
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Il costrutto 
+\begin_inset Quotes eld
+\end_inset
+
+switch
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{switch -- case -- otherwise -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+switch expression
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+case label
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+command_list
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+case label
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+command_list
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+otherwise
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+
+\begin_inset space \qquad{}
+\end_inset
+
+command_list
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+I costrutti d'iterazione e salto
+\end_layout
+
+\begin_layout ColumnsCenterAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{while -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+while (condition)
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+body
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{do -- until}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+do
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+body
+\end_layout
+
+\begin_layout Standard
+until (condition) 
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{for -- end}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+for var = expression
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \qquad{}
+\end_inset
+
+body
+\end_layout
+
+\begin_layout Standard
+end
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{break}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+break
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{continue}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+continue
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{return}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+return
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Ricorsione}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+Le funzioni possono chiamarsi ricorsivamente
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Esempio di funzione
+\end_layout
+
+\begin_layout FrameSubtitle
+Calcolo ricorsivo dell'n-esimo elemento della successione di Fibonacci
+\end_layout
+
+\begin_layout Verse
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/fib_recursive.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Esempio di funzione
+\end_layout
+
+\begin_layout FrameSubtitle
+Calcolo iterativo dell'n-esimo elemento della successione di Fibonacci
+\end_layout
+
+\begin_layout Verse
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/fib_iter.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Oggetti grafici
+\end_layout
+
+\begin_layout BeginFrame
+Oggetti grafici
+\end_layout
+
+\begin_layout Description
+figure una finestra di che contiene uno o più grafici
+\end_layout
+
+\begin_layout Description
+axes Un insieme di assi.
+ Nella gerarchia delle classi è figlio di figure e può essere padre di oggetti
+ line, text, image, patch, o surface 
+\end_layout
+
+\begin_layout Description
+line una linea in 2 o 3 dimensioni.
+\end_layout
+
+\begin_layout Description
+text nota testuale.
+\end_layout
+
+\begin_layout Description
+surface una superficie 3-dimensionale 
+\end_layout
+
+\begin_layout BeginFrame
+Oggetti grafici
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering{
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{matlab/matlab_fig_objs.pdf}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Annotazioni e altri oggetti
+\end_layout
+
+\begin_layout Description
+title aggiunge un titolo
+\end_layout
+
+\begin_layout Description
+legend modifica la legenda
+\end_layout
+
+\begin_layout Description
+[xyz]label aggiunge un etichetta all'asse corrispondente
+\end_layout
+
+\begin_layout Description
+text aggiunge una nota di testo in un punto del grafico
+\end_layout
+
+\begin_layout Description
+colorbar aggiunge la barra del colore
+\end_layout
+
+\begin_layout Description
+axis i limiti sugli assi
+\end_layout
+
+\begin_layout Description
+box mostra o nasconde un riquadro intorno alla figura
+\end_layout
+
+\begin_layout Description
+grid aggiunge la griglia
+\end_layout
+
+\begin_layout BeginFrame
+Assi
+\end_layout
+
+\begin_layout Standard
+Per modificare gli assi si può usare il comando 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+axis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+axis([xmin
+\begin_inset space ~
+\end_inset
+
+xmax
+\begin_inset space ~
+\end_inset
+
+ymin
+\begin_inset space ~
+\end_inset
+
+ymax]) impone la scala
+\end_layout
+
+\begin_layout Description
+axis
+\begin_inset space ~
+\end_inset
+
+square impone che i due assi abbiano la stessa lunghezza
+\end_layout
+
+\begin_layout Description
+axis
+\begin_inset space ~
+\end_inset
+
+equal impone che la scala  su x e y siano uguali
+\end_layout
+
+\begin_layout Description
+axis
+\begin_inset space ~
+\end_inset
+
+off disattiva la visualizzazione dii assi e oggetti figli
+\end_layout
+
+\begin_layout Description
+axis
+\begin_inset space ~
+\end_inset
+
+on attiva la visualizzazione di assi e oggetti figli
+\end_layout
+
+\begin_layout Section
+Grafici 2-dimensionali
+\end_layout
+
+\begin_layout BeginFrame
+Indicare un punto
+\end_layout
+
+\begin_layout Itemize
+Funzione 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+plot
+\end_layout
+
+\end_inset
+
+(x,y,'
+\emph on
+color_style_marker
+\emph default
+')
+\end_layout
+
+\begin_layout Itemize
+produce una nuova figure
+\end_layout
+
+\begin_layout Description
+color c,m,y,r,b,g,w,k
+\end_layout
+
+\begin_layout Description
+linestyle -,
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{-}{-}
+\end_layout
+
+\end_inset
+
+,:,-.,none
+\end_layout
+
+\begin_layout Description
+marker +,o,*,.,x,s,d,<,>,v,^,p,h
+\end_layout
+
+\begin_layout BeginFrame
+Esempio
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/sec_grafica_script_punto.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename matlab/sec_grafica_script_punto.pdf
+	special width=.75\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Dati tabulati
+\end_layout
+
+\begin_layout Itemize
+Funzione 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+plot
+\end_layout
+
+\end_inset
+
+(x,y,'
+\emph on
+color_style_marker
+\emph default
+')
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+plot (y) % serie ascissa: 1...length(y), serie ordinata: y
+\end_layout
+
+\begin_layout Itemize
+plot (x, y) % serie ascissa: x, serie ordinata: y
+\end_layout
+
+\begin_layout Itemize
+plot (x, y,fmt) % specifica dello stile
+\end_layout
+
+\begin_layout Itemize
+plot (x1, y1, fmt1, x2, y2, fmt2
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots{}
+\end_layout
+
+\end_inset
+
+),xn, yn) % n curve sullo stesso grafico 
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Esempio
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/sec_grafica_script1.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename matlab/sec_grafica_script1.pdf
+	special width=.75\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Funzioni analitiche
+\end_layout
+
+\begin_layout Standard
+Per fare il grafico di una funzione 
+\begin_inset Formula $f$
+\end_inset
+
+ su un intervallo 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ si può usare il comando 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+fplot
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+stringa
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fplot(’stringa’,[a,b])
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+funzione inline
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fplot(f,[a,b])
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+funzione definita in un M-file
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fplot(@f,[a,b])
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Esempio
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/sec_grafica_script_fplot.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename matlab/sec_grafica_script_fplot.pdf
+	special width=.75\textwidth
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Figure con più tracciati e grafici
+\end_layout
+
+\begin_layout Itemize
+per aggiungere tracciati alla figure corrente:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+hold
+\end_layout
+
+\end_inset
+
+ on
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+per aggiungere grafici alla figura corrente
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+subplot
+\end_layout
+
+\end_inset
+
+(m,n,p)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+trasforma la finestra della figura in un m-by-n matrice di piccoli subplots
+ e seleziona il subplot 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\end_inset
+
+-esimo come plot corrente.
+\end_layout
+
+\begin_layout Itemize
+I tracciati (plot) sono numerati prima lungo la prima fila della finestra
+ della figura, poi la seconda fila e così via.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Tipi di grafici 2-dimensionali
+\end_layout
+
+\begin_layout BeginFrame
+Grafici 2D
+\end_layout
+
+\begin_layout Itemize
+Line Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+plot, plotyy, loglog, semilogx, semilogy, stairs, contour,ezplot, ezcontour
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Bar Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+bar, barh, hist, pareto, errorbar, stem
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Area Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+area, pie, fill, contourf, image, pcolor, ezcontourf
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Direction Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+feather, quiver, comet
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Radial Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+polar, rose, compass, ezpolar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Scatter Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+scatter, spy, plotmatrix
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Stampare i grafici
+\end_layout
+
+\begin_layout BeginFrame
+Stampa ed esportazione
+\end_layout
+
+\begin_layout Itemize
+Comando 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+print
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+print () % stampa su stampante
+\end_layout
+
+\begin_layout Itemize
+print (options)
+\end_layout
+
+\begin_layout Itemize
+print (filename, options) % stampa su file
+\end_layout
+
+\begin_layout Itemize
+print (h, filename, options)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Comando 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+orient
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+orient (orientation) % sceglie l'orientazione della pagina
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Comandi per stampare}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+print -depsc -tiff -r300 'figura.eps'
+\end_layout
+
+\begin_layout ExampleBlock
+print('figura.pdf', '-dpdf')
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% http://www.mathworks.it/academia/student_center/tutorials/launchpad.html?s_cid=02
+10_desp_it_224077
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

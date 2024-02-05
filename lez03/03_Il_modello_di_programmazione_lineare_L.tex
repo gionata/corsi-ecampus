@@ -1,0 +1,190 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{La storia, in breve}
+
+\begin{frame}[allowframebreaks]{Breve storia della Programmazione Lineare}
+% Anteprima del sorgente dal paragrafo 241 al 264
+
+La \emph{Programmazione Lineare} (brevemente, PL) è una disciplina
+matematica relativamente giovane, che si fa comunemente risalire al
+1947, quando G. B. \mbox{Dantzig} propose un algoritmo, l'\emph{algoritmo
+del simplesso}, come metodo efficiente per risolvere problemi coinvolgenti
+grandezze lineari. Al tempo Dantzig lavorava nello SCOOP (\emph{Scientific
+Computation of Optimum Programs}), un gruppo di ricerca americano
+risultante da una intensa attività scientifica durante la seconda
+guerra mondiale, che mirava a razionalizzare la logistica legata alle
+operazioni di guerra.
+
+\framebreak
+
+Nel 1939 il matematico sovietico Kantorovitch aveva già proposto un
+simile metodo per l'analisi di piani economici, ma il suo contributo
+è stato a lungo ignorato dalla comunità scientifica occidentale. Sembra
+che persino Fourier (nel 1827) avesse già pensato a metodi di questo
+genere per trovare soluzioni realizzabili di un sistema di disuguaglianze
+lineari.
+
+\framebreak
+
+Quello che rende il contributo di G.B. Dantzig così importante
+rispetto ai precedenti, è la concomitanza con altri due fenomeni:
+\begin{itemize}
+\item il considerevole sviluppo del computer che ha permesso l'implementazione
+di algoritmi per la risoluzione di problemi reali di dimensioni considerevoli;
+\item il parallelo sviluppo di una struttura matriciale (\emph{Interindustry
+Input-Output Model}) per lo studio dell'economia proposto da W.A.
+Leontieff, che con il suo lavoro ha mostrato come l'intera economia
+potesse essere rappresentata in una sorta di struttura di programmazione
+lineare.
+\end{itemize}
+
+Al contrario dei metodi proposti precedentemente, il metodo del simplesso
+si rivelò efficiente nella pratica e questo, unitamente al simultaneo
+avvento dei calcolatori elettronici, decretò il successo della PL.
+
+Per questi motivi il metodo di Programmazione Lineare ha cominciato
+ad essere considerato sia uno strumento efficiente per il calcolo
+delle soluzioni di una larga scala di problemi di ottimizzazione,
+sia un paradigma generale di equilibrio economico tra diversi settori
+di scambio di risorse e servizi, attirando così l'interesse di larga
+parte della ricerca scientifica.
+
+\framebreak
+
+Lo sviluppo della PL è guidato dalle sue applicazioni
+nell'economia e nella gestione. Inizialmente Dantzig ha sviluppato
+il metodo del simplesso per risolvere i problemi di pianificazione
+dei voli della Air Force americana, e problemi di pianificazione e
+di scheduling ancora dominano le applicazioni di PL.
+
+\framebreak
+
+Il successo è invece dovuto al fatto che essa si presta
+a modellare con facilità una larga varietà di attività economiche,
+come ad esempio la produzione da risorse scarse (allocazione ottima
+di risorse), la logistica (molti aspetti del trasporto e dispiegamento
+di risorse), lo scheduling (assegnamento di personale e macchine ai
+lavori), l'equilibrio economico (equilibrio domanda/offerta in un
+mercato competitivo), la copertura dai rischi (analisi di portfolio),
+etc.
+\end{frame}
+
+\section{Il modello}
+
+\begin{frame}[allowframebreaks]{Il modello di programmazione lineare}
+
+Il problema generale della PL è detto \emph{programma lineare} e consiste
+in un problema di ottimizzazione caratterizzato dalle seguenti proprietà:
+\begin{enumerate}
+\item un numero finito $n$ di variabili $x_{j}$ , che possono assumere
+valori reali non negativi;
+\item una funzione obiettivo lineare, cioè del tipo: 
+\[
+f(x)=\vec{c}^{T}\vec{x}=c_{1}x_{1}+c_{2}x_{2}+\cdots+c_{n}x_{n}=\sum_{j=1}^{n}c_{j}x_{j},
+\]
+dove $\vec{c}\in\mathbb{R}^{n}$ è il vettore dei costi (fissato) ed $\vec{x}\in\mathbb{R}^{n}$
+è il vettore delle variabili;
+\item l'insieme realizzabile è definito da un insieme finito di equazioni
+e/o disequazioni, cioè vincoli lineari del tipo $\vec{a}\vec{x}=b$, $\vec{a}\vec{x}\leq b$
+e $\vec{a}\vec{x}\geq b$, dove $\vec{a}\in\mathbb{R}^{n}$ e $b\in\mathbb{R}$.
+\end{enumerate}
+Un problema di PL può sempre essere espresso per mezzo della formulazione
+seguente: 
+\[
+\max\{\vec{c}^{T}\vec{x}:\matr{A}\vec{x}\leq b,\vec{x}\geq\vec{0}\},
+\]
+dove $\matr{A}$ è una matrice reale $m\times n$ e $\vec{b}\in\mathbb{R}^{m}$
+ed $m$ è il numero di vincoli. Notiamo che un problema in cui
+si voglia minimizzare anziché massimizzare la funzione obiettivo,
+si può riscrivere in \emph{forma standard} (cioè di minimo
+e con vincoli di uguaglianza)
+cambiando il segno al vettore $\vec{c}$ dei coefficienti di costo
+e introducendo opportune variabili \emph{ausiliarie}.
+
+\framebreak
+
+Un qualsiasi problema di PL può essere scritto come problema
+di minimizzazione.
+
+Un vettore $\vec{x}$ che soddisfi i vincoli del programma lineare, rappresentati
+dall'espressione $\matr{A}x\leq \vec{b}$, $\vec{x}\geq\vec{0}$, è detto \emph{soluzione realizzabile}
+del programma, e tale vettore è detto \emph{soluzione ottima} se oltre
+ad essere una soluzione realizzabile massimizza (o minimizza, a seconda
+del problema) la funzione obiettivo.
+\end{frame}
+
+\section{La ``forma standard''}
+
+\begin{frame}{Forma standard -- notazione algebrica}
+$$
+   \begin{array}{rlllllr}
+    \min z = & c_{1\phantom{1}} x_1 & + c_{2\phantom{2}} x_2 & + \cdots  & + c_{n\phantom{n}} x_n \\
+     & a_{11}x_1 & +a_{12}x_2 & + \cdots  & + a_{1n}x_n & = & b_1 \\
+     & a_{21}x_1 & +a_{22}x_2 & + \cdots  & + a_{2n}x_n & = & b_2 \\
+	 &  &  &  \vdots \\
+     & a_{m1}x_1 &  +a_{m2}x_2 &  + \cdots &  + a_{mn}x_n &  = &  b_m \\
+      &	x_1 \geq 0,  &  x_2 \geq 0,  &  \cdots  & x_n \geq 0
+   \end{array}
+$$
+\end{frame}
+
+\begin{frame}{Forma standard -- notazione algebrica compatta}
+   \begin{gather*}
+     \min z =  \sum_{j=1}^{n}c_{j}x_{j} \\
+      \sum_{j=1}^{n} a_{ij}x_j  =  b_i,\quad i = 1, 2, \ldots, m \\
+     	x_{j} \geq 0, \quad j = 1, 2, \ldots, n    
+   \end{gather*}
+\end{frame}
+
+\begin{frame}{Forma standard -- notazione matriciale}
+   \begin{gather*}
+     \min z =  \vec{c}^T \vec{x} \\
+	\matr{A}\vec{x} = \vec{b} \\
+     	\vec{x} \geq \vec{0}    
+   \end{gather*}
+\end{frame}
+
+\section{Lo spazio delle soluzioni}
+
+\begin{frame}[allowframebreaks]{Soluzioni della Programmazione Lineare}
+Ogni istanza di un programma lineare rientra in una fra tre categorie
+distinte; infatti, un programma lineare si dice:
+\begin{enumerate}
+\item \emph{irrealizzabile}, se non esiste alcuna soluzione realizzabile
+al problema, non ci sono cioè vettori $x$ per i quali tutti i vincoli
+del problema siano soddisfatti;
+\item \emph{illimitato}, se i vincoli non contengono sufficientemente la
+funzione di costo in modo che per ogni soluzione realizzabile data,
+possa essere trovata un'altra soluzione realizzabile che produca un
+ulteriore miglioramento della funzione di costo;
+\item \emph{ottimo}, se non è irrealizzabile o illimitato, cioè se la funzione
+di costo ha un unico valore minimo (o massimo); si noti però che questo
+non significa che i valori delle variabili che producono la soluzione
+ottima siano unici.
+\end{enumerate}
+\end{frame}
+
+\section{Perché ci interessa}
+
+\begin{frame}[allowframebreaks]{Importanza della Programmazione Lineare}
+I problemi di PL formano una delle più importanti classi di modelli
+di ottimizzazione, per i seguenti motivi:
+\begin{itemize}
+\item molti problemi di ottimizzazione nella pratica possono essere modellizzati
+come problemi di PL;
+\item la PL appartiene alla classe dei problemi polinomiali, cioè ``facili'';
+in effetti, per tali problemi sono disponibili algoritmi estremamente
+efficienti in grado di risolvere anche istanze di dimensione molto
+grande;
+\item la PL fornisce gli strumenti fondamentali per l'analisi e la costruzione
+di algoritmi efficienti per molte altre classi di problemi.
+\end{itemize}
+\end{frame}
+
+\end{document}

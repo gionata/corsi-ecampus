@@ -1,0 +1,46 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+
+\setbeamersize{description width=10pt}
+
+\begin{document}
+
+\generatitolo
+
+\begin{frame}{\esercizi}
+
+Si consideri la seguente instanza
+
+il numero di lavoratori e di attivit\`a da svolgere: $m \gets 4$
+
+i costi dell'assegnazione
+%del lavoratore $i$-esimo al compito $j-$esimo
+come da tabella:
+
+\centering\small{
+\begin{tabular}{crrrr} \toprule
+	& \multicolumn{4}{c}{Costo}\\
+\cmidrule(r){2-5}
+Lavoratore & Compito 1 & Compito 2 & Compito 3 & Compito 4\\ \midrule
+1 & 22 &  18 & 30 &  18 \\
+2 & 18 & --- & 27 &   22 \\
+3 & 16 &   22 & --- &  14 \\
+4 & 21 &  --- & 25 & 28 \\ \bottomrule
+\end{tabular}
+}
+
+--- assegnamento non realizzabile
+\end{frame}
+
+\begin{frame}{\esercizi}
+
+\begin{itemize}
+\item Come gestire gli assegnamenti non realizzabili (indicati con ---)?
+\item Si scriva il modello matematico istanziato per il problema in esame 
+\item Si generino le soluzioni realizzabili e si determini la soluzione ottima del problema
+\end{itemize}
+\end{frame}
+
+\end{document}

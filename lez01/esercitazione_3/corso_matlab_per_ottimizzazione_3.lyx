@@ -1,0 +1,1332 @@
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+% or ...
+  %\usetheme{Berkeley}   % left bar
+%%%\usetheme{Antibes} % tree header
+  % \usetheme{Boadilla}  % very plain
+  %\usetheme{Warsaw}
+  %\usetheme{Copenhagen}
+  %\usetheme{Madrid}
+  %\usetheme{Rochester} % I like
+  \usetheme{Goettingen}  % right bar
+  %\usetheme{Ilmenau}
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+%\usepackage{tikz}
+%\usepackage{gnuplot-lua-tikz}
+
+\usepackage{listings} %Per inserire codice
+%%\usepackage[usenames]{color} %Per permettere la colorazione dei caratteri 
+
+% seems to fix typewriter font in outline header:
+\usepackage{ae,aecompl}
+
+% \setbeameroption{show notes}
+\end_preamble
+\use_default_options false
+\language italian
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_pagemode FullScreen
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Metodi di Ottimizzazione - Rappresentazione grafica di curve e superfici
+ nello spazio
+\end_layout
+
+\begin_layout Subtitle
+Esercitazione 3
+\end_layout
+
+\begin_layout Author
+Prof.
+ F.
+ Pezzella 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ G.
+ Massi
+\end_layout
+
+\begin_layout Institute
+Dipartimento di Ingegneria Informatica Gestionale e dell'Automazione
+\begin_inset Newline newline
+\end_inset
+
+Università Politecnica delle Marche
+\end_layout
+
+\begin_layout Date
+Scuola di Dottorato in Scienze dell’Ingegneria XI ciclo n.s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}[page number]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Indice}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection, hideothersubsections]{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Indice generale
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents[hideallsubsections]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Funzioni nello spazio
+\end_layout
+
+\begin_layout BeginFrame
+Domini in 
+\begin_inset Formula $\mathbb{R}^{2}$
+\end_inset
+
+e 
+\begin_inset Formula $\mathbb{R}^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Per valutare funzioni di 2 o 3 variabili è necessario generare il dominio
+ (coppie o triple ordinate viste come una griglia di punti in una regione
+ rettangolare):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+[X,Y] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+meshgrid
+\end_layout
+
+\end_inset
+
+(x,y) % 
+\begin_inset Formula $[x_{min},x_{max}]\times[y_{min},y_{max}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+[X,Y] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+meshgrid
+\end_layout
+
+\end_inset
+
+(x) % 
+\begin_inset Formula $[x_{min},x_{max}]\times[x_{min},x_{max}]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+[X,Y,Z] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+meshgrid
+\end_layout
+
+\end_inset
+
+(x,y,z) % 
+\begin_inset Formula $[x_{min},x_{max}]\times[y_{min},y_{max}]\times[z_{min},z_{max}]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Funzioni di due o tre variabili
+\end_layout
+
+\begin_layout Itemize
+Funzioni reali di due variabili reali
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Z=f(X, Y)
+\end_layout
+
+\begin_layout Itemize
+W=f(X, Y, Z)
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Un cono definito su $[-1,1]
+\backslash
+times [-1,1]$}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/cono.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Rappresentazione di curve
+\end_layout
+
+\begin_layout BeginFrame
+Rappresentare un insieme di punti (curve)
+\end_layout
+
+\begin_layout Itemize
+Disegna nello spazio i punti o le traiettorie definite dalle coordinate
+ (x, y, z)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+plot3
+\end_layout
+
+\end_inset
+
+(x,y,z,...)
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Un cono definito su $[-1,1]
+\backslash
+times [-1,1]$}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/es_plot3.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Griglie superficiali (mesh surface) e superfici
+\end_layout
+
+\begin_layout BeginFrame
+Griglie superficiali
+\end_layout
+
+\begin_layout Itemize
+Disegna a schermo una funzione di 2 variabili Z = f(X,Y) utilizzando la
+ tecnica di visualizzazione 
+\emph on
+mesh surface
+\emph default
+ e utilizzando la 
+\emph on
+colormap
+\emph default
+ di default “jet”.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dati tabulati
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+mesh
+\end_layout
+
+\end_inset
+
+ (X, Y, Z)% mesh
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+meshc
+\end_layout
+
+\end_inset
+
+ (X,Y,Z) % mesh e curve di livello
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+meshz
+\end_layout
+
+\end_inset
+
+ (X,Y,Z) % mesh con 
+\begin_inset Quotes eld
+\end_inset
+
+altezza
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+funzioni
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezmesh
+\end_layout
+
+\end_inset
+
+ (F) % equazione cartesiana
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezmesh
+\end_layout
+
+\end_inset
+
+ (FX, FY, FZ) % equazioni parametriche
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezmesh
+\end_layout
+
+\end_inset
+
+ (..., DOM)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezmesh
+\end_layout
+
+\end_inset
+
+ (..., N)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Esempi
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{ezmesh: funzione cartesiana}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/es1_ezmesh.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{ezmesh: funzione parametrica}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/es2_ezmesh.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Superfici
+\end_layout
+
+\begin_layout Itemize
+Disegna a schermo una funzione di 2 variabili 
+\begin_inset Formula $Z=f(X,Y)$
+\end_inset
+
+ utilizzando la tecnica di visualizzazione 
+\emph on
+colored surface
+\emph default
+ e utilizzando la colormap di default “jet”.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dati definiti per punti
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+surf
+\end_layout
+
+\end_inset
+
+ (X, Y, Z)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+surfc
+\end_layout
+
+\end_inset
+
+(X,Y,Z)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+surfl
+\end_layout
+
+\end_inset
+
+(X,Y,Z)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+surface
+\end_layout
+
+\end_inset
+
+ (X, Y, Z, C)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+surface
+\end_layout
+
+\end_inset
+
+ (X, Y, Z)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+funzioni
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezsurf
+\end_layout
+
+\end_inset
+
+ (F) % equazione cartesiana
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezsurf
+\end_layout
+
+\end_inset
+
+(FX, FY, FZ) % equazioni parametriche
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ezsurf
+\end_layout
+
+\end_inset
+
+(..., DOM)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Esempi
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{ezsurf}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/es1_ezsurf.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{ezsurf}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/es2_ezsurf.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Shading
+\end_layout
+
+\begin_layout Itemize
+Cambiare il modo di ombreggiatura.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+shading
+\end_layout
+
+\end_inset
+
+ (TYPE)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+L'attributo TYPE rappresenta il modo di ombreggiatura scelto tra:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+flat: ombreggiatura costante ad aree
+\end_layout
+
+\begin_layout Itemize
+interp: ombreggiatura ad interpolazione bilineare
+\end_layout
+
+\begin_layout Itemize
+faceted: ombreggiatura costante ad aree con mesh sovrapposte
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Superfici particolari
+\end_layout
+
+\begin_layout Itemize
+[X,Y,Z] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sphere
+\end_layout
+
+\end_inset
+
+ (N) 
+\end_layout
+
+\begin_layout Itemize
+[X,Y,Z] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ellipsoid
+\end_layout
+
+\end_inset
+
+ (XC,YC,ZC,XR,YR,ZR,N)
+\end_layout
+
+\begin_layout Itemize
+[X,Y,Z] = 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+cylinder
+\end_layout
+
+\end_inset
+
+ (R,N)
+\end_layout
+
+\begin_layout Section
+Curve di livello e gradiente
+\end_layout
+
+\begin_layout BeginFrame
+Curve di livello
+\end_layout
+
+\begin_layout Itemize
+per fare il grafico delle curve di livello f(x, y) = k si può usare il comando:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour
+\end_layout
+
+\end_inset
+
+(X,Y,Z) % disegna 9 linee di livello
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour
+\end_layout
+
+\end_inset
+
+(X,Y,Z,N) % disegna N linee di livello
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour
+\end_layout
+
+\end_inset
+
+(X,Y,Z,[v v]) % disegna la linea di livello 
+\begin_inset Formula $v$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour
+\end_layout
+
+\end_inset
+
+(X,Y,Z,[v1 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots{}
+\end_layout
+
+\end_inset
+
+ vn]) % disegna la linea di livello 
+\begin_inset Formula $v_{1},\ldots,v_{n}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+dove X, Y sono mesh grid e Z indica i valori della funzione
+\end_layout
+
+\begin_layout Itemize
+per disegnare le linee di livello in tre dimensioni
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour3
+\end_layout
+
+\end_inset
+
+ (X,Y,Z)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour3
+\end_layout
+
+\end_inset
+
+ (X,Y,Z,N)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+contour3
+\end_layout
+
+\end_inset
+
+ (X,Y,Z,v)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+aggiunta di etichette
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+clabel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Esempio
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/sec_grafica_curve_livello.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Gradienti
+\end_layout
+
+\begin_layout Itemize
+La funzione 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+gradient
+\end_layout
+
+\end_inset
+
+ calcola, in modo approssimato, le componenti dei vettori gradienti (differenze
+ centrali).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+[...] = gradient (M, S)
+\end_layout
+
+\begin_layout Itemize
+[...] = gradient (M, X, Y, Z, ...)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+La funzione 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+quiver
+\end_layout
+
+\end_inset
+
+ mostra vettori applicati nello spazio 2-dimensionale.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+quiver (U, V)
+\end_layout
+
+\begin_layout Itemize
+quiver (X, Y, U, V)
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Esempio di visualizzazione dei gradienti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinputlisting[language=matlab,breaklines]{matlab/sec_grafica_quiver.m}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Tipi di grafici 3-dimensionali
+\end_layout
+
+\begin_layout BeginFrame
+Grafici 3D
+\end_layout
+
+\begin_layout Itemize
+Line Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+plot3, contour3, contourslice, ezplot3, waterfall
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Mesh and Bar Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mesh, meshc, meshz, ezmesh,bar3, bar3h, stem3
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Area Graphs and Constructive Objects
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+pie3, fill3, patch, cylinder, ellipsoid, sphere
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Surface Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+surf, surfl, surfc, ezsurf, ezsurfc
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Direction Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+quiver3, comet3, streamslice
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Volumetric Graphs
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+scatter3, coneplot, streamline, streamribbon, streamtube
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

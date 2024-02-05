@@ -1,0 +1,13 @@
+# file: dieta.dat
+data;
+set Nutrienti := proteine grassi;
+set Alimenti  := orzo avena sesamo arachidi;
+param costo := orzo 24 avena 30 sesamo 40 arachidi 50;
+param req_nutrizionale :=
+	proteine	20
+	grassi		 5;
+param apporto : orzo avena sesamo arachidi :=
+	proteine 12    12    40      60
+	grassi    2     6    12       2;
+end;
+

@@ -1,0 +1,21 @@
+linethickness 0.2
+
+point CML 60 60
+point LML 40 60
+point UML 60 70
+
+point CS  70 50
+point LS  58 50
+point US  70 69
+
+point ML  50 60
+point FM0 70 60
+point FE0 70 40
+
+printat ML  {Minimi~Locali}
+printat FM0 {$f'(x)>0$}
+printat FE0 {$f'(x)=0$}
+
+linethickness 0.6
+drawellipse CML LML UML
+drawellipse CS  LS  US

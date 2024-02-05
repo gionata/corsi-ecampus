@@ -1,0 +1,312 @@
+\documentclass{beamer}
+
+\usepackage[italian]{babel}
+%
+% Hyperref info for PDF
+%
+\usepackage{hyperref}
+
+\definecolor{ecampus@engred}{RGB}{227,28,23}
+\setbeamercolor{normal text}{fg=black,bg=}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{structure}{fg=ecampus@engred,bg=}
+\usetheme{default}
+\useinnertheme{rounded}%{circles}
+\setbeamertemplate{blocks}[default]
+\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[osfss]{libertine}
+\usepackage{palatino}
+\usepackage[scaled=.77]{beramono}
+\usepackage{booktabs}
+% \usepackage{attachfile}
+
+% Toglie l'enorme spazione prima di description
+%\setbeamersize{description width=0pt}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations,arrows,shapes,backgrounds,matrix,positioning}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{eurosym}
+\usepackage{pgfpages}
+\title{\titolo}
+\author{Gionata Massi}
+\date{\today}
+
+\setbeamercolor*{frametitle}{fg=black}
+\setbeamercolor*{title}{fg=black}
+\setbeamerfont{frametitle}{shape=\scshape,family=\rmfamily,size=\large,series=\bfseries}
+
+\setbeamersize{}
+\makeatletter
+\newcommand\thefontsize[1]{{#1 The current font size is: \f@size pt\par}}
+\makeatother
+
+\tikzstyle{nicebox}=[draw=gray!100, fill=blue!10, very thick,
+rounded corners, rectangle, inner sep=4pt, inner ysep=16pt]
+\tikzstyle{niceboxtitle}=[draw=gray!100, fill=white, text=black,
+rounded corners, very thick, rectangle]
+\newcommand\nicebox[2]{
+	{\centering
+		\begin{tikzpicture}
+		\node [nicebox](box){
+			\begin{minipage}{0.95\textwidth}\centering
+			\begin{minipage}{0.95\textwidth}
+			#2
+			\end{minipage}\end{minipage}};
+		\node[niceboxtitle, right=10pt] at (box.north west)
+		{\small\textbf{#1}};
+		\end{tikzpicture}\par}
+}
+
+\tikzstyle{modelbox}=[draw=structure!100, fill=white!50, very thick,
+rounded corners, rectangle, inner sep=4pt, inner ysep=16pt, text=blue!50!black]
+\tikzstyle{modelboxtitle}=[draw=structure!100, fill=white!50, text=blue!50!black,
+rounded corners, very thick, rectangle]
+\newcommand\modelbox[2]{
+	{\centering
+		\begin{tikzpicture}
+		\node [modelbox](box){
+			\begin{minipage}{0.95\textwidth}\centering
+			\begin{minipage}{0.95\textwidth}
+			#2
+			\end{minipage}\end{minipage}};
+		\node[modelboxtitle, right=10pt] at (box.north west)
+		{\small\textbf{\mbox{#1}}};
+		\end{tikzpicture}\par}
+}
+
+
+
+
+\begin{document}
+
+
+\section{I fogli elettronici e la PL}
+
+\begin{frame}{Fogli elettronici}
+\begin{itemize}
+\item I fogli elettronici (fra cui \emph{Microsoft Excel} e \emph{OpenOffice Calc}) sono
+strumenti molto diffusi che permettono analizzare e risolvere
+problemi di PL di piccole dimensioni.
+
+\item Un foglio elettronico pu\`o essere utilizzato per:
+\begin{itemize}
+	\item visualizzare i dati;
+	\item analizzare rapidamente le possibili soluzioni.
+\end{itemize}
+
+\item Il Risolutore incluso in \emph{Excel}, opportunamente configurato,
+applica il metodo del simplesso per determinare una soluzione ottima
+per l'instanza del modello di PL. Per altre tipologie di problemi di
+ottimizzazione utilizza altri algoritmi.
+
+\item \emph{OpenOffice} (o \emph{LibreOffice}) \emph{Calc} utilizzano il metodo del
+simplesso per risolvere problemi di PL.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Programmi Lineari}
+\begin{itemize}
+\item Quando si inserisce un programma lineare su un foglio elettronico
+\`e necessario conoscere i parametri del modello e distinguere:
+\begin{enumerate}
+\item le decisioni che devono essere prese (\alert{variabili decisionali});
+\item le restrizioni sul valore che pu\`o essere assunto delle variabili
+	decisionali (\alert{vincoli});
+\item la misura di prestazione complessiva del sistema in funzione delle decisioni (\alert{funzione obiettivo})
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\section{Esempio}
+
+\begin{frame}[allowframebreaks]{Problema di esempio}
+\fontsize{7}{8.4}{
+\begin{block}{Mix ottimo di produzione}
+Un'azienda di produzione vuole determinare il tasso di produzione mensile di due prodotti
+in modo da massimizzare il profitto netto totale,  sapendo che:
+ \begin{itemize}
+  \item per produrre un quintale di prodotto 1 occorrono 40 quintali di materia prima e 8 ore di lavoro;
+  \item per produrre un quintale di prodotto 2 occorrono 20 quintali di materia prima e 2 ore di lavoro;
+  \item il commerciale ha stabilito che la produzione totale mensile non pu\`o superare 100 quintali;
+  \item la disponibilit\`a mensile di materia prima \`e di 2200 quintali e quella di lavoro di 320 ore;
+  \item il profitto netto per la vendita dei prodotti 1 e 2 sia rispettivamente 120 e 40 euro.
+ \end{itemize}
+\end{block}
+}
+
+\framebreak
+
+\modelbox{Modello}{%
+\small{%
+$$\begin{array}{crrrlcr}
+\max z=& 120 x_1 &+& 40 x_2    &           & (0) & [\text{profitto}]\\
+{\rm s.t.} & 40 x_1 &+& 20 x_2 & \leq 2200 & (1) & [\text{materie prime}]\\
+           &  8 x_1 &+&  2 x_2 & \leq 320  & (2) & [\text{lavoro}]\\
+           &    x_1 &+&    x_2 & \leq 100  & (3) & [\text{mercato}]\\
+           \multicolumn{5}{c}{x_1 \geq 0,\ x_2 \geq 0} & & [\text{non negativit\`a}]
+\end{array}$$}}
+\end{frame}
+
+\section{Formulare il problema}
+
+\begin{frame}{Foglio di calcolo}
+\begin{itemize}
+\item Nelle diapositive seguenti saranno presentate le schermate di
+   \emph{LibreOffice Calc}, un foglio elettronico gratuito scaricabile da
+   \href{http://it.libreoffice.org}{http://it.libreoffice.org},
+   disponibile gratuitamente per numerose architetture hw/sw.
+   
+\item Le informazioni generali vanno bene per qualsiasi foglio elettronico
+	mentre quelle sul risolutore sono specifiche per \emph{Calc} versione 4.
+	
+\item Per altri fogli elettronici controllare la documentazione appropriata.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Inserire i parametri del problema}
+\only<1>{
+Per rappresentare un problema di PL servono
+i suo elementi strutturali (variabili decisionali,
+vincoli, funzione obiettivo) e i parametri del problema
+specifico (istanza):
+
+\begin{itemize}
+\item un insieme di celle conterr\`a i valori delle variabili
+	decisionali;
+\item una cella del foglio elettronico conterr\`a il valore
+	della funzione obiettivo calcolata in funzione del valore
+	delle variabili decisionali;
+\item un insieme di celle conterra i parametri del problema
+	($\matrA,\ \vecB,\ \vecC,\ d$);
+\item un gruppo di celle conterr\`a il valore calcolato dei
+	valori dei termini di sinistra di ogni vincolo.
+\end{itemize}
+}
+\includegraphics<2>[height=0.85\textheight]{./img/schermata1}
+\end{frame}
+
+\begin{frame}{Calcolare funzione obiettivo e primi membri}
+\only<1>{
+Abbiamo bisogno di calcolare la funzione obiettivo (lineare)
+e il valore del primo membro di ogni vincolo lineare
+(risultato dei prodotti scalari
+$\vecC^T \vecX=z$ e $A_i \vecX \leq {\vecB}_i,\ i \in \{1, 2,\ldots,m\}$).
+
+\begin{itemize}
+\item \emph{Calc} ed \emph{Excel} offrono la funzione \emph{MATR.SOMMA.PRODOTTO}
+	che permette di effettuare il prodotto scalare;
+\item tale funzione vuole entrambi i vettori definiti come vettore riga
+	o come vettore colonna;
+\item per comodit\`a nel foglio di calcolo sono stati introdotti anche
+	i valori delle variabili ausiliarie (slack).
+\end{itemize}
+}
+\includegraphics<2>[height=0.85\textheight]{./img/schermata2}
+\end{frame}
+
+\begin{frame}{Verifica del corretto inserimento delle formule}
+\only<1>{
+\begin{itemize}
+\item \`E consigliabile verificare di aver inserito le formule
+correttamente nel foglio di calcolo;
+\item un modo \`e quello di inserire dei valori
+per le variabili decisionali e controllare che i risultati
+siano quelli attesi.
+\end{itemize}
+}
+\includegraphics<2>[height=0.85\textheight]{./img/schermata3}
+\end{frame}
+
+\section{Risolvere il problema}
+
+\begin{frame}{Il risolutore}
+\only<1>{
+\begin{itemize}
+\item Il risolutore \`e raggiungibile dal men\`u strumenti;
+\item richiede di inserire i dati sul problema di PL:
+\begin{itemize}
+\item quale cella contiene il valore della funzione obiettivo;
+\item la direzione di ottimizzazione ($\max$, $\min$ oppure
+la minimizzazione dello scarto rispetto ad un certo valore);
+\item le espressioni dei vincoli (primo termine, secondo termine,
+	relazione tra loro).
+\end{itemize}
+\item La risoluzione di un modello di PL presuppone che tutte
+	le variabili decisionali siano non negative.
+\end{itemize}
+}
+\includegraphics<2>[height=0.85\textheight]{./img/schermata4}
+\includegraphics<3>[height=0.85\textheight]{./img/schermata5}
+\includegraphics<4>[height=0.85\textheight]{./img/schermata6}
+\end{frame}
+
+
+\begin{frame}{Il risolutore}
+\only<1>{
+\begin{itemize}
+\item Il pulsante ``Risolvi'' permette di calcolare
+	la soluzione ottima del problema utilizzando il
+	metodo del simplesso.
+\item Confrontando il valore della soluzione ottenuta
+	col foglio di calcolo rispetto a quelle della
+	risoluzione grafica e mediante il metodo del
+	simplesso tableau notiamo che otteniamo lo stesso
+	risultato:
+	$\vecX^{T\star}=\left[\begin{array}{ccccc}25&60&0&0&15\end{array}\right]$
+	in corrispondenza del quale $z^\star = 5400$.
+	
+\item Potremmo provare a modificare i valori per
+	simulare decisioni diverse o variazioni dei
+	parametri del modello.
+\end{itemize}
+}
+\includegraphics<2>[height=0.85\textheight]{./img/schermata7}
+\includegraphics<3>[height=0.85\textheight]{./img/schermata8}
+\end{frame}
+
+\section{Per approfondire}
+
+\begin{frame}{Altro informazioni}
+\begin{itemize}
+\item Il risolutore di \emph{Excel} permette di effettuare
+	anche l'analisi post-ottimale.
+	
+\item Esistono varie estensioni per aggiungere
+	funzionalit\`a al risolutore di \emph{Calc}
+	e di \emph{Excel}.
+	
+\item Entrambi i risolutori possono lavorare anche con
+variabili intere (PLI e PLB).
+	
+\item \emph{Excel} e LibreoOffice con l'estensione
+	\emph{nlpsolver} permettono di risolvere
+	problemi non lineari.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Per approfondire}
+\beamertemplatebookbibitems
+\begin{thebibliography}{References}
+\bibitem{HillierLiebermanS1C3}F.S. Hillier, G. J. Lieberman.\newblock
+\textit{Ricerca Operativa}. Capitolo 2.\newblock McGraw Hill, 2010.
+
+\bibitem{ooo3solverug}\href{http://wiki.openoffice.org/wiki/Documentation/OOo3\_User\_Guides/Calc\_Guide/Solver}{Using the solver} \newblock \textit{OpenOffice.org} \newblock Pagina wiki consultata il 3 settembre 2013.
+
+%\bibitem{Schrage2006} L. Schrage.\newblock \emph{Optimization Modeling
+%with LINGO.} \newblock LINDO Systems, Inc., 2006
+
+%\bibitem{LingoUserManual} LINDO Systems Inc.\newblock \emph{LINGO
+
+%User's guide.} \newblock LINDO Systems, Inc., 2011
+\end{thebibliography}
+\end{frame}
+
+\end{document}

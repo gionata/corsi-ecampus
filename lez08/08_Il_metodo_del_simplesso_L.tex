@@ -1,0 +1,408 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Risolvere un Programma Lineare}
+
+\begin{frame}[allowframebreaks]{Il metodo del Simplesso}
+
+\begin{itemize}
+\item Il metodo del simplesso primale \`e un algoritmo per la risoluzione algebrica di problemi di P.L. espressi in forma canonica forte.
+
+\item \`E il metodo proposto da George Dantzig nel 1947
+per la risoluzione dei problemi generali di P.L.
+Per anni \`e stato anche l'unico algoritmo disponibile.
+
+\item Rimane un metodo tra i pi\`u utilizzati per la soluzione di problemi di P.L. nonostante attualmente siano disponibili altri algoritmi.
+
+\item Pu\`o essere utilizzato, insieme ad altre tecniche, nella risoluzione dei problemi di P.L.I.
+
+\item Permette di effettuare agevolmente l'analisi di post-ottimalit\`a.
+
+\item  Esistono molti pacchetti software che lo implementano, sia gratuiti che commerciali.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Le possibili soluzioni}
+Un problema di P.L. soddisfa sempre uno dei tre casi seguenti:
+
+\begin{enumerate}
+\item il problema \`e inammissibile: la regione ammissibile \`e vuota;
+
+\item il problema \`e illimitato: \`e possibile trovare delle soluzioni ammissibili facendo crescere a piacere il valore di una o pi\`u variabili decisionali in modo che la funzione obiettivo diminuisca (o aumenti per problemi di massimo) a piacere;
+
+\item il problema ammette soluzione ottima: esiste almeno una soluzione ammissibile che minimizza (massimizza) il valore della funzione obiettivo. Tale valore \`e limitato.
+\end{enumerate}	
+
+\begin{itemize}
+\item   Risolvere un problema di P.L. significa 
+  riconoscere il verificarsi di uno dei tre casi
+
+\item   se \`e verificato il caso 3, fornire
+\begin{itemize}
+  \item il valore assunto all'ottimo dalle variabili decisionali (il vettore $\vecX^\star$)
+  \item il valore assunto all'ottimo dalla funzione obiettivo ($z^\star$)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Matrice tableau}
+
+\begin{frame}{Matrice tableau}
+\begin{columns}
+\begin{column}{0.7\textwidth}
+{\small %
+\begin{itemize}
+\item Il problema di P.L. in forma canonica pu\`o essere
+	rappresentato in una tabella di $m+1$ righe ed $n+1$
+	colonne
+	
+\item La tabella $\matr{M}$ \`e una matrice, detta 
+	\emph{matrice tableau}.
+
+\item Rappresenta le equazioni del problema di
+   programmazione lineare in modo compatto.
+
+\item  Si noti che in alto a sinistra si \`e posto $-d$
+che e i termini noti sono stati spostati sulla sinistra.
+\end{itemize} %
+}
+\end{column}
+\begin{column}{0.3\textwidth}
+{\tiny
+\centering\fbox{
+\begin{minipage}{0.5\textwidth}
+$\min z = \vecC^T x + d$
+$$\begin{cases}
+\matrA \vecX = \vecB\\
+\vecX \geq \vec{0}
+\end{cases}$$
+\end{minipage}
+}
+
+\vfill
+
+%$$\bordermatrix{
+%        &  -z   & x_{1}    &  x_{2}	&\cdots&x_{n} \cr
+%   f.o.\   &  -d      &  c_1       & c_2 & \cdots&c_{n} \cr
+%	1    &  b_{1}& a_{11} & a_{12} &\cdots&a_{1n} \cr
+%    2    & b_{2} & a_{21} & a_{22} &\cdots &a_{2n} \cr
+%\vdots & \vdots &\vdots &\vdots &\ddots &\vdots \cr
+%	m    &  b_{m}& a_{m1} & a_{m2}    &\cdots&a_{mn} \cr
+%}$$
+%
+%\vfill
+
+\begin{center}
+\begin{tabular}{|c|p{0.2\textwidth}|}
+\hline
+$-d$ & \multicolumn{1}{|c|}{\phantom{\LARGE{X}}$\vecC^T$\phantom{\LARGE{X}}}\\
+\hline
+$\vecB$ & \multicolumn{1}{|c|}{\phantom{\LARGE{X}}$\matrA$\phantom{\LARGE{X}}}\\
+\hline
+\end{tabular}
+\end{center}
+
+}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{La matrice tableau di un PL in forma canonica}
+\centering
+\begin{tikzpicture}
+{\scriptsize
+\node[
+  row 1/.style=gray,
+  row 2/.style=blue,
+  column 1/.style=gray,
+  column 2/.style=red,
+  row 2 column 1/.style={gray},
+  cell/.style=rectangle,
+  text height=2ex,
+  text width=1.5em,
+  align=center,
+  column  9/.style={text width=2em},
+  column 10/.style={text width=2em},
+  column 12/.style={text width=2em},
+  column 14/.style={text width=2em},
+  matrix of math nodes] (M)
+{
+&0&1&2&\cdots&k&\cdots&p&s_1&s_2&\cdots&s_h&\cdots&s_m\\
+0 & -d & c_1 & c_2 & \cdots & c_k & \cdots & c_p & \alt<1-2>{c_{s_1}}{0} &  \alt<1-2>{c_{s_2}}{0} & \cdots &  \alt<1-2>{c_{s_h}}{0} & \cdots &  \alt<1-2>{c_{s_m}}{0}\\
+1& b_1 &  a_{11} &  a_{12} &  \cdots &  a_{1k} &  \cdots &  a_{1{p}}&  1 &  0 & \cdots&0 & \cdots&0\\
+2& b_2 &  a_{21} &  a_{22} &  \cdots &  a_{2k} &  \cdots &  a_{2{p}}  &  0 & 1 &  \cdots & 0 & \cdots&0\\
+\vdots & \vdots &  \vdots &  \vdots &  \vdots &  \ddots &  \vdots &  \ddots &  \vdots &  \vdots &\ddots  & \vdots & \cdots&0\\
+h& b_h &  a_{h1} &  a_{h2} &  \cdots & a_{hk} &  \cdots &  a_{h{p}} &  0 & 0 & \cdots & 1 & \cdots&0\\
+\vdots& \vdots &  \vdots &  \vdots &  \vdots &  \ddots &  \vdots &  \ddots &\vdots & \vdots  & \vdots & \vdots & \ddots&0\\
+m& b_m &  a_{m1} &  a_{m2} &  \cdots &  a_{mk} &  \cdots &  a_{m{p}}&  0 &  0 & \cdots&0& \cdots & 1\\
+};
+% separatore verticale
+\draw[dashed] (M-2-3.north west) -- (M-8-3.south west);
+% separatore orizzontale
+\draw[dashed] (M-3-1.north east) -- (M-3-14.north east);
+% riquadro
+\draw(M-2-2.north west) -- (M-2-14.north east) -- (M-8-14.south east) -- (M-8-2.south west) -- cycle;
+% A_s: 3--8: 9--14
+\uncover<2->{
+\fill[red!50,fill opacity=0.5,thick,draw=red!60!black]  (M-3-9.north west) rectangle (M-8-14.south east);
+\node[red!40!black, below = of M-8-11.north east,draw=red!40,thick] (as) {$\alpha)\ \mathbf{A}_S = \mathbf{I}_m$};
+\draw[->,red!60,thick] (as) to (M-5-11.east);
+}
+% c_s: 2: 9--12
+\onslide<3->{
+\fill[green!50,fill opacity=0.5,thick,draw=green!60!black]  (M-2-9.north west) rectangle (M-2-14.south east);
+\node[green!40!black, above = of M-2-11.south east,draw=green!40,thick] (cs) {$\beta)\ \mathbf{c}_S = \mathbf{0}$};
+\draw[->,green!60,thick] (cs) to (M-2-11.east);
+}
+% b: 3--8: 2
+\uncover<4->{
+\fill[blue!50,fill opacity=0.5,thick,draw=blue!60!black]  (M-3-2.north west) rectangle (M-8-2.south east);
+\node[blue!40!black, below = of M-8-2.north,draw=blue!40,thick] (b) {$\gamma\ \mathbf{b} \geq \mathbf{0}$};
+\draw[->,blue!60,thick] (b) to [out=180,in=180] (M-5-2);
+}
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+
+\section{Pivot}
+
+\begin{frame}[allowframebreaks]{Operazione ``pivot''}
+
+L'operazione di ``pivot'' in posizione $(h, k )$,
+con $h$ e $k$ diversi da 0,
+\`e un'operazione sulla matrice tableau definita
+quando $a_{hk} \neq 0$ e consiste nei seguenti passi:
+
+\begin{itemize}
+\item si dividono tutti gli elementi della riga $h$ per $a_{hk}$;
+
+\item si sottraggono opportuni multipli della nuova riga $h$
+	ottenuta al passo precedente a tutte le altre righe in modo
+	tale che tutti gli elementi della colonna $k$, ad eccezione
+	di quello in posizione $(h, k )$, diventino nulli.
+\end{itemize}
+
+\framebreak
+
+Consideriamo l'operazione solo sulle matrici in forma canonica e un elemento pivot non nullo in una colonna fuori  base.
+Il significato dell'operazione di pivot \`e il seguente:
+
+\begin{itemize}
+\item si risolve l'equazione $h$ rispetto a $x_k$;
+
+\item si usa l'equazione $h$ per eliminare la variabile
+	$x_k$ dalle altre equazioni di vincolo e dalla funzione
+	obiettivo.
+\end{itemize}
+
+L'operazione di ``pivot'' in posizione $(h, k )$, con $h$ e $k$
+diversi da 0, corrisponde a far entrare in base la variabile
+fuori base $x_k$ e a far uscire dalla base la variabile $x_{s_h}$
+in posizione $h$-esima nella sequenza di base.
+
+\begin{center}
+\includegraphics{img/pivot_entra_esce}
+\end{center}
+
+\begin{itemize}
+\item L'operazione di pivot corrisponde al calcolo algebrico di una
+nuova soluzione di base
+
+\item A seguito dell'operazione di pivot in $(h, k)$ la matrice tableau
+e la sequenza degli indici di base cambiano
+
+\item L'elemento di pivot $a_{hk}$  \`e indicato da una circonferenza.
+La variabile entrante in base $x_k$ \`e indicata da una freccia
+verso il basso posta al di sopra della colonna $k$; la variabile
+uscente dalla base $x_{s_h}$ \`e indicata da una freccia verso
+l'alto sopra la colonna $s_h$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{}
+
+\vspace*{-0.35cm}
+
+\centering
+\begin{tikzpicture}
+{\tiny
+\node[%
+  align=center,
+  text width=1.5em,
+  text height=4ex,
+  row 1/.style={gray, text height=1ex},
+  row 2/.style={blue!50!gray, text height=1ex},
+  row 3/.style={blue},
+  column 1/.style={gray,text width=1em},
+  column 2/.style={red!50!gray},
+  % rhs
+  column 3/.style={red,text width=6em},
+  % x_1
+  column 4/.style={text width=3.5em},
+  % x_2
+  column 5/.style={text width=3.5em},
+  % ...
+  column 6/.style={text width=1em},
+  % x_k
+  column 7/.style={text width=3.5em},  
+  % ...
+  column 8/.style={text width=1em},
+  % x_s_h
+  column 9/.style={text width=3.5em},
+  % ...
+  column 10/.style={text width=1em},
+  % x_n
+  column 11/.style={text width=6em},
+  % spiegazione
+  column 12/.style={text width=8em},
+  row 3 column 1/.style={gray},
+  row 3 column 2/.style={red!50!gray},
+  row 3 column 3/.style={red},
+  matrix of math nodes] (M)
+{%
+% Indice delle righe (M-1)
+~&~&0&1&2&\cdots&\alt<1-3,5->{k}{~}&\cdots&\alt<1-3,5->{s_h}{~}&\cdots&n\\
+% Intestazione delle colonne (M-2)
+~ &~&  \mbox{rhs}&  x_1 &  x_2 &  \cdots & x_k &  \cdots & x_{s_h} &  \cdots &  x_n & ~\\
+% Riga 0, fo e costi ridotti (M-3)
+0 & z & \alt<1-5>{-d}{-d-\frac{c_k b_{h}}{a_{hk}}} & \alt<1-5>{c_1}{\overline{c_1}} & \alt<1-5>{c_2}{\overline{c_2}} & \cdots & \alt<1-5>{c_k}{0} & \cdots & \alt<1-5>{0}{-\frac{c_k}{a_{hk}}} & \cdots &  \alt<1-5>{c_n}{c_n-\frac{c_k a_{hn}}{a_{hk}}} & \alt<1-5>{}{{\mathbf{A}_0} \gets {\mathbf{A}_0} - \frac{c_k}{a_{hk}} {\mathbf{A}_h}}\\
+1& \alt<1-5>{x_{s_1}}{x_{{s^\prime}1}} & \alt<1-5>{b_1}{b_1-\frac{a_{1k} b_{h}}{a_{hk}}} & \alt<1-5>{a_{11}}{\overline{a_{11}}} &  \alt<1-5>{a_{12}}{\overline{a_{12}}} &  \cdots &  \alt<1-5>{a_{1k}}{0} &  \cdots &  \alt<1-5>{0}{-\frac{a_{1k}}{a_{hk}}}&  \cdots &  \alt<1-5>{a_{1n}}{a_{1n}-\frac{a_{1k} a_{hn}}{a_{hk}}} & \alt<1-5>{}{{\mathbf{A}_1} \gets {\mathbf{A}_1} - \frac{a_{1k}}{a_{hk}} {\mathbf{A}_h}}\\
+2& \alt<1-5>{x_{s_2}}{x_{{s^\prime}2}} & \alt<1-5>{b_2}{b_1-\frac{a_{2k} b_{h}}{a_{hk}}} & \alt<1-5>{a_{21}}{\overline{a_{21}}} &  \alt<1-5>{a_{22}}{\overline{a_{22}}} &  \cdots &  \alt<1-5>{a_{2k}}{0} &  \cdots &  \alt<1-5>{0}{-\frac{a_{2k}}{a_{hk}}} &  \cdots & \alt<1-5>{a_{2n}}{a_{2n}-\frac{a_{2k} a_{hn}}{a_{hk}}} & \alt<1-5>{}{{\mathbf{A}_2} \gets {\mathbf{A}_2} - \frac{a_{2k}}{a_{hk}} {\mathbf{A}_h}}\\
+\vdots & \vdots &  \vdots &  \vdots &  \vdots &  \ddots &  \vdots &  \ddots &  \vdots &\ddots  & \vdots & \alt<1-5>{}{\vdots}\\
+h& \alt<1-4>{x_{s_h}}{x_{{s^\prime}h}} & \alt<1-4>{b_h}{\frac{b_h}{a_{hk}}} &  \alt<1-4>{a_{h1}}{\frac{a_{h1}}{a_{hk}}} &  \alt<1-4>{a_{h2}}{\frac{a_{h2}}{a_{hk}}} & \cdots & \alt<1-4>{a_{hk}}{1} & \cdots &  \alt<1-4>{1}{\frac{1}{a_{hk}}} & \cdots & \alt<1-4>{a_{hn}}{\frac{a_{hn}}{a_{hk}}} & \alt<1-4>{}{{\mathbf{A}_h} \gets \frac{1}{a_{hk}} {\mathbf{A}_h}} \\
+\vdots& \vdots &  \vdots &  \vdots &  \vdots &  \ddots &  \vdots &  \ddots &\vdots & \ddots&\vdots & \alt<1-5>{}{\vdots}\\
+m& \alt<1-5>{x_{s_m}}{x_{{s^\prime}m}} & \alt<1-5>{b_m}{b_m-\frac{a_{mk} b_{h}}{a_{hk}}} & \alt<1-5>{a_{m1}}{\overline{a_{m1}}} & \alt<1-5>{a_{m2}}{\overline{a_{m2}}} & \cdots & \alt<1-5>{a_{mk}}{0} &  \cdots &  \alt<1-5>{0}{-\frac{a_{mk}}{a_{hk}}} & \cdots& \alt<1-5>{a_{mn}}{a_{mn}-\frac{a_{mk}{a_{hn}}}{a_{hk}}} & \alt<1-5>{}{{\mathbf{A}_m} \gets {\mathbf{A}_m} - \frac{a_{mk}}{a_{hk}} {\mathbf{A}_h}}\\
+};
+
+% riquadro
+\draw(M-3-3.north west) -- (M-3-11.north east) -- (M-9-11.south east) -- (M-9-3.south west) -- cycle;
+
+% separatore orizzontale
+\draw[dashed] (M-4-3.north west) -- (M-4-11.north east);
+
+% separatore verticale
+\draw[dashed] (M-3-4.north west) -- (M-9-4.south west);
+
+\onslide<2-3>{
+% evidenzia chi entra
+\fill[yellow!50,fill opacity=0.25,thick,draw=green!60!black]  (M-2-7.north west) rectangle (M-9-7.south east);
+\node[green!40!black,draw=green!40,thick] at (M-1-7.north) {entra $\mathbf{x}_k$};
+
+% e il pivot
+\fill[yellow!50,fill opacity=0.25,thick,draw=green!60!black]  (M-7-2.north west) rectangle (M-7-11.south east);
+}
+
+\onslide<3>{
+\fill[magenta!50,fill opacity=0.25,thick,draw=green!60!black]  (M-2-9.north west) rectangle (M-9-9.south east);
+\node[green!40!black,draw=green!40,thick] at (M-1-9.north) {esce $\mathbf{x}_{s_h}$};
+}
+
+% entra x_k
+\draw<4>[->,thick,red!50!blue] (M-1-7.north) to (M-2-7.north);
+% esce x_{s_h}
+\draw<4>[->,thick,red!50!blue] (M-2-9.north) to (M-1-9.north);
+
+\draw<4>[thick,draw=blue,fill=yellow!50,opacity=0.3] (M-7-7.base) circle (1.5em);
+
+\node[below = of M-8-7]
+{
+\only<1> {Tableau iniziale}
+\only<2> {Vengono date la colonna $k$ e la riga $h$}
+\only<3> {\`E determinata la colonna uscente dalla base $s_h$}
+\only<4> {Indicazione dell'operazione di pivot in $(h, k)$ e delle variabili entranti ed uscenti dalla base}
+\only<5> {Si inizia l'operazione dividendo la riga $h$ per il valore dell'elemento $a_{hk}$}
+\only<6> {Ad ogni riga $i \in \{0, 1, \ldots m\} \setminus h$ si sottrae la riga $h$ moltiplicata per $\frac{a_{ik}}{a_{hk}}$}
+};
+
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Pivot: dalla base $S$ a quella adiacente $S^\prime$ }
+
+Consideriamo l'intera matrice tableau $\matr{M}$ con gli indici di
+riga che partono da 0, riga della funzione obiettivo e gli indici
+di colonna che partono da 0, colonna dei termini noti.
+
+Sia $S$ la sequenza degli indici di base prima dell'operazione di
+pivot e $S^\prime$ la sequenza a seguito dell'operazione di pivot
+in $(h, k)$.
+
+$$
+\begin{cases}
+\matr{M}^{S^\prime}_i \gets \frac{1}{m_{hk}^S} \matr{M}^{S}_h & i = h\\
+\matr{M}^{S^\prime}_i \gets \frac{m_{ik}^S}{m_{hk}^S} \matr{M}^{S}_h & i \neq h\\
+\end{cases}
+$$
+
+$$
+\begin{cases}
+m^{S^\prime}_{ij} \gets \frac{m_{ij}^S}{m_{hk}^S} & i = h,\ j\in\{0,1,\ldots,n\}\\
+m^{S^\prime}_{ij} \gets m^{S}_{ij}-\frac{m_{ik}^S}{m_{hk}^S} m_{hj}^S & i \in \{0,1,\ldots,m\} \setminus h,\ j\in\{0,1,\ldots,n\}\\
+\end{cases}
+$$
+
+\begin{itemize}
+\item Il valore della funzione obiettivo si modifica secondo
+$z^{S^\prime} \gets z^S + \frac{c_k}{a_{hk}} b_h$
+
+\item Il valore delle variabili si modifica secondo
+$
+x_{j}^{S^\prime} \gets
+\begin{cases}
+0                  & j \in \overline{S} \cup \{s_h\} \setminus \{k\}\\
+\frac{b_h}{a_{hk}} & j \in \{k\}\\
+x_{j}^S-a_{ik} x_{s_h}^{S^\prime} & j \in S \setminus \{s_h\}, i = \arg_t \{s_t = j\}
+\end{cases}
+$
+
+\item La variabile $x_k$ entra in base:
+$0 \to \frac{b_h}{a_{hk}}$
+
+\item La variabile $x_{s_h}$ esce dalla base: $b_{s_h} \to 0$
+\end{itemize}  
+ 
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Riassunto}
+
+\begin{itemize}
+\item La forma canonica permette la lettura immediata di una
+soluzione di base.
+
+\item Se la forma canonica \`e forte allora la soluzione \`e una
+soluzione di base ammissibile.
+
+\item L'operazione di ``pivot'' applicato alla matrice tableau
+permettono di risolvere iterativamente un sistema di
+equazioni lineari calcolando al contempo vincoli e
+funzione obiettivo.
+
+\item La forma canonica permette di trattare la funzione
+obiettivo in funzione delle sole variabili non di base.
+In questo modo si ha
+
+\begin{itemize}
+\item un facile computo del valore scalare z;
+
+\item un metodo semplice per verificare l'ottimalit\`a
+della soluzione o, in caso contrario, le variabili candidate
+ad entrare in base in una soluzione non peggiorante.
+\end{itemize}
+
+\item La forma canonica permette di applicare il metodo di
+Gauss-Jordan e di calcolare in modo iterativo l'inversa
+di una matrice.
+\end{itemize}
+\end{frame}
+
+\end{document}

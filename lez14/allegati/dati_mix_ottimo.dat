@@ -1,0 +1,15 @@
+# file: dati_mix_ottimo.dat
+data;
+set Prodotti := prod_1 prod_2;
+set Risorse  := materie_prime lavoro mercato;
+param profitto := prod_1 120 prod_2 40;
+param disponibilita :=
+	materie_prime	2200
+	lavoro		 320
+	mercato		 100;
+param assorbimento : prod_1 prod_2 :=
+	materie_prime	40 20
+	lavoro		 8  2
+	mercato		 1  1;
+end;
+

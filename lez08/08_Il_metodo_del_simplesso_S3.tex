@@ -1,0 +1,68 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+
+\begin{frame}[allowframebreaks]{Esercizi}
+    \begin{enumerate}    
+     \item Si effettuino le due operazioni di pivot sulla matrice tableau per l'esempio del problema di mix ottimo di produzione.\\~\\
+     1) Si riscriva la matrice tableau;\\~\\
+     2) si effettui l’operazione di pivot in posizione (2, 1) e si scriva il secondo tableau;\\~\\
+     3) si effettui, sul secondo tableau, l’operazione di pivot in posizione (1, 2) e si scriva il terzo tableau.\\~\\
+     In corrispondenza di ogni tableau si legga la soluzione di base corrispondente e la si metta in corrispondenza con la soluzione grafica già effettuata in una precedente lezione.\\~\\
+     %Si produca una relazione e la si carichi sulla piattaforma di e-learning
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Il tableau dell'esercizio}
+\centering
+\begin{tikzpicture}
+{\tiny
+\node[%
+  align=center,
+  text width=3.5em,
+  text height=5ex,
+  row 1/.style={gray, text height=1em},
+  row 2/.style={blue!50!gray, text height=1em},
+  row 3/.style={blue},
+  column 1/.style={gray,text width=1em},
+  column 2/.style={red!50!gray,text width=1.5em},
+  column 3/.style={red},
+  row 3 column 1/.style={gray},
+  row 3 column 2/.style={red!50!gray},
+  row 3 column 3/.style={red},
+  matrix of math nodes] (M)
+{%
+% Indice delle righe (M-1)
+~&~&0&1&2&3&4&5\\
+% Intestazione delle colonne (M-2)
+~ &~&  \mbox{rhs}& x_1 & x_2 & x_3 & x_4 & x_5\\
+% Riga 0, fo e costi ridotti (M-3)
+0 &  z  &    0 & -120 & -40 & 0 & 0 & 0 \\
+1 & x_1 & 2200 &   40 &  20 & 1 & 0 & 0 \\
+2 & x_2 &  320 &    8 &   2 & 0 & 1 & 0 \\
+3 & x_3 &  100 &    1 &   1 & 0 & 0 & 1 \\
+};
+
+% riquadro
+\draw(M-3-3.north west) -- (M-3-8.north east) -- (M-6-8.south east) -- (M-6-3.south west) -- cycle;
+
+% separatore orizzontale
+\draw[dashed] (M-4-3.north west) -- (M-4-8.north east);
+
+% separatore verticale
+\draw[dashed] (M-3-4.north west) -- (M-6-4.south west);
+
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+
+\end{document}

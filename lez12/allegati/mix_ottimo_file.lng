@@ -1,0 +1,42 @@
+! Modello del problema di mix ottimo di produzione;
+MODEL:   !! "MODEL:" inizia l'inserimento di un modello in uno script LINGO;
+TITLE MIX OTTIMO DI PRODUZIONE;   !! Un modello puo' avere una denominazione: TITLE;
+
+! Sezione SETS;
+SETS:   !! "SETS:" e "ENDSETS" delimitano la sezione di dichiarazione degli insiemi;
+
+	! Gli insiemi primitivi;   !! Sintassi   <insieme>[: <attributo>[, <attributo>]];
+	Risorsa: Disponibilita;
+	Prodotto: Profitto, X;
+
+	! Un insieme derivato;   !! Sintassi   <insieme>(<insieme>, <insieme>[,<insieme>])[:<attributo>[, <attributo>]];
+	RisorsaProdotto(Risorsa, Prodotto): Assorbimento;
+
+ENDSETS
+
+! Il modello del problema di mix ottimo di produzione;
+! Massimizza il profitto totale;
+[PROFITTO_TOTALE] MAX = @SUM( Prodotto(j): Profitto(j)*X(j));
+! Per ogni risorsa i;
+@FOR( Risorsa(i): [RISORSA_]
+	! La quantita' utilizzata;
+	@SUM( Prodotto(j): Assorbimento(i,j)*X(j))
+		<= Disponibilita(i); ! deve essere <= di quella disponibile;
+);
+
+! Sezione dati;
+DATA:
+	Risorsa = @FILE('mix_ottimo_data.ldt');
+	Disponibilita = @FILE('mix_ottimo_data.ldt');
+	Prodotto = @FILE('mix_ottimo_data.ldt');
+	Profitto = @FILE('mix_ottimo_data.ldt');
+	Assorbimento = @FILE('mix_ottimo_data.ldt');
+
+	@TEXT('obiettivo.txt') = PROFITTO_TOTALE;
+	@TEXT('soluzione.txt') = Prodotto, X;
+ENDDATA
+
+END
+
+!!! Author: Gionata Massi <gionata.massi@uniecampus.it>
+!!! Date  : 07 Sep 2013;

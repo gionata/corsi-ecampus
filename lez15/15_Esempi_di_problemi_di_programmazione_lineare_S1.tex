@@ -1,0 +1,184 @@
+\documentclass{beamer}
+\def\presentationtype{1}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Un problema d'investimento}
+
+\begin{frame}%[allowframebreaks]
+{Un problema d'investimento -- esempio}
+
+\begin{block}{}
+{\small   Un'azienda deve decidere una politica di investimento al fine di massimizzare il ritorno atteso stimato stimato in base alle condizioni interne e di mercato. Le opzioni di investimento sono di due tipi. L'investimento di tipo 1 ha un ritorno atteso del 15\% ed \`e poco rischioso mentre l'investimento di tipo 2 ha un ritorno atteso del 25\% e presenta una maggiore rischiosit\`a.
+Il management ha stabilito che la quantit\`a massima di denaro che si pu\`o investire (budget)  \`e di 100 mila euro, che l'investimento di tipo 1 deve essere almeno $\frac{1}{4}$ del budget e che l'investimento di tipo 2 non pu\`o essere superiore al doppio dell'investimento di tipo 1.
+
+  Determinare gli investimenti cui corrisponde un ritorno atteso massimo nel rispetto delle restrizioni imposte dal management.}
+\end{block}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+{Un problema d'investimento -- istanza di esempio}
+
+\begin{table}
+\begin{tabular}{c|cc|c}\toprule
+&\bf Minimo&\bf Massimo&\parbox{1.5cm}{{\bf \begin{center}Ritorno atteso\end{center}}}\\\midrule
+\bf Tipo 1 & budget $/ 4$  &        --     & 15\% \\
+\bf Tipo 2 &    --  &  2 Tipo 1     & 25\% \\\midrule
+\bf Budget &\multicolumn{2}{c|}{100}&    \\\bottomrule
+\end{tabular}
+\caption{Parametri del problema d'investimento}
+\label{tab:istanza}
+\end{table}
+
+\end{frame}
+
+\section{Costruzione del modello}
+
+\begin{frame}{Insiemi e parametri}
+	\begin{block}{Insiemi}
+		\begin{description}
+			\item[Investimenti] insieme degli investimenti
+%			\item[Relazioni] relazione tra gli investimenti, sottoinsieme del prodotto cartesiano dell'insieme investimenti per s\`e stesso
+%			\item[Apporti] insieme $\rm Nutrienti \times \rm Alimenti$
+		\end{description}
+	\end{block}
+	\begin{block}{Parametri}
+		\begin{description}
+			\item[ritorno] ritorno atteso di un investimento
+			\item[minimo] importo minimo destinato all'investimento
+			\item[proporzione] relazione tra due investimenti
+			\item[budget] importo totale da investire
+		\end{description}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Variabili decisionali}
+Si deve determinare l'importo da destinare a ciascun investimento,
+per cui definiamo una variabile decisionale per ogni investimento che
+rappresenta il denaro da destinare all'investimento stesso.
+\begin{block}{Variabili}
+	\begin{description}
+		\item[$x_1$]		denaro destinato all'investimento di tipo 1,
+		\item[$x_2$]		denaro destinato all'investimento di tipo 2.
+	\end{description}
+\end{block}
+
+  Le variabili sono continue e non negative.
+
+\end{frame}
+
+\begin{frame}{Funzione obiettivo}
+Si deve determinare la ripartizione del budget per gli investimenti in modo
+che il ritorno atteso totale sia massimo. Il ritorno atteso degli
+investimenti, espresso in funzione delle variabili decisionale \`e:
+
+$$z=0.15\ x_1 + 0.25\ x_2$$
+
+In generale:
+
+$$  \sum_{j \in {\rm \textcolor{col_set}{Investimenti}}} {\rm \textcolor{col_par}{ritorno}}_j \, x_j$$
+
+Il ritorno è espresso da una funzione lineare: rispetta le ipotesi di proporzionalit\`a, additivit\`a e divisibilit\`a.
+\end{frame}
+
+\begin{frame}{Vincoli}
+
+L'importo degli investimenti non pu\`o essere superiore al budget
+
+$$  \sum_{j \in {\rm \textcolor{col_set}{Investimenti}}} x_j
+\leq {\rm \textcolor{col_par}{budget}}$$
+
+
+L'importo di ogni investimento deve $\geq$ al minimo
+stabilito
+
+$$  \sum_{j \in {\rm \textcolor{col_set}{Investimenti}}} x_j
+\geq {\rm \textcolor{col_par}{minino}} \quad i \in {\rm \textcolor{col_set}{Investimenti}}$$
+
+Le proporzioni fra gli investimenti devono sottostare al vincolo
+
+$$ x_i \geq {\rm \textcolor{col_par}{proporzione}}_{ij} x_j\quad i,\ j \in {\rm \textcolor{col_set}{Investimenti}},\ i \neq j$$
+
+Inoltre valgono i vincoli di non negativit\`a delle variabili
+\end{frame}
+
+\begin{frame}{Investimento ottimo: modello basato su insiemi}
+\begin{columns}%{}
+
+\column{.49\textwidth}
+
+\begin{minipage}{\textwidth}
+\footnotesize{
+\begin{tabular}{lp{0.85\textwidth}}
+\color{col_set}$I$		&Insieme degli investimenti\\
+~\\
+$\textcolor{col_par}{b}$ &Budget complessivo\\
+$\textcolor{col_par}{r}_{\textcolor{col_idx}{j}}$	&Ritorno atteso dell'investimento $j\in I$\\
+$\textcolor{col_par}{m}_{\textcolor{col_idx}{j}}$	&Importo minimo destinato all'investimento $j\in I$\\
+$\textcolor{col_par}{p}_{\textcolor{col_idx}{ij}}$	&Proporzione tra gli
+investimenti $i\in I$ e $j\in I$\\
+~\\
+$\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}$	&Importo 
+dell'investimento \mbox{$j\in I$}\\
+~\\
+\end{tabular}
+\begin{tabular}{ll}
+\hspace*{0.5\textwidth}&\\
+\textcolor{col_set}{\rule{1 em}{1 em} Insiemi} &
+\textcolor{col_idx}{\rule{1 em}{1 em} Indici} \\
+\textcolor{col_par}{\rule{1 em}{1 em} Parametri} &
+\textcolor{col_var}{\rule{1 em}{1 em} Variabili}
+\end{tabular}
+}
+\end{minipage}
+
+\column{.51\textwidth}
+
+\def\funzioneobiettivo{{\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{I}}}
+	\textcolor{col_par}{r}_{\textcolor{col_idx}{j}}\,\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}}
+\def\jinI{\textcolor{col_idx}{j} \in \textcolor{col_set}{I}}
+\def\iinI{\textcolor{col_idx}{i} \in \textcolor{col_set}{I}}
+
+\fbox{
+{\footnotesize
+$\begin{array}{rll}
+\max z= & \funzioneobiettivo\\% Funzione obiettivo
+
+	       & {\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{I}}}
+	       \textcolor{col_var}{x}_{\textcolor{col_idx}{j}} \leq \textcolor{col_par}{b}\\% budget
+
+	       & \textcolor{col_var}{x}_{\textcolor{col_idx}{j}} \geq \textcolor{col_par}{m}_{\textcolor{col_idx}{i}} & \jinI\\ % minimo
+	       
+	       & & \iinI,\\
+	       & 
+	       \textcolor{col_var}{x}_{\textcolor{col_idx}{i}} \geq \textcolor{col_par}{p}_{\textcolor{col_idx}{ij}}\, \textcolor{col_var}{x}_{\textcolor{col_idx}{j}}& \jinI,\\
+	       & &  \textcolor{col_idx}{i} \neq \textcolor{col_idx}{j}\\
+
+	       
+  & \textcolor{col_var}{x}_{\textcolor{col_idx}{j}}\geq 0 &  \jinI
+\end{array}$
+}
+}
+\end{columns}%{}
+\end{frame}
+
+\begin{frame}[fragile]{Modello in LINGO -- modello}
+\lstinputlisting{allegati/investimenti.lng}
+\end{frame}
+
+\begin{frame}[fragile]{Modello in LINGO -- dati}
+\lstinputlisting{allegati/investimenti.ldt}
+\end{frame}
+
+\begin{frame}{Modello in GNU MathProg -- modello}
+\lstinputlisting{allegati/investimenti.mod}
+\end{frame}
+
+\begin{frame}[fragile]{Modello in GNU MathProg -- dati}
+\lstinputlisting{allegati/investimenti.dat}
+\end{frame}
+
+\end{document}

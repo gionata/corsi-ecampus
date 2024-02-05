@@ -1,0 +1,12 @@
+! Nutrienti;
+proteine grassi ~
+! Alimenti;
+orzo avena sesamo arachidi ~
+! costo;
+24 30 40 50 ~
+! req_nutrizionale;
+20  5 ~
+! apporto;
+		!  orzo avena sesamo arachidi;
+! Proteine;	    12   12     40      60
+! Grassi;	     2    6     12       2 ~

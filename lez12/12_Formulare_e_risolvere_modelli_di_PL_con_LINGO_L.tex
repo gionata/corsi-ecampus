@@ -1,0 +1,531 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\definecolor{comment_c}{RGB}{60,128,49}
+\definecolor{rowname_c}{RGB}{128,60,49}
+\definecolor{reserved_c}{RGB}{49,60,128}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\newcommand{\noun}[1]{\textsc{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+ % this default might be overridden by plain title style
+ \newcommand\makebeamertitle{\frame{\maketitle}}%
+ \AtBeginDocument{
+   \let\origtableofcontents=\tableofcontents
+   \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+   \def\gobbletableofcontents#1{\origtableofcontents}
+ }
+ \long\def\lyxframe#1{\@lyxframe#1\@lyxframestop}%
+ \def\@lyxframe{\@ifnextchar<{\@@lyxframe}{\@@lyxframe<*>}}%
+ \def\@@lyxframe<#1>{\@ifnextchar[{\@@@lyxframe<#1>}{\@@@lyxframe<#1>[]}}
+ \def\@@@lyxframe<#1>[{\@ifnextchar<{\@@@@@lyxframe<#1>[}{\@@@@lyxframe<#1>[<*>][}}
+ \def\@@@@@lyxframe<#1>[#2]{\@ifnextchar[{\@@@@lyxframe<#1>[#2]}{\@@@@lyxframe<#1>[#2][]}}
+ \long\def\@@@@lyxframe<#1>[#2][#3]#4\@lyxframestop#5\lyxframeend{%
+   \frame<#1>[#2][#3]{\frametitle{#4}#5}}
+ \def\lyxframeend{} % In case there is a superfluous frame end
+
+\makeatother
+
+\begin{document}
+
+\generatitolo
+
+\lyxframeend{}
+%\section{Uso del linguaggio di modellazione}
+
+\lyxframeend{}\section{Costruzione del modello: insiemi e parametri}
+
+\lyxframeend{}\lyxframe{Mix ottimo di produzione: modello scalare}
+\begin{columns}%{}
+
+\column{.45\textwidth}
+
+%\footnotesize{
+\begin{tabular}{lp{0.95\textwidth}}
+\color{magenta}$n$		&Numero dei prodotti\\
+\color{magenta}$m$		&Numero delle risorse\\
+\color{magenta}$a_{ij}$	&Assorbimento della risorsa $i$ da un prodotto $j$\\
+\color{magenta}$b_{i}$ 	&Disponibilit\`a della risorsa $i$\\
+\color{magenta}$c_{j}$	&Profitto unitario prodotto $j$\\
+\color{magenta}$x_{j}$	&Livello di produzione del prodotto $j$
+\end{tabular}
+%}
+
+\column{.55\textwidth}
+
+\fbox{%
+{\footnotesize
+$\begin{array}{cccc}
+\max z= & {\displaystyle \sum_{\textcolor{magenta}{j=1}}^{\textcolor{magenta}{n}}}c_{j}\,x_{j}\\
+	       & {\displaystyle \sum_{\textcolor{magenta}{j=1}}^{\textcolor{magenta}{n}}}a_{ij}\,x_{j} & \leq b_{i} & \color{magenta}i=1,2,\ldots,m\\
+ & x_{j}\geq0 &  & \color{magenta}j=1,2,\ldots,n
+\end{array}$
+}}
+
+\end{columns}%{}
+
+\lyxframeend{}\lyxframe{Parametri e variabili del modello PL come vettori}
+{\small
+$\left.\mathbf{c}=\left[\begin{array}{c}
+c_{1}\\
+c_{2}\\
+\vdots\\
+c_{n}
+\end{array}\right]\quad\mathbf{x}=\left[\begin{array}{c}
+x_{1}\\
+x_{2}\\
+\vdots\\
+x_{n}
+\end{array}\right]\right\} $prodotti,$\left.\mathbf{b}=\left[\begin{array}{c}
+b1\\
+b_{2}\\
+\vdots\\
+b_{m}
+\end{array}\right]\right\} $risorse,
+
+$\left.\mathbf{A}=\left[\begin{array}{cccc}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{array}\right]\right\} $risorsa$\times$prodotto
+
+\begin{center}
+\fbox{%
+$\begin{array}{rrl}
+\max z = & \mathbf{c}^T \, \mathbf{x}\\
+         & \mathbf{A}   \, \mathbf{x} & \leq \mathbf{b}\\
+         & \mathbf{x}                 & \geq \mathbf{0}
+\end{array}$%
+}
+\end{center}
+}
+
+\lyxframeend{}\lyxframe{Mix ottimo di produzione: modello basato su insiemi}
+\begin{columns}%{}
+
+\column{.50\textwidth}
+
+\begin{minipage}{\textwidth}
+\footnotesize{
+\begin{tabular}{lp{0.9\textwidth}}
+\color{magenta}$P$		&Insieme dei prodotti\\
+\color{magenta}$R$		&Insieme delle risorse\\
+\color{magenta}$a_{ij}$	&Assorbimento della risorsa $i\in P$ da un prodotto $j\in R$\\
+\color{magenta}$b_{i}$	&Disponibilit\`a della risorsa $i\in R$\\
+\color{magenta}$c_{j}$	&Profitto unitario prodott $j\in P$\\
+\color{magenta}$x_{j}$	&Livello di produzione prodotto $j\in P$
+\end{tabular}
+}
+\end{minipage}
+
+\column{.45\textwidth}
+
+
+\fbox{
+\footnotesize{
+$\begin{array}{cccc}
+\max z= & {\displaystyle \sum_{\textcolor{magenta}{j\in P}}}c_{j}\,x_{j}\\
+	       & {\displaystyle \sum_{\textcolor{magenta}{j\in P}}}a_{ij} \,x_{j} & \leq b_{i} & \textcolor{magenta}{i\in R}\\
+  & x_{j}\geq0 &  & \textcolor{magenta}{j\in P}
+\end{array}$
+}
+}
+
+\end{columns}%{}
+
+\lyxframeend{}\lyxframe{[allowframebreaks] formulazioni scalari e basate su insiemi}
+\begin{block}{Insiemi}
+Gli indici sono stati fatti variare in un dominio, quello $P$ dei
+prodotti e quello $R$ delle risorse
+
+\begin{itemize}
+\item $P=$\{$prod_{1},prod_{2}$\}
+\item $R=\mbox{\{}row\_mat,labour,market$\}
+\end{itemize}
+\end{block}
+
+\begin{block}{Attributi}
+Gli elementi degli insiemi hanno degli attributi di interesse
+
+\begin{itemize}
+\item $P$: profitto per unit\`a prodotta ($c_{j}$), numero di prodotti
+da realizzare ($x_{j}$)
+\item $R$: disponibilit\`a della risorsa ($b_{i}$) 
+\end{itemize}
+\end{block}
+
+\lyxframeend{}\section{Insiemi e attributi}
+
+
+\lyxframeend{}\lyxframe{Insiemi e attributi in LINGO}
+
+\begin{block}{Costrutto per la dichiarazione di insiemi primitivi}
+Gli insiemi e i relativi attributi sono indicati come \\
+
+\noun{insieme}: \noun{attributo}{[},\noun{ attributo}{]}{*};
+\end{block}
+
+\begin{exampleblock}{Esempio}
+\structure{Prodotto: Profitto, X;}\\
+\structure{Risorsa: Disponibilita;}
+\end{exampleblock}
+
+\lyxframeend{}\lyxframe{Insiemi derivati}
+
+\begin{itemize}
+\item Le quantit\`a $a_{ij}$ di risorsa assorbita dalla realizzazione
+di un prodotto sono definite su tutte le coppie ordinate di una risorsa
+e un prodotto.
+\item Sono attributi del prodotto cartesiano di pi\`u insiemi e come tale
+\`e detto insieme derivato.
+\end{itemize}
+
+\begin{block}{Costrutto per la dichiarazione di insiemi derivati}
+ \noun{insieme\_derivato}(\noun{insieme}, \noun{insieme}{[}, \noun{insieme}{]}{*}):\\
+\noun{attributo}{[}, \noun{attributo}{]}{*};
+\end{block}
+
+\begin{exampleblock}{Esempio}
+\structure{RisorsaProdotto(Risorsa, Prodotto): Assorbimento;}
+\end{exampleblock}
+
+\lyxframeend{}\section{Combinazioni lineari e vincoli: iteratori}
+
+
+\lyxframeend{}\lyxframe{Iterare sugli elementi di un insieme: somme}
+\begin{columns}%{}
+
+
+\column{4.5cm}
+
+
+{\small Si vuole generare la combinazione lineare che moltiplica profitti
+unitari e quantit\`a da produrre}{\small \par}
+\begin{columns}%{}
+\bigskip{}
+
+\end{columns}%{}
+
+{\Large
+ \begin{equation*}
+ {\displaystyle
+ {\color{magenta!23!green!40!blue!70} \sum_{{\color{green!70!black} j} {\color{black} \in} {\color{magenta} P}}}}
+    c_{\color{green!70!black} j}\,x_{{\color{green!70!black} j}} 
+  \end{equation*}
+}
+
+
+\column{6.5cm}
+
+
+{\small Si usa il costrutto
+
+\structure{{\small @SUM(}} }\\
+\ \ \  \noun{\small Insieme}{\small {[}(}\noun{\small indice}{\small {[},}\noun{\small indice}{\small {]}{*})\\
+\ \ \ 
+{[}| }\noun{\small condizioni}{\small {]]}\structure{{\small :}} }\noun{\small espressione}\\
+{\small \structure{{\small );}}}{\small \par}
+\begin{columns}%{}
+\bigskip{}
+
+\end{columns}%{}
+
+{\small
+  \structure{@SUM(} 
+    {\color{magenta} Prodotto}({\color{green!70!black} j}):
+      Profitto({\color{green!70!black} j}){*}X({\color{green!70!black} j})
+   \structure{);}
+}
+
+\end{columns}%{}
+
+\lyxframeend{}\lyxframe{Iterare sugli elementi di un insieme: cicli}
+\begin{columns}%{}
+
+
+\column{5cm}
+
+
+{\small Si vogliono generare i vincoli sulle disponibilit\`a delle
+risorse, uno per ogni risorsa $i$}\bigskip{}
+
+
+
+{\Large  \begin{equation*}   {\displaystyle \sum_{j\in P}} a_{ij} \, x_{j} \leq b_{i} \quad {\color{green!70!black} i}\in {\color{magenta} R}  \end{equation*} }
+
+
+\column{6cm}
+
+
+{\small Si usa il costrutto
+
+\structure{{\small @FOR(}} }\\
+\ \ \ \noun{\small Insieme}{\small {[}(}\noun{\small indice}{\small {[},
+}\noun{\small indice}{\small {]}{*})\\
+\ \ \ {[}| }\noun{\small condizioni}{\small {]]}\structure{{\small :}}
+}\noun{\small espressione}{\small\\
+\structure{{\small );}}}{\small \par}
+\begin{columns}%{}
+\bigskip{}
+
+\end{columns}%{}
+
+\structure{@FOR(}\textcolor{magenta}{\ Risorsa}(\textcolor{green!70!black}{i}): $<$espressione$>$\structure{);}
+
+\end{columns}%{}
+
+\lyxframeend{}\section{Descrizione di un modello}
+
+
+\lyxframeend{}\lyxframe{Descrizione di un modello}
+
+\begin{block}{Linguaggio dichiarativo}
+si dichiarano l'obiettivo e i dati con cui operare
+\end{block}
+
+\begin{block}{Algoritmi di soluzione gi\`a implementati}
+la scelta dell'algoritmo di soluzione e la sua implementazione \`e
+realizzata dal LINGO stesso
+\end{block}
+
+\begin{block}{Definizione di nuovi algoritmi}
+si possono definire algoritmi più efficienti per risolvere classi di problemi,
+in particolare definire sotto-problemi e implementare algoritmi di Column
+Generation
+\end{block}
+
+\lyxframeend{}\lyxframe{Sezioni}
+La dichiarazione del modello \`e divisa in sezioni, che si dichiarano con
+ \structure{$<$Sezione$>$:} e terminano con \structure{$<$ENDSezione$>$}
+
+\begin{description}
+\item [{Model}] descrive il modello matematico
+\item [{Sets}] descrive gli insiemi e relativi attributi
+\item [{Data}] i parametri (istanza) del problema
+\end{description}
+
+Altre sezioni
+\begin{description}
+\item [{Init}] inserimento di soluzioni iniziali per prog.\ intera {[}mista{]}
+e non lineare
+\item [{Calc}] elaborazioni (per calcolare parametri derivati, per eseguire
+istruzioni o descrivere algoritmi\ldots{})
+\item [{Submodel}] un modello per un problema che pu\`o essere richiamato
+nella sezione Calc
+\end{description}
+
+\lyxframeend{}\section{Implementazione del modello del MIX OTTIMO}
+
+
+\lyxframeend{}
+
+\begin{frame}{Formulazione LINGO del mix ottimo -- Insiemi}
+
+\begin{exampleblock}
+{Codice - 1 - Insiemi}
+
+\textcolor{comment_c}{! Mix di produzione ottimo;}
+
+\textcolor{comment_c}{! Sezione SETS;}
+
+\structure{SETS}: 
+
+\textcolor{comment_c}{! Gli insiemi primitivi;}
+
+Risorsa: Disponibilita;
+
+Prodotto: Profitto, X;\\
+
+\textcolor{comment_c}{! Un insieme derivato;}
+
+RisorsaProdotto(Risorsa, Prodotto): Assorbimento;
+
+\structure{ENDSETS}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Formulazione LINGO del mix ottimo -- Formulazione}
+\begin{exampleblock}
+{Codice - 2 - Formulazione}
+
+\textcolor{comment_c}{! Il modello del problema di mix ottimo di produzione;}\\
+\textcolor{comment_c}{! Massimizza il profitto totale;}
+
+\textcolor{rowname_c}{{[}PROFITTO\_TOTALE{]}} \structure{MAX =} \structure{@SUM}( Prodotto(j):
+Profitto(j){*}X(j));\\
+
+\structure{@FOR}( Risorsa(i): \textcolor{comment_c}{! Per ogni risorsa i;}
+
+~~~\textcolor{rowname_c}{{[}RISORSA\_{]}}
+
+~~~\textcolor{comment_c}{! La quantit\`a utilizzata;}
+
+~~~\structure{@SUM}( Prodotto(j): Assorbimento(i,j){*}X(j)) <= 
+
+~~~~~Disponibilita(i); \textcolor{comment_c}{! deve essere <= di quella disponibile;}\\
+); 
+\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}{Formulazione LINGO del mix ottimo -- Dati}
+
+\begin{exampleblock}
+{\scriptsize Codice - 3 - Dati
+
+\textcolor{comment_c}{! Sezione dati;}\\
+\structure{DATA}:\\
+\textcolor{comment_c}{! I nomi delle risorse e la loro disponibilita';}
+
+\textcolor{black}{%
+Risorsa, Disponibilita =\\
+~~~row\_mat 2200\\
+~~~labour~~~~~~~320\\
+~~~market~~~~~~100;}
+
+\textcolor{comment_c}{! I nomi dei prodotti e i loro profitti unitari;}
+
+\textcolor{black}{%
+Prodotto, Profitto =\\
+~~~prod1 120\\
+~~~prod2~~~40;}
+
+\textcolor{comment_c}{! Matrice dei coefficienti tecnologici;}
+
+\textcolor{black}{%
+Assorbimento = 40 20}~~\textcolor{comment_c}{! Materie prime;}\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~\textcolor{black}{8~~~2}~~\textcolor{comment_c}{! Lavoro;}\\
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~\textcolor{black}{1~~~1;}~\textcolor{comment_c}{! Mercato;}
+
+\structure{ENDDATA}
+}
+\end{exampleblock}
+
+\end{frame}
+
+\lyxframe{Comandi}
+
+Selezionare del men\`u LINGO:
+
+\begin{description}
+\item [{Generate$\dasharrow$Display~model}] genera il modello istanziato
+(\structure{@GEN();});
+\item [{Generate$\dasharrow$Dual~model}] genera il modello del problema
+duale associato (\structure{@GENDUAL();});
+\item [{Solve}] determina una soluzione del modello (\structure{@SOLVE();});
+\item [{Range}] determina gli intervalli di stabilit\`a;
+\end{description}
+
+\lyxframeend{}\lyxframe{Lettura dati da file}
+
+LINGO permette di leggere dati da:
+
+\begin{itemize}
+\item file di testo nel formato LDT 
+
+\begin{itemize}
+\item \structure{@FILE( '\noun{filename}')}
+\end{itemize}
+\item fogli di calcolo Microsoft Excel
+
+\begin{itemize}
+\item \structure{@OLE( {[}'\noun{spreadsheet\_file}'{]} {[}, \noun{range\_name\_list}{]})}
+\end{itemize}
+\item basi di dati con ODBC
+
+\begin{itemize}
+\item \structure{@ODBC(\ldots{})}
+\end{itemize}
+\end{itemize}
+
+\lyxframeend{}\lyxframe{Lettura dati da file di testo}
+
+Il file della formulazione nella sezione dati dichiara il file esterno
+da cui leggere 
+
+\begin{itemize}
+\item \noun{dato }= \structure{@FILE( '\noun{filename'})};
+\end{itemize}
+
+File di testo nel formato LDT
+
+\begin{itemize}
+\item Il file \noun{filename} contiene i dati
+
+\begin{itemize}
+\item i dati di uno stesso gruppo sono separati da caratteri di spazio
+\item i dati di gruppo distinti sono separati simbolo end-of-record (\structure{\textasciitilde{}}).
+\end{itemize}
+\end{itemize}
+
+\lyxframeend{}\lyxframe{Esempio lettura dati esterni}
+\begin{exampleblock}
+{\small Codice - Dichiarazione dati esterni}
+
+{\small \textcolor{comment_c}{! Sezione dati;}
+
+\structure{\small DATA}:
+
+Risorsa = \structure{@FILE}('mix\_ottimo\_data.ldt');
+
+Disponibilita = \structure{@FILE}('mix\_ottimo\_data.ldt');
+
+Prodotto = \structure{@FILE}('mix\_ottimo\_data.ldt');
+
+Profitto = \structure{@FILE}('mix\_ottimo\_data.ldt');
+
+Assorbimento = \structure{@FILE}('mix\_ottimo\_data.ldt');
+
+\structure{\small ENDDATA}}
+
+\end{exampleblock}
+
+\lyxframeend{}\lyxframe{Esempio lettura dati esterni}
+\begin{exampleblock}
+{\small File dati esterni - mix\_ottimo\_data.ldt}
+
+{\small \textcolor{comment_c}{! I nomi delle risorse;}\\
+row\_mat labour market \textasciitilde{}\\
+\textcolor{comment_c}{! Le disponibilita' delle risorse;}\\
+2200 320 100 \textasciitilde{}\\
+\textcolor{comment_c}{! I nomi dei prodotti;}\\
+prod1 prod2 \textasciitilde{}\\
+\textcolor{comment_c}{! I profitti unitari dei prodotti;}\\
+120 40 \textasciitilde{}\\
+\textcolor{comment_c}{! Matrice dei coefficienti tecnologici;}\\
+40 20 \textcolor{comment_c}{! Materie prime;}\\
+~~8~~ 2 \textcolor{comment_c}{! Lavoro;}\\
+~~1~~ 1 \textcolor{comment_c}{! Mercato; }
+}
+\end{exampleblock}
+
+\lyxframeend{}
+
+\lyxframeend{}\section{Per approfondire}
+
+
+\lyxframeend{}\lyxframe{Per approfondire}
+
+\beamertemplatebookbibitems
+\begin{thebibliography}{References}
+\bibitem{HillierLiebermanS1C3}F.S. Hillier, G. J. Lieberman.\newblock
+\textit{Ricerca Operativa}.\newblock Supplemento 1 al Capitolo 3:
+The LINGO modeling language. McGraw Hill, 2010.
+
+\bibitem{Schrage2006} L. Schrage.\newblock \emph{Optimization Modeling
+with LINGO.} \newblock LINDO Systems, Inc., 2006
+
+\bibitem{LingoUserManual} LINDO Systems Inc.\newblock \emph{LINGO
+User's guide.} \newblock LINDO Systems, Inc., 2011
+
+\end{thebibliography}
+
+\lyxframeend{}
+
+
+\end{document}

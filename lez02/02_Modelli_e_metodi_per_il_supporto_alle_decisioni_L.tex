@@ -1,0 +1,261 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Problemi di decisione}
+
+\begin{frame}{Problema}
+\begin{block}{Problema}
+Un problema $\mathcal{P}$ \`e una domanda espressa in termini generali, la cui risposta
+dipende da un certo numero di parametri e variabili
+\end{block}
+Un problema viene usualmente definito per mezzo di:
+\begin{itemize}
+\item una descrizione dei suoi parametri, in generale lasciati indeterminati
+\item una descrizione delle propriet\`a che devono caratterizzare la risposta
+o soluzione desiderata
+\end{itemize} 
+\end{frame}
+
+\begin{frame}{Istanza di un problema}
+\begin{block}{Istanza di un problema}
+Un'istanza $\mathcal{I}$ di un dato problema $\mathcal{P}$ \`e quella particolare domanda
+che si ottiene specificando particolari valori per tutti i parametri di $\mathcal{P}$
+\end{block}
+\end{frame}
+
+\begin{frame}{Soluzioni realizzabili}
+
+\begin{block}{Soluzioni realizzabili}
+Molto spesso un problema viene definito fornendo l'insieme $\mathcal{F}$
+delle possibili soluzioni. Di tale insieme, detto insieme realizzabile,
+viene in generale data la struttura con i parametri da cui essa dipende;
+i suoi elementi vengono detti \alert{soluzioni realizzabili}
+\end{block}
+
+Frequentemente l'insieme $\mathcal{F}$ viene specificato indicando un insieme
+``base'' $\mathcal{F}^\prime$ tale che $\mathcal{F}\subseteq \mathcal{F}^\prime$, ed ulteriori condizioni
+(vincoli) che gli elementi di $\mathcal{F}$ devono soddisfare. In questo
+caso si parla spesso degli elementi di $\mathcal{F}^\prime\setminus \mathcal{F}$ come di \alert{soluzioni
+non realizzabili}
+\end{frame}
+
+\begin{frame}{Problema di ottimizzazione}
+Un \alert{problema di ottimizzazione} \`e un problema in cui sull'insieme
+realizzabile $\mathcal{F}$ viene definita una funzione, detta \alert{funzione
+obiettivo}
+\[
+c:\mathcal{F}\rightarrow\mathbb{R}
+\]
+che fornisce il costo o il beneficio associato ad ogni soluzione;
+la \alert{soluzione ottima} del problema \`e un elemento di $\mathcal{F}$
+che rende minima (oppure massima) la funzione obiettivo
+
+Questo tipo di problema pu\`o essere matematicamente scritto come
+\[
+(P)\qquad\min\{c(\vec{x}):\vec{x}\in \mathcal{F}\}
+\]
+\end{frame}
+
+\begin{frame}{Problema di ottimizzazione}
+ Dato un problema $\mathcal{P}$, chiamiamo $z(\mathcal{P})$ il valore
+ottimo della funzione obiettivo. Allora, una soluzione realizzabile
+$\vec{x}^{*}\in\mathcal{F}$ tale che $c(\vec{x}^{*})=z(\mathcal{P})$ \`e detta soluzione ottima per
+$\mathcal{P}$; si tratta cio\`e di un vettore $\vec{x}^{*}\in \mathcal{F}$ tale che
+\[
+c(\vec{x}^{*})\leq c(\vec{x})\qquad\forall \vec{x}\in \mathcal{F}
+\]
+\end{frame}
+
+\begin{frame}{Problema decisionale}
+In certi casi ci\`o che il problema richiede \`e semplicemente la determinazione
+di una qualsiasi soluzione realizzabile, ovvero di determinare se
+l'insieme realizzabile $\mathcal{F}$ sia vuoto o meno; in questo caso si
+parla di \alert{problema decisionale} oppure di \alert{problema di esistenza}
+
+
+Per tali problemi, si richiede di fornire un elemento $\vec{x}\in\mathcal{F}$, se
+ne esiste uno, oppure di dichiarare che $\mathcal{F}$ \`e vuoto
+\end{frame}
+
+
+\section{Modelli nella Ricerca Operativa}
+
+\begin{frame}{Modelli}
+
+ Quando si procede alla \alert{formulazione} ed alla \alert{modellizzazione}
+ di un problema decisionale si deve determinare:
+  \begin{itemize}
+    \item 
+ cos'\`e realmente importante
+    \item 
+ quali sono gli aspetti rilevanti e quali ipotesi semplificative sono verificate
+    \item 
+ quali obiettivi ci si prefigge
+    \item 
+ quali sistemi vengono coinvolti, ossia quali sono le entit\`a e quali sono gli attori
+    \item 
+ quali sono i parametri di interesse
+    \item 
+ se esistono disturbi
+    \item 
+ quali condizioni e regole devono essere modellizzate
+  \end{itemize} 
+\end{frame}
+
+\begin{frame}{Tipi di modelli}
+ Nella ricerca operativa si impiegano vari tipi di modelli, tra cui:
+ \begin{itemize}
+   \item  Modelli di programmazione matematica
+   \begin{itemize}
+      \item Modelli di programmazione lineare (P.L.)
+      \item Modelli di programmazione lineare binaria (P.L.B.)
+      \item Modelli di programmazione lineare intera(P.L.I.)
+      \item Modelli di programmazione non lineare (P.N.L.)
+      \item Modelli di programmazione non lineare intera (P.N.L.I.)
+    \end{itemize}
+    \item  Modelli su reti e grafi 
+    \item  Modelli di teoria delle code
+    \item  Modelli della teoria dei giochi
+    \item  Modelli di Inventory (gestione delle scorte)
+    \item  Modelli di simulazione
+  \end{itemize}
+ \end{frame}
+
+\begin{frame}{Tipi di modelli}
+    \begin{block}{Lineari o non lineari}
+    \begin{itemize}
+     \item {le relazioni che legano le quantit\`a coinvolte sono lineari
+     (somme, prodotto per coefficienti costanti) o non lineari
+     (esponenziali, prodotti tra variabili, ...)}
+    \end{itemize}
+    \end{block}
+
+    \begin{block}{Continui o discreti}
+    \begin{itemize}
+     \item {le quantit\`a da determinare possono variare con continuit\`a
+     in un sottoinsieme di valori reali}
+     (es., sono ammesse soluzioni rappresentate da numeri frazionali)
+     oppure possono solamente assumere valori interi
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Tipi di modelli}
+  \begin{block}{Deterministici o stocastici}
+    \begin{itemize}
+     \item {tutti parametri coinvolti sono noti a priori e non variano
+     oppure il valore di alcuni di tali parametri \`e noto solo in probabilit\`a
+     (sono variabili aleatorie)}
+    \end{itemize}
+  \end{block}
+  
+  \begin{block}{Misti}
+   \begin{itemize}
+     \item {i modelli includono pi\`u di una sola tra le precedenti caratteristiche
+     alternative (esempio, modelli con parte delle quantit\`a incognite di tipo
+     continuo e parte di  tipo discreto)}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Modelli di ottimizzazione e di simulazione}
+
+\begin{frame}{Tipi di modelli -- ottimizzazione e simulazione}
+  \begin{block}{Modelli di Simulazione}
+    \begin{itemize}
+      \item riproducono le caratteristiche salienti (di interesse) del sistema che si sta considerando (come si comporta)
+      \item prendono decisioni osservando gli effetti di queste su un modello del sistema reale
+    \end{itemize}
+  \end{block}
+
+
+  \begin{block}{Modelli di Ottimizzazione}
+    \begin{itemize}
+      \item descrivono in forma analitica le relazioni salienti che regolano il sistema considerato (come si comporta)
+      \item descrivono in forma analitica le caratteristiche desiderate per le alternative decisionali (cosa si vuole ottenere)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Modelli di Simulazione e di Ottimizzazione}
+  \begin{block}{Modelli di simulazione}
+   \begin{itemize}
+    \item spesso risultano pi\`u semplici da costruire e da comprendere
+    \item di solito sono pi\`u semplici da modificare
+    \item sono pi\`u ``vicini'' al reale sistema considerato
+    \item possono essere, a volte, gli unici disponibili
+    \item richiedono una lunga campagna sperimentale per produrre informazioni statisticamente significative
+   \end{itemize}
+  \end{block}
+
+ La cattiva esecuzione della campagna sperimentale e/o una inadeguata conoscenza statistica pu\`o produrre conclusioni erronee dall’utilizzo dei modelli di simulazione
+\end{frame}
+
+\begin{frame}{Modelli di Simulazione e di Ottimizzazione}
+  \begin{block}{Modelli di ottimizzazione}
+   \begin{itemize}
+    \item sono di solito meno costosi da sviluppare e da validare
+    \item sono solitamente focalizzati solo sugli aspetti realmente rilevanti del sistema considerato, ovvero quelli che influenzano principalmente la decisione
+   \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Scelta del modello}
+  \begin{itemize}
+   \item Il modello deve risultare il pi\`u semplice possibile, ossia, la complessit\`a del modello deve essere tenuta sotto controllo
+   \item Una buona pratica \`e partire da un modello base conosciuto per un caso pi\`u semplice di quello in esame, quindi adattarlo progressivamente al problema analizzato
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Scelta del modello}
+  \begin{itemize}
+   \item \`E importante tenere in considerazione quali dati sono realmente disponibili e quanto questi possano essere considerati certi/affidabili (un modello dettagliato che si basa su dati mancanti o inaffidabili ha ovviamente poco senso)
+   \item \`E sempre indispensabile coinvolgere il decisore (il responsabile dell'applicazione delle decisioni) nel processo di definizione del modello
+  \end{itemize}
+\end{frame}
+
+\section{Problemi, modelli ed algoritmi}
+
+\begin{frame}{Modello: descrizione formale}
+  
+  Un modello descrive formalmente un problema decisionale:
+
+  \begin{itemize}
+    \item come si comporta il sistema oggetto della decisione
+  
+    \item qual \`e la natura delle decisioni che si vogliono prendere (come deve essere ``fatta'' una soluzione al problema)
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Algoritmo: metodo di soluzione}
+\begin{itemize}
+\item Un algoritmo \`e lo strumento utilizzato per determinare la/le soluzioni al problema
+  
+\item Compito del ricercatore operativo \`e, una volta costruito il modello del problema, individuare l’algoritmo pi\`u idoneo a determinarne le soluzioni, ovvero progettare tale algoritmo
+  
+\item Un algoritmo \`e una procedura iterativa costituita da un numero finito di passi
+  
+\item A parte situazioni molto semplici (pochi dati, poche alternative) l’esecuzione di un algoritmo \`e sempre affidata ad un computer
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Problemi, modelli ed algoritmi}
+\begin{itemize}
+\item 
+  Problemi, modelli e algoritmi sono strettamente collegati tra loro
+\item 
+ Purtroppo la maggior parte dei problemi che emergono in contesti gestionali hanno una natura complessa (problemi difficili)
+\item 
+ La difficolt\`a di un problema non \`e legata all’incapacit\`a di modellizzarlo, né all’incapacit\`a di trovare una procedura che lo risolva
+\item 
+ La facilit\`a o difficolt\`a di un problema \`e legata all’esistenza di un algoritmo di soluzione cosiddetto efficiente
+\end{itemize}
+\end{frame}
+
+\end{document}

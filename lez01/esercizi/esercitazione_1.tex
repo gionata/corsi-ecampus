@@ -1,0 +1,112 @@
+\documentclass[italian,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[italian]{babel}
+\usepackage[a4paper, margin=2.5cm,noheadfoot]{geometry}
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Esercitazione n. 1 - Ottimizzazione non vincolata}
+
+\subsection*{Funzioni di una variabile}
+
+Determinare i punti di ottimo, negli intervalli dati o in $\mathbb{R}$, e calcolare il valore assunto dalla funzione in tali punti.
+
+\begin{enumerate}
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x (5\pi - x)\\
+			0 \leq x \leq 20
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{5}{2}\pi$\\
+			$z^* = 61.69$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = |x^2 - 8|\\
+			-4 \leq x \leq 4
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \pm 4$\\
+			$x^*=0$\\
+			$z^* = 8$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\min z = \begin{cases}
+			1 & x=0\\
+			x & 0 < x \leq 1
+			\end{cases}\\
+			0 \leq x \leq 1
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $\nexists \min$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x e^{-x^2}
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{1}{\sqrt{2}}$\\
+			$z^* = 0.429$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x \sin(4 x)\\
+			0 \leq x \leq 3
+		\end{gather*}
+		\begin{center}
+		Studiare il grafico
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{7}{8}\pi$\\
+			$z^* = -2.75$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x^3-6x^2+9x+6$ nell'intervallo $[-1,5]$.
+	
+	\item
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x^4-4x^3+6x^2-4x+1$ nell'intervallo $[0,\infty)$.
+	
+	\item
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x+x^{-1}$ nell'intervallo~$[5,10]$.
+	
+	\item
+	Si mostri che $f(x) = x^3 - 6 x^2 + 9 x + 6$ è strettamente concava nell'intervallo~$(-\infty,2)$ e
+	strettamente convessa in~$(2,+\infty)$.
+	
+	\item
+	Si determinino gli intervalli nei quali $f(x) = x + 4 x^{-1}$ è concava o convessa.
+\end{enumerate}
+
+\end{document}

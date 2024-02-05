@@ -1,0 +1,263 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Il teorema fondamentale del simplesso}
+
+\begin{frame}[allowframebreaks]{Il teorema fondamentale del simplesso}
+
+Si consideri un programma lineare di minimo in forma canonica forte rispetto ad una sequenza di indici di base $S$. Vale una delle seguenti alternative:
+
+\begin{theorem}[del metodo del simplesso]
+\begin{enumerate}
+\item se  $c_j \geq 0$ per ogni $j \notin S$, allora la soluzione di base $\vecX^S$ associata alla forma canonica \`e ottima;
+
+\item se se esiste un indice $k \notin S$ tale che $c_k < 0$ e $\matrA^k \leq \vec{0}$ la funzione obiettivo \`e inferiormente illimitata;
+
+\item se esiste un indice $k \notin S$ tale che $c_k < 0$ e in corrispondenza esiste almeno un indice $i, 1 \leq i \leq m$, tale che $a_{ik} > 0$, allora si pu\`o fare un'operazione pivot su un opportuno elemento della colonna $k$ trasformando il problema in uno equivalente e in forma canonica forte rispetto ad una sequenza di indici di base $S^\prime$ per cui vale $z^{S^\prime} \leq z^S$.
+\end{enumerate}
+\end{theorem}
+\end{frame}
+
+\subsection{Test di ottimalit\`a}
+
+\begin{frame}[allowframebreaks]{Soluzione ottima (di valore finito)}
+\begin{block}{\circled{1} Test di ottimalit\`a}
+se  $c_j \geq 0$ per ogni $j \notin S$, allora la soluzione di base $\vecX^S$ associata alla forma canonica \`e ottima
+\end{block}
+
+Permette di certificare ottimalit\`a di una soluzione.
+
+{\small Il valore assunto all'ottimo dalle variabili decisionali (il vettore $\vecX^\star$), riordinato, vale
+$$
+\begin{array}{ccc}
+\left[
+	\begin{array}{c}
+			\vecX_B\\
+			\vecX_N
+	\end{array}
+\right]
+&=&
+\left[
+	\begin{array}{c}
+		\left[\begin{array}{cccc}x_{s_1}&x_{s_2}&\cdots&x_{s_m}\end{array}\right]^T \\
+		\left[\begin{array}{cccc}0&0&\cdots&0\end{array}\right]^T
+	\end{array}
+\right]\\
+&&\underbrace{%
+		\phantom{\begin{array}{cccc}0&0&\cdots&0\end{array}}
+}_{m-n}
+\end{array}
+$$
+
+il valore assunto all'ottimo dalla funzione obiettivo ($z^\star$) \`e quello della soluzione di base ammissibile corrente $S$: sul tableau di un problema di minimo \`e il valore $-\bar{d}$, $\bar{d}$ se il problema di partenza era di massimo.}
+
+\framebreak
+
+Far entrare in base la variabile fuori base $x^S_k (=0)$  comporta la variazione del valore della funzione obiettivo di $c_k x_k^{S^\prime}$, dove $x_k^{S^\prime}$ \`e non negativo. Se tutti i coefficienti di costo delle variabili fuori base sono non negativi allora il valore assunto dalla funzione obiettivo in corrispondenza di qualunque altra soluzione di base ammissibile sar\`a maggiore o uguale (peggiore o uguale) del valore in corrispondenza della sequenza di indici di base $S$.
+
+\framebreak
+
+{\footnotesize
+Analizziamo il passaggio dalla base $S$ alla base adiacente $S^\prime$
+in cui sostituiamo la variabile di base $x_{j}$ 
+nella posizione $h$ della lista degli indici di base
+($j = s_h$) con la variabile $x_k$ precedentemente fuori base.}
+
+{\small
+\[
+\bordermatrix{
+   S    &  -z   & x_{1}    &  x_{2}	&\cdots& x_{k}       &\cdots& x_{j}&\cdots&x_{n} \cr
+   f.o.\   &  -z^S      &  c_1       & c_2         & \cdots&c_k>0      &\cdots&     0      &\cdots&c_{n} \cr
+	1    &  b_{1}& a_{11} & a_{12}    & \cdots&a_{1k}    &\cdots&     0      &\cdots&a_{1n} \cr
+\vdots & \vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots \cr
+	h    &  b_{h}& a_{h1} & a_{h2}    & \cdots&a_{hk}>0&\cdots&     1      &\cdots&a_{hn} \cr
+\vdots & \vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots &\vdots \cr
+	m    &  b_{m}& a_{m1} & a_{m2}    & \cdots&a_{mk}&\cdots&     0      &\cdots&a_{mn} \cr
+}
+\]
+}
+
+{\tiny 
+\[
+\bordermatrix{
+   S^\prime     &  -z    & x_{1}    &  x_{2}	&\cdots& x_{k}       &\cdots& x_{j}&\cdots&x_{n} \cr
+   f.o.\   &  -z^S-\frac{c_k}{a_{hk}}b_{h}      & c_1-\frac{c_k}{a_{hk}}a_{h1}       & c_2-\frac{c_k}{a_{hk}}a_{h2}         & \cdots&c_k-\frac{c_k}{a_{hk}}a_{hk}=0      &\cdots&     -\frac{c_k}{a_{hk}}a_{hj}      &\cdots&c_{n}-\frac{c_k}{a_{hk}}a_{hn} \cr
+	1    &  b_{1}-\frac{a_{1k}}{a_{hk}}b_h& a_{11}-\frac{a_{1k}}{a_{hk}}a_{h1} & a_{12}-\frac{a_{1k}}{a_{hk}}a_{h2} & \cdots&a_{1k}-\frac{a_{1k}}{a_{hk}}a_{hk}=0 &\cdots& -\frac{a_{1k}}{a_{hk}}a_{hj} &\cdots&a_{1n}-\frac{a_{1k}}{a_{hk}}a_{hn} \cr
+\vdots & \vdots &\vdots &\vdots &\ddots &\vdots &\ddots &\vdots &\ddots &\vdots \cr
+	h    &\frac{b_{h}}{a_{hk}}&\frac{a_{h1}}{a_{hk}} &\frac{a_{h2}}{a_{hk}}    & \cdots&\frac{a_{hk}}{a_{hk}}\phantom{-\frac{a_{mk}}{a_{hk}}a_{hj}}=1&\cdots&\frac{1}{a_{hk}}      &\cdots&\frac{a_{hn}}{a_{hk}} \cr	
+\vdots & \vdots &\vdots &\vdots &\ddots &\vdots &\ddots &\vdots &\ddots &\vdots \cr
+	m    &  b_{m}-\frac{a_{mk}}{a_{hk}}b_h& a_{m1}-\frac{a_{mk}}{a_{hk}}a_{h1} & a_{m2}-\frac{a_{mk}}{a_{hk}}a_{h2} & \cdots&a_{mk}-\frac{a_{mk}}{a_{hk}}a_{hk}=0&\cdots&     -\frac{a_{mk}}{a_{hk}}a_{hj}      &\cdots&a_{mn}-\frac{a_{mk}}{a_{hk}}a_{hn} \cr
+}
+\]
+}
+
+\begin{itemize}
+\item se $c_j \leq 0,\ j=1,2,\ldots,n$ la soluzione \`e
+	localmente ottima, per la propriet\`a di
+	convessit\`a della funzione obiettivo e della regione
+	ammissibile, \`e globalmente ottima
+\item se esiste un $c_j$ negativo, $j \notin S$ allora esiste
+	una soluzione adiacente che migliora il valore della f.o.\ di
+	$-\frac{c_k}{a_{hk}}b_{h}$, dove $\frac{b_{h}}{a_{hk}}$ \`e
+	il valore assunto dalla variabile entrante in base nella
+	nuova soluzione di base ammissibile
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Soluzione di base ammissibili -- costi ridotti}
+
+\begin{definition}[costo ridotto]
+Dato un problema di P.L. in forma canonica rispetto a una base $\matr{B}$, il coefficiente $\bar{c_j}$ della variabile $x_j$ nella funzione obiettivo si dice costo ridotto della variabile $x_j$ rispetto alla base $\matr{B}$
+\end{definition}
+
+\begin{itemize}
+\item   Il costo ridotto $\bar{c_j}$ di una variabile fuori base rappresenta l'incremento marginale del costo complessivo (funzione obiettivo di minimo) per ogni unit\`a di variazione in aumento della variabile $x_j$. Il coefficiente di costo si dice ridotto in quanto si determina sottraendo al costo originario $c_j$ una quantit\`a che dipende dalla base $\matr{B}$
+
+\item   I costi ridotti delle variabili in base sono tutti pari a 0 per definizione di forma canonica
+
+\item Il punto \circled{1} del teorema fondamentale del simplesso, pu\`o essere enunciato come:
+   
+\begin{block}{Test di ottimalit\`a}
+Se tutti i costi ridotti rispetto alla base $\matr{B}$ sono non negativi ($\geq 0$) allora la soluzione di base
+   associata a $\matr{B}$ \`e ottima.
+\end{block}
+
+%\item   Il teorema \`e valido solo nella direzione  $(\bar{c_j}\geq 0, j \notin S) \implies$ (soluzione ottima), mentre l'inversa non \`e necessariamente verificata.
+\end{itemize}
+\end{frame}
+
+\subsection{Test di limitatezza}
+
+\begin{frame}[allowframebreaks]{Soluzione illimitata}
+
+\begin{block}{\circled{2} Test di limitatezza}
+se se esiste un indice $k \notin S$ tale che $c_k < 0$ e $\matrA^k \leq \vec{0}$ la funzione obiettivo \`e inferiormente illimitata
+\end{block}
+
+Permette di dimostrare che il problema ha soluzione illimitata.
+
+Essendo negativo il valore di $c_k$ incrementare il valore della variabile fuori base $x_k$ comporta un miglioramento della funzione obiettivo.
+Le variabili di base, passando dalla sequenza degli indici $S$ ad $S^\prime$ si modificano come
+
+$$
+x^S_{s_i} = b_{i}^S \quad\mapsto\quad x_{s_i}^{S^\prime}=b_i^S-a_{ik}\frac{b_h}{a_{hk}} =b_i^S-a_{ik} x^{S^\prime}_{k}
+$$
+
+
+Comunque si aumenti il valore $x^{S^\prime}_k$ \`e possibile incrementare il valore delle altri variabili
+di base senza che queste diventino negative in quanto il loro valore incrementer\`a di
+$ -a_{ik} x^{S^\prime}_k,\  (a_{ik} \leq 0)$
+
+\begin{align}
+A^k \leq 0,\ x_k \to +\infty &\implies x_{s_i} \to +\infty \nonumber\\
+c_k \leq 0, \ x_k \to +\infty &\implies z \to +\infty \nonumber
+\end{align}
+\end{frame}
+
+\subsection{Test di ammissibilit\`a}
+
+\begin{frame}[allowframebreaks]{Soluzioni adiacenti non peggiori}
+\begin{block}{\circled{3} Test di ammissibilit\`a}
+se esiste un indice $k \notin S$ tale che $c_k < 0$ e in corrispondenza esiste almeno un indice $i, 1 \leq i \leq m$, tale che $a_{ik} > 0$, allora si pu\`o fare un'operazione pivot su un opportuno elemento della colonna $k$ trasformando il problema in uno equivalente e in forma canonica forte rispetto ad una sequenza di indici di base $S^\prime$ per cui vale $z^{S^\prime} \leq z^S$.
+\end{block}
+
+Indica l'esistenza di una soluzione di base ammissibile adiacente a quella determinata dalla sequenza degli indici di base S che corrisponde ad un valore della funzione obiettivo migliore.
+
+Essendo $c_k < 0$ e $x_k$ fuori base sappiamo che la funzione obiettivo migliorer\`a all'aumentare di $x_k$. Il massimo valore che pu\`o assumere la variabile candidata ad entrare in base \`e limitato dal fatto che le altre variabili devono rimanere ammissibili. Facendo entrare in base $x_k$ il valore delle altre variabili varia secondo:
+$
+x^S_{s_i} = b_{i}^S \quad\mapsto\quad x_{s_i}^{S^\prime}=b_i^S-a_{ik}\frac{b_h}{a_{hk}} =b_i^S-a_{ik} x^{S^\prime}_{k}
+$
+
+Dovendo preservare l'ammissibilit\`a delle variabili in $S$ si ha
+che queste devono rimanere non negative nella nuova sequenza
+degli indici di base $S^\prime$.
+
+Le equazioni per cui i coefficienti $a_{ik} $ sono nulli o positivi
+non pongono restrizioni all'incremento di $x_k$.
+\`E possibile considerare solo gli indici $i$ per cui $a_{ik}$ \`e
+positivo.
+
+Sia $I = \{i : a_{ik} > 0\}$. 
+{\small
+\begin{eqnarray}
+x_{s_i}^{S^\prime}=b_i^S-a_{ik}\frac{b_h}{a_{hk}} =b_i^S-a_{ik} x^{S^\prime}_{k} & i=1,2,\ldots,m \nonumber\\
+x_{s_i}^{S^\prime} \geq 0 \implies b_i^S-a_{ik}\frac{b_h}{a_{hk}} \geq 0 & \ i \in I  \nonumber \\
+\frac{b_h}{a_{hk}} \leq  \frac{b_i^S}{a_{ik}} & \ i \in I  \nonumber\\
+\frac{b_h}{a_{hk}} = \min_{i \in I} \left\lbrace\frac{b_i^S}{a_{ik}}\right\rbrace  \nonumber\\
+h = \arg\min_{i \in I} \left\lbrace\frac{b_i^S}{a_{ik}}\right\rbrace  \nonumber
+\end{eqnarray}
+}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Casi particolari}
+Esistono dei casi particolari.
+
+\circled{a} Pi\`u soluzioni corrispondono ad un minimo rapporto
+$\min_{i \in I} \left\lbrace\frac{b_i^S}{a_{ik}}\right\rbrace$.
+
+In questo caso \`e possibile scegliere  arbitrariamente la variabile
+uscente dalla base per\`o non solo tale variabile assumer\`a valore
+nullo ma anche le altre variabili corrispondenti al minimo rapporto
+assumeranno valore 0 pur rimanendo in base.
+Si ottiene il passaggio ad una soluzione di base ammissibile degenere.
+
+\circled{b} Il minimo rapporto vale 0.
+Accade quando una variabile di base vale 0 e il corrispondente
+coefficiente $a_{ik} $ \`e positivo. Cambiando base a seguito
+dell'operazione di pivot non cambia il valore della funzione
+obiettivo.
+
+Sono possibili due casi:
+\begin{itemize}
+\item la soluzione corrente non \`e ottima:
+successivi cambiamenti di base permettono
+di migliorare la funzione obiettivo;
+
+\item la soluzione corrente \`e ottima:
+con i cambiamenti di base si arriver\`a ad una nuova base,
+sempre degenere, con tutti i coefficienti di costo ridotto
+positivi.
+La combinazione lineare convessa dei vertici esplorati a partire
+dalla soluzione corrente fino alla determinazione della soluzione
+con costi ridotti positivi contiene infiniti punti di ottimo.
+\end{itemize}
+\end{frame}
+
+\section{L'algoritmo del simplesso}
+
+\begin{frame}[allowframebreaks]{L'algoritmo del simplesso}
+\begin{enumerate}
+\item Dato un problema di P.L. lo si trasformi in un problema
+	equivalente in forma standard (sempre possibile).
+
+\item Se la forma standard non \`e forma canonica forte, si
+	trasformi il problema il forma canonica forte per avere una
+	soluzione di base ammissibile.
+
+\item Si esegua il test di ottimalit\`a controllando il segno dei
+	costi ridotti delle variabili fuori base.
+	
+\item Si esegua il test di limitatezza controllando l'esistenza di
+	colonne negative della matrice dei coefficienti tecnologici
+	in corrispondenza di variabili di base con costo ridotto negativo.
+
+
+\item Si scelga la variabile entrante in base fra quelle fuori base
+	con costo ridotto negativo. Sia tale variabile $x_k$.
+
+\item Si determini la variabile uscente dalla base con il test dei
+	minimi rapporti. Sia $h$ la sua posizione nella sequenza degli
+	indici di base.
+
+\item Si effettui un'operazione di pivot in posizione $(h, k)$.
+	Il nuovo sistema di equazioni preserva la forma canonica.
+	Si torni al passo 3.
+\end{enumerate}
+\end{frame}
+
+\end{document}

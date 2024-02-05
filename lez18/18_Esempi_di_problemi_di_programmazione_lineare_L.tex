@@ -1,0 +1,137 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+\setbeamertemplate{caption}[numbered]
+
+\begin{document}
+
+\generatitolo
+
+\section{Un problema di assunzioni ed addestramento}
+
+\begin{frame}[allowframebreaks]
+{Assunzioni ed addestramento -- descrizione}
+
+Tratto da: Gennaro Improta, \textit{Programmazione Lineare.} \textsl{Capitolo quarto -- Impostazione di modelli in programmazione lineare}, pp. 100--104. Edizioni Scientifiche Italiane, 2004
+\\~\\
+
+Un'azienda specializzata nella gestione di impianti di riscaldamento si accinge, in vista della stagione invernale, a realizzare un programma di addestramento per tecnici da specializzare nella conduzione degli impianti.
+
+Un'analisi dei dati storici e la consistenza del parco impianti hanno consentito di stimare i fabbisogni dei tecnici, per i primi tre mesi freddi, riportati in tab.~\ref{tbl:fabbisogno}.
+
+\begin{table}
+ \begin{tabular}{lr}
+  \toprule
+  \multicolumn{1}{c}{\centering\textbf{Mese}} &
+  \multicolumn{1}{p{\widthof{necessari\ \ }}}{\centering\textbf{Tecnici necessari}}\\
+  \midrule
+  Ottobre  & 100 \\
+  Novembre & 150 \\
+  Dicembre & 200 \\
+  \bottomrule
+ \end{tabular}
+  \caption{Fabbisogno dei tecnici negli impianti}\label{tbl:fabbisogno}
+\end{table}
+
+L'azienda ha disponibili, alla fine del mese di settembre, 130 tecnici gi\`a addestrati ed ha, inoltre, la necessit\`a di disporre di 250 tecnici per il mese di gennaio.
+
+Ogni corso di addestramento ha la durata di un mese e il 10\% dei tecnici formati divengono istruttori per i corsi successivi. In media il 30\% degli iscritti ad un corso non lo completa con successo e viene estromesso dall'organizzazione.
+
+Le paghe previste, espresse in Euro, sono mostrate in tab.~\ref{tbl:paghe}.
+
+\begin{table}
+ \begin{tabular}{lr}
+  \toprule
+  \multicolumn{1}{c}{\centering\textbf{Posizione di lavoro}} &
+  \multicolumn{1}{p{\widthof{mensile\ \ }}}{\centering\textbf{Paga mensile (\EUR{})}}\\
+  \midrule
+  In addestramento  & 400 \\
+  Addestrati        & 700 \\
+  Inattivi          & 500 \\
+  \bottomrule
+ \end{tabular}
+  \caption{Paghe previste}\label{tbl:paghe}
+\end{table}
+
+\textbf{Determinare}
+
+Determinare il programma di assunzione e addestramento che consente di rispondere, al minimo costo, ai bisogni dell'impresa.
+\end{frame}
+
+\section{Costruzione del modello}
+
+\begin{frame}{Insiemi}
+  \begin{description}
+	  \item[Specie] insieme delle specie ittiche
+	  \item[Vasche] insieme degli impianti (vasche)
+	  \item[Allocazione] insieme $\rm Specie \times \rm Vasche$
+  \end{description}
+\end{frame}
+
+ \begin{frame}{Parametri}
+		\begin{description}
+			\item[ricavo] ricavo dalla vendita della produzione di un ettaro di vasca della specie $i$-esima;
+			\item[quota] superficie riservata alla specie $i$-esima;
+			\item[fabb\_acqua] fabbisogno rinnovo acqua della specie $i$-esima per ha;
+			\item[fabb\_mangime] fabbisogno di mangime della specie $i$-esima per ha;
+			\item[estensione] estensione dell'impianto $j$-esimo;
+			\item[disp\_acqua] disponibilit\`a di acqua di rinnovo dell'impianto $j$-esimo;
+			\item[disp\_mangime] disponibilit\`a di mangime.
+		\end{description}
+\end{frame}
+
+\begin{frame}{Variabili decisionali}
+\begin{block}{Variabili}
+	\begin{description}
+		\item[$x_{ij}$] superficie da destinare alla specie $i$ della vasca dell'impianto $j$.
+	\end{description}
+\end{block}
+
+  Le variabili sono continue e non negative.
+
+\end{frame}
+
+\begin{frame}{Funzione obiettivo}
+Si deve determinare la superficie di ogni impianto da destinare ad ogni specie ittica.
+
+In generale:
+
+$$  \sum_{\indice{i} \in \insieme{Specie}} \parametro{ricavo}_{\indice{i}}\cdot
+         \left(\sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}}\right)$$
+
+Il ricavo \`e espresso da una funzione lineare: rispetta le ipotesi di proporzionalit\`a, additivit\`a e divisibilit\`a.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Vincoli}
+
+\textbf{Estensione delle vasche}
+
+$$ \sum_{\parametro{i} \in \insieme{Specie}} \variabile{x}_{\indice{ij}} \leq \parametro{estensione}_{\indice{j}} \quad \indice{j} \in \insieme{Vasche}$$
+
+\textbf{Disponibilit\`a acqua di rinnovo}
+
+$$ \sum_{\indice{i} \in \insieme{Specie}} \parametro{fabb\_acqua}_{\indice{i}} \variabile{x}_{\indice{ij}} \leq \parametro{disp\_acqua}_{\indice{j}} \quad \indice{j} \in \insieme{Vasche}$$
+
+\framebreak
+
+\textbf{Disponibilit\`a di mangime}
+
+$$ \sum_{\indice{i} \in \parametro{Specie}} \parametro{fabb\_mangime}_{\indice{i}} \cdot
+      \left( \sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}} \right) \leq \parametro{disp\_mangime}$$
+
+\textbf{Domanda}
+
+$$ \sum_{\indice{j} \in \insieme{Vasche}} \variabile{x}_{\indice{ij}} \leq \parametro{quota}_{\indice{i}} \quad \indice{i} \in \insieme{Specie}$$
+
+\textbf{Equit\`a}
+
+$$ \frac{\sum\limits_{\indice{i} \in \insieme{Specie}} \variabile{x}_{\indice{i,j}}}{\parametro{estensione}_{\indice{j}}} =
+   \frac{\sum\limits_{\indice{i} \in \insieme{Specie}} \variabile{x}_{\indice{i,(j+1)\%|\insieme{Vasche}|}}}{\parametro{estensione}_{\indice{i,(j+1)\%|\insieme{Vasche}|}}}
+   \quad \indice{j} \in \insieme{Vasche}$$
+
+\textbf{Fisica realizzabilit\`a (non negativit\`a)}
+
+$$ \variabile{x}_{\indice{ij}} \geq 0 $$
+\end{frame}
+
+\end{document}

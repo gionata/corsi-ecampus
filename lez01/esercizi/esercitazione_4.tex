@@ -1,0 +1,63 @@
+\documentclass[italian,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[italian]{babel}
+\usepackage[a4paper, margin=2.5cm,noheadfoot]{geometry}
+\usepackage{enumerate}
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Esercitazione n. 4 - Vincoli di eguaglianza}
+
+Determinare i punti di ottimo e calcolare il valore assunto dalla funzione in tali punti.
+
+\begin{enumerate}[1)]
+	\item % 1
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2},x_{3}) & =(x_{1}-3)^{2}+(x_{2}+1)^{2}+(x_{3}-2)^{2}\\
+					h_{1}(x) & =9-3x_{1}+2x_{2}-4x_{3}=0\\
+					h_{2}(x) & =3-x_{1}-2x_{2}=0\end{align*}
+			\end{minipage}
+			
+		\item % 2
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2}) & =(x_{1}-1)^{2}+x_{2}^{2}\\
+					h(x) & =x_{1}^2+x_{2}^2-4=0\end{align*}
+			\end{minipage}
+			
+		\item % 3
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2}) & =x_{1}^{2}+x_1 x_2+x_{2}^{2}\\
+					h(x) & =x_{1}^2+x_{2}-1=0\end{align*}
+			\end{minipage}
+			
+		\item % 4
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2}) & =x_{1}^{2}-x_{2}^{2}\\
+					h(x) & =x_{1}^2+x_{2}^2-1=0\end{align*}
+			\end{minipage}
+		
+		\item %	
+			\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2}) & =x_{1}+x_{2}\\
+					h(x) & =x_{1}^2+x_{2}^2-1=0\end{align*}
+			\end{minipage}
+			
+		\item %
+			\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2},x_{3}) & =x_{1} x_{2} + x_{2} x_{3} + x_{1} x_{3}\\
+					h(x) & =x_{1}+x_{2}+x_{3}-3=0\end{align*}
+			\end{minipage}
+\end{enumerate}
+
+\end{document}

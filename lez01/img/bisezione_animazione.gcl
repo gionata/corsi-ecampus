@@ -1,0 +1,54 @@
+dim 120 80
+
+ang_unit 30
+ang_picture 5 5 115 70
+ang_origin 15 35
+ang_scale 1 0.33
+ang_drawsystem_a 
+ 
+ang_draw_parametric_curve x 
+	{0;x<=3;x+0.05}
+	{ x; x*sin(4*x) }
+
+number xl 2.5
+number xr 3
+
+number eps 0.5
+
+while { eps > 0.01 }
+{
+	expression xc { (xr + xl) / 2 }
+	
+	expression yl { xl*sin(4*xl) }
+	expression yc { xc*sin(4*xc) }
+	expression yr { xr*sin(4*xr) }
+
+	expression dyc { sin(4*xc)+4*xc*cos(4*xc) }
+
+	ang_point Xl xl yl
+	ang_point Xc xc yc
+	ang_point Xr xr yr
+
+	printat_l Xl { \underbar{x} }
+	printat_b Xc { x' }
+	printat_r Xr { \bar{x} }
+
+	color 0   128 0
+	cmark Xl
+	color 0   0   128
+	cmark Xr
+	color 200 0 0 
+	cmark Xc
+	
+	if_then_else { dyc >= 0.0 }
+	{
+		expression xr { xc }
+	}
+	{
+		expression xl { xc }
+	}
+	
+	% expression eps { xu - xl }
+	expression eps { eps / 2 }
+	color 0 0 0
+}

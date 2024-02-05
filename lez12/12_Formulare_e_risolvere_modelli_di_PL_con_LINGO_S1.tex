@@ -1,0 +1,36 @@
+\documentclass{beamer}
+\def\presentationtype{1}
+\input{../template/savoia_benincasa}
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+
+\begin{document}
+
+\generatitolo
+
+\def\rombo{$$
+\begin{array}{cccrcrcc}
+	\max z	&=	& 	&5 x_{1}	&+&5 x_{2}\\
+	\mbox{s.t.}	&	& & x_{1}	&-& x_{2}	&\leq	& 5\\
+				&	& & x_{1}	& &     	&\leq	&10\\
+				&	& &			&+& x_{2}	&\leq	&10\\
+				&	&-& x_{1}	&+& x_{2}	&\leq	& 5\\
+	&	&\multicolumn{4}{c}{x_{1} \geq 0,\ x_{2}\geq 0}
+\end{array}
+$$}
+
+\begin{frame}%[allowframebreaks]
+{Esercizi}
+
+Risolvere il seguente problema di PL con LINGO
+utilizzando il modello del problema del mix ottimo
+di produzione e scrivendone i dati sullo stesso
+file:
+
+\begin{enumerate}
+{\footnotesize \item \rombo}
+\end{enumerate}
+
+% ~\\~\\Caricare la soluzione sulla piattaforma di e-learning.
+\end{frame}
+
+\end{document}

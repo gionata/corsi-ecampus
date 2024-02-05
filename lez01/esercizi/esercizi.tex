@@ -1,0 +1,344 @@
+\documentclass[italian,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage[a4paper, margin=2.5cm,noheadfoot]{geometry}
+\begin{document}
+
+\section*{Esercitazione n.1 - Ottimizzazione non vincolata}
+
+\subsection*{Funzioni di una variabile}
+
+\begin{enumerate}
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x (5\pi - x)\\
+			0 \leq x \leq 20
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{5}{2}\pi$\\
+			$z^* = 61.69$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = |x^2 - 8|\\
+			-4 \leq x \leq 4
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \pm 4$\\
+			$x^*=0$\\
+			$z^* = 8$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\min z = \begin{cases}
+			1 & x=0\\
+			x & 0 < x \leq 1
+			\end{cases}\\
+			0 \leq x \leq 1
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $\nexists \min$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x e^{-x^2}
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{1}{\sqrt{2}}$\\
+			$z^* = 0.429$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.70\textwidth}
+		\begin{gather*}
+			\max z = x \sin(4 x)\\
+			0 \leq x \leq 3
+		\end{gather*}
+		\begin{center}
+		Studiare il grafico
+		\end{center}
+	\end{minipage}
+	\begin{minipage}{0.20\textwidth}
+		\begin{flushright}
+			R: $x^* = \frac{7}{8}\pi$\\
+			$z^* = -2.75$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x^3-6x^2+9x+6$ nell'intervallo $[-1,5]$.
+	
+	\item
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x^4-4x^3+6x^2-4x+1$ nell'intervallo $[0,\infty)$.
+	
+	\item
+	Si trovino tutti gli ottimi locali e globali di $f(x) = x+x^{-1}$ nell'intervallo~$[5,10]$.
+	
+	\item
+	Si mostri che $f(x) = x^3  6 x^2 + 9 x + 6$ è strettamente concava nell'intervallo~$(-\infty,2)$ e
+	strettamente convessa in~$(2,+\infty)$.
+	
+	\item
+	Si determinino gli intervalli nei quali $f(x) = x + 4 x^{-1}$ è concava o convessa.
+\end{enumerate}
+
+\clearpage
+
+% \section{Ottimizzazione non vincolata}
+
+% \subsection{Funzioni di una variabile}
+\subsection*{Ottimizzazione non vincolata}
+
+\begin{enumerate}
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\max z = x_1 (x_2 - 1) + x_3 (x_3^2 - 3)$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $\nexists \max$ globale $(z^* \rightarrow +\infty)$\\
+			$\max$ locale $x^* = (0, 1, -1) \quad z^* = 2$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\min z = (x_1 - \sqrt{5})^2 + (x_2 - \pi)^2 + 10$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (\sqrt{5}, \pi) \quad z^* = 10$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\min z = \sin(x_1 \cdot x_2) - \cos(x_1 - x_2)$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = \left(\sqrt{\frac{3\pi}{2}}, \sqrt{\frac{3\pi}{2}}\right)$\\
+			e altrove $z^* = -2$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\begin{equation*}
+			\begin{split}
+				\min z & = \sqrt{x_1^2 + x_2^2} +\\
+				       & + \sqrt{(x_1-300)^2+(x_2-400)^2} +\\
+				       & + \sqrt{(x_1-700)^2+(x_2-300)^2}
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (311.94, 370.92)$\\
+			$z^* = 910.58$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\begin{equation*}
+			\begin{split}
+				\max z & = 3 x_1 + 2 x_2 + x_3 +\\
+				       & - 0.02 (x_1^4 + x_2^4 + x_3^4 - 325)^2\\
+				       & - 0.02 (x_1 x_2)^2
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (3.825, 2.447, 2.946)$\\
+			$z^* = 17.56$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\begin{equation*}
+			\begin{split}
+				\max z &= -(2 x_1 - 5)^2 - (x_2 - 3)^2 +\\
+				&- (5 x_3 - 2)^2
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (2.5, 3, 0.4)$\\
+			$z^* = 0$
+		\end{flushright}
+	\end{minipage}
+
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\min z = |x_1| + \sqrt{(x_1 - 1)^2 + x_2^3}$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (0, 0)$ e altrove\\
+			$z^* = 1$
+		\end{flushright}
+	\end{minipage}
+
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\[\min z = \frac{8 x_1 + 4 x_2 - x_1 x_2}{(x_1 x_2)^2} \]
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			$x^* = (12, 24)\quad z^*=-0.001157$\\
+			$x_1 \rightarrow 0^- x_2 \rightarrow 0^- z^* \rightarrow -\infty$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\min z = - \sin(x_1) \sin(x_2) \sin(x_1 + x_2)$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (\frac{\pi}{3}, \frac{\pi}{3})$ e altrove\\
+			$z^* = -0.6495$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		$\max z = (x_1^2 + 2 x_2^2)e^{-(x_1^2 + x_2^2)}$
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (0, \pm 1)$\\
+			$z^* =0.7358$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\begin{equation*}
+			\begin{split}
+				\max z &= -(x_1 - x_2)^2 - (x_3 - 1)^2 - 1 + \\
+				& - 0.02 (x_1^5 +x_2^5 + x_3^5 - 16)^2
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (1.496, 1.496, 1)$\\
+			$z^* \rightarrow 1$
+		\end{flushright}
+	\end{minipage}
+	
+	\item 
+	\begin{minipage}{0.50\textwidth}
+		\begin{equation*}
+			\begin{split}
+				\max z &= (1 - x_1)^2 + 100 (x_2 - x_1^2)^2
+			\end{split}
+		\end{equation*}
+	\end{minipage}
+	\begin{minipage}{0.40\textwidth}
+		\begin{flushright}
+			R: $x^* = (1, 1) \quad z^* = 0$
+		\end{flushright}
+	\end{minipage}
+	
+\end{enumerate}
+
+\clearpage
+
+\begin{enumerate}
+	\item $\min f(x) = -12 x + 3 x^4 + 2 x^6$
+	\item $\min f(x) = x \cdot (5\pi - x)$
+\end{enumerate}
+
+
+\section{Funzioni di due variabili}
+
+\begin{enumerate}
+	\item $\min z = x_1^2 + x_2^2$
+	\item $\min z = x_1^2 + 2 x_2^2 - 2 x_1 x_2 - 2 x_2$
+	\item $\min z = (x_1 - 3 x_2)^2 + (x_2 - 1)^2$
+	\item $\min z = 3 x_1^2 +2 x_1 x_2 + 3 x_2^2 - 14 x_1 - 10 x_2$
+	\item $\min z = (x_1 - \sqrt{5})^2 + (x_2 - 3 \pi)^2 + 10$
+	\item $\min z = \sin(x_1 \cdot x_2) - \cos(x_1 - x_2)$
+	\item $\min z = \sqrt{x_1^2 + x_2^2} + \sqrt{(x_1-300)^2+(x_2-400)^2} + \sqrt{(x_1-700)^2+(x_2-300)^2}$
+	\item $\min z = x_1 - x_2 + 2 x_1^2 + 2 x_1 x_2 + x_2^2$
+	\item $\min z = x_1^2 + x_1^2 x_2^2 + 3 x_2^4$
+	\item $\min z = \sin(x_1+x_2) \cdot \cos(x_1-x_2)$
+\end{enumerate}
+
+\clearpage
+
+\section{Ottimizzazione vincolata}
+
+\begin{enumerate}
+	\item
+	\begin{flalign*}
+		\min  z =& 4+3(1-x_{1})^{2}+(1-x_{2})^{2}\\
+		\text{{s.t.}} &\\
+ 		& 3x_{1}+x_{2}=5
+ 	\end{flalign*}
+
+	\item
+	\begin{flalign*}
+		\min  z =& x_{1}^{2}+4 x_{2}^{2}\\
+		\text{{s.t.}} &\\
+ 		& x_{1}+2 x_{2} - 2 = 0
+ 	\end{flalign*}
+ 	
+ 	\item
+	\begin{flalign*}
+		\min  z =& \frac{1}{3} (x_{1} + 1)^{2}+x_{2}\\
+		\text{{s.t.}}\\
+ 		& -x_{1} +1  \leq 0\\
+ 		& -x_2       \leq 0
+ 	\end{flalign*}
+ 	
+\end{enumerate}
+
+\clearpage
+
+Determinare gli ottimi locali e globali delle seguenti funzioni:
+
+\begin{center}
+\begin{tabular}{ll}
+{ $f(x)=x^{3}-6x^{2}+9x+6$} & {\small $x\in[1,4]$}\tabularnewline
+{$f(x)=x^{4}-5x^{3}+5x^{2}+5x-6$} & {\small $x\in[-\frac{{5}}{4},\frac{13}{4}]$}\tabularnewline
+{$f(x)=\frac{2x}{x^{2}+1}$} & {\small $x\in[-3,3]$}\tabularnewline
+{$f(x)=\frac{\sin(x)}{x^{2}+1}$} & {\small $x\in[-3\pi,3\pi]$}\tabularnewline
+{$f(x)=\frac{x}{2}+sin(x)$} & {\small $x\in[-2\pi,2\pi]$}\tabularnewline
+{$f(x)=x^{3}-6x^{2}+9x+6$} & {\small $x\in[-1,5]$}\tabularnewline
+{$f(x)=|x^{2}-1|+x$} & {\small $x\in[-2,2]$}\tabularnewline
+{$f(x)=\frac{\sin(x)}{x}$} & {\small $x\in[-3\pi,3\pi]$}\tabularnewline
+{$f(x)=\sin(x)\cdot(1+2\cos(x))$} & {\small $x\in[-\pi,\pi]$}\tabularnewline
+{$f(x)=x+x\cdot\log(|x|)$} & {\small $x\in[-1,1]$}\tabularnewline
+\end{tabular}
+\par\end{center}
+
+\end{document}

@@ -1,0 +1,162 @@
+\begin{frame}{PL in forma canonica}
+{\small
+$$
+\begin{array}{cccrcrcrcrcrcc}
+	\min z	&=	&-&20 x_{1}	&-&30 x_{2}	&	&	&	&	&	&\\
+	\mbox{s.t.}	&	& & x_{1}	&	&	&+& x_{3}	&	&	&	&	&=	&60\\
+	&	&	&	& & x_{2}	&	&	&+& x_{4}	&	&	&=	&30\\
+	&	& & x_{1}	&+&2 x_{2}	&	&	&	&	&+& x_{5}	&=	&120\\
+	&	&\multicolumn{10}{c}{x_{1} \geq 0,\ x_{2} \geq 0,\ x_{3} \geq 0,\ x_{4} \geq 0,\ x_{5} \geq 0}
+\end{array}
+$$
+}
+
+\end{frame}
+
+\begin{frame}[fragile]{Iterazione 1: soluzione migliorabile}
+\centering
+\begin{tikzpicture}
+{\tiny
+\node[%
+  align=center,
+  text width=3.5em,
+  text height=5ex,
+  row 1/.style={gray, text height=1em},
+  row 2/.style={blue!50!gray, text height=1em},
+  row 3/.style={blue},
+  column 1/.style={gray,text width=1em},
+  column 2/.style={red!50!gray,text width=1.5em},
+  column 3/.style={red},
+  column 9/.style={gray},
+  row 3 column 1/.style={gray},
+  row 3 column 2/.style={red!50!gray},
+  row 3 column 3/.style={red},
+  matrix of math nodes] (M)
+{%
+% Indice delle righe (M-1)
+~&~&0&1&2&3&4&5\\
+% Intestazione delle colonne (M-2)
+~ &~&\mbox {rhs}&x_ {1}&x_ {2}&x_ {3}&x_ {4}&x_ {5}&Rapp.\\
+% Riga 0
+0&z&0&-20&-30&0&0&0\\
+% Riga 1
+1&x_ {3}&60&1&0&1&0&0&\\
+% Riga 2
+2&x_ {4}&30&0&1&0&1&0&30\\
+% Riga 3
+3&x_ {5}&120&1&2&0&0&1&60\\
+}; %end of matrix node
+% riquadro
+\draw(M-3-3.north west) -- (M-3-8.north east) -- (M-6-8.south east) -- (M-6-3.south west) -- cycle;
+% separatore orizzontale
+\draw[dashed] (M-4-3.north west) -- (M-4-8.north east);
+% separatore verticale
+\draw[dashed] (M-3-4.north west) -- (M-6-4.south west);
+% entra x_k
+\draw[->,thick,red!50!blue] (M-1-5.north) to (M-2-5.north);
+% esce x_{s_h}
+\draw[->,thick,red!50!blue] (M-2-7.north) to (M-1-7.north);
+% il pivot
+\fill[yellow!50,fill opacity=0.25,thick,draw=blue!60!black] (M-5-5.base) circle (1.5 em);
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+
+\begin{frame}[fragile]{Iterazione 2: soluzione migliorabile}
+\centering
+\begin{tikzpicture}
+{\tiny
+\node[%
+  align=center,
+  text width=3.5em,
+  text height=5ex,
+  row 1/.style={gray, text height=1em},
+  row 2/.style={blue!50!gray, text height=1em},
+  row 3/.style={blue},
+  column 1/.style={gray,text width=1em},
+  column 2/.style={red!50!gray,text width=1.5em},
+  column 3/.style={red},
+  column 9/.style={gray},
+  row 3 column 1/.style={gray},
+  row 3 column 2/.style={red!50!gray},
+  row 3 column 3/.style={red},
+  matrix of math nodes] (M)
+{%
+% Indice delle righe (M-1)
+~&~&0&1&2&3&4&5\\
+% Intestazione delle colonne (M-2)
+~ &~&\mbox {rhs}&x_ {1}&x_ {2}&x_ {3}&x_ {4}&x_ {5}&Rapp.\\
+% Riga 0
+0&z&900&-20&0&0&30&0\\
+% Riga 1
+1&x_ {3}&60&1&0&1&0&0&60\\
+% Riga 2
+2&x_ {2}&30&0&1&0&1&0&\\
+% Riga 3
+3&x_ {5}&60&1&0&0&-2&1&60\\
+}; %end of matrix node
+% riquadro
+\draw(M-3-3.north west) -- (M-3-8.north east) -- (M-6-8.south east) -- (M-6-3.south west) -- cycle;
+% separatore orizzontale
+\draw[dashed] (M-4-3.north west) -- (M-4-8.north east);
+% separatore verticale
+\draw[dashed] (M-3-4.north west) -- (M-6-4.south west);
+% entra x_k
+\draw[->,thick,red!50!blue] (M-1-4.north) to (M-2-4.north);
+% esce x_{s_h}
+\draw[->,thick,red!50!blue] (M-2-6.north) to (M-1-6.north);
+% il pivot
+\fill[yellow!50,fill opacity=0.25,thick,draw=blue!60!black] (M-4-4.base) circle (1.5 em);
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+
+\begin{frame}[fragile]{Iterazione 3: soluzione ottima}
+\centering
+\begin{tikzpicture}
+{\tiny
+\node[%
+  align=center,
+  text width=3.5em,
+  text height=5ex,
+  row 1/.style={gray, text height=1em},
+  row 2/.style={blue!50!gray, text height=1em},
+  row 3/.style={blue},
+  column 1/.style={gray,text width=1em},
+  column 2/.style={red!50!gray,text width=1.5em},
+  column 3/.style={red},
+  column 9/.style={gray},
+  row 3 column 1/.style={gray},
+  row 3 column 2/.style={red!50!gray},
+  row 3 column 3/.style={red},
+  matrix of math nodes] (M)
+{%
+% Indice delle righe (M-1)
+~&~&0&1&2&3&4&5\\
+% Intestazione delle colonne (M-2)
+~ &~&\mbox {rhs}&x_ {1}&x_ {2}&x_ {3}&x_ {4}&x_ {5}\\
+% Riga 0
+0&z&2100&0&0&20&30&0\\
+% Riga 1
+1&x_ {1}&60&1&0&1&0&0\\
+% Riga 2
+2&x_ {2}&30&0&1&0&1&0\\
+% Riga 3
+3&x_ {5}&0&0&0&-1&-2&1\\
+}; %end of matrix node
+% riquadro
+\draw(M-3-3.north west) -- (M-3-8.north east) -- (M-6-8.south east) -- (M-6-3.south west) -- cycle;
+% separatore orizzontale
+\draw[dashed] (M-4-3.north west) -- (M-4-8.north east);
+% separatore verticale
+\draw[dashed] (M-3-4.north west) -- (M-6-4.south west);
+}
+\end{tikzpicture}
+%sono fragile: lasciami uno spazio vuoto
+
+\end{frame}
+

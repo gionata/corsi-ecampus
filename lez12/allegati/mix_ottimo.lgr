@@ -1,0 +1,101 @@
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+MODELLO ISTANZIATO DEL PROBLEMA PRIMALE
+
+ MODEL:
+ TITLE MIX OTTIMO DI PRODUZIONE;
+ [PROFITTO_TOTALE] MAX= 120 * X_PROD1 + 40 * X_PROD2;
+ [RISORSA__ROW_MAT] 40 * X_PROD1 + 20 * X_PROD2 <= 2200;
+ [RISORSA__LABOUR] 8 * X_PROD1 + 2 * X_PROD2 <= 320;
+ [RISORSA__MARKET] X_PROD1 + X_PROD2 <= 100;
+ END
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+MODELLO ISTANZIATO DEL PROBLEMA DUALE
+
+
+ MODEL:
+  MIN= 2200 * RISORSA__ROW_MAT + 320 * RISORSA__LABOUR + 100 * RISORSA__MARKET;
+ [LENF1S] 0 >= 0;
+ [LENF1R] 0 >= 0;
+ [X_PROD1] 40 * RISORSA__ROW_MAT + 8 * RISORSA__LABOUR + RISORSA__MARKET >= 120;
+ [X_PROD2] 20 * RISORSA__ROW_MAT + 2 * RISORSA__LABOUR + RISORSA__MARKET >= 40;
+ END
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+SOLUZIONE DEL MODELLO ISTANZIATO
+
+  Global optimal solution found.
+  Objective value:                              5400.000
+  Infeasibilities:                              0.000000
+  Total solver iterations:                             3
+
+  Model Class:                                        LP
+
+  Total variables:                      5
+  Nonlinear variables:                  0
+  Integer variables:                    0
+
+  Total constraints:                    4
+  Nonlinear constraints:                0
+
+  Total nonzeros:                       8
+  Nonlinear nonzeros:                   0
+
+
+  Model Title: MIX OTTIMO DI PRODUZIONE
+
+                                Variable           Value        Reduced Cost
+                                INFINITY        0.000000            0.000000
+                                  LENF1S        0.000000            0.000000
+                                  LENF1R        0.000000            0.000000
+                 DISPONIBILITA( ROW_MAT)        2200.000            0.000000
+                  DISPONIBILITA( LABOUR)        320.0000            0.000000
+                  DISPONIBILITA( MARKET)        100.0000            0.000000
+                        PROFITTO( PROD1)        120.0000            0.000000
+                        PROFITTO( PROD2)        40.00000            0.000000
+                               X( PROD1)        25.00000            0.000000
+                               X( PROD2)        60.00000            0.000000
+           ASSORBIMENTO( ROW_MAT, PROD1)        40.00000            0.000000
+           ASSORBIMENTO( ROW_MAT, PROD2)        20.00000            0.000000
+            ASSORBIMENTO( LABOUR, PROD1)        8.000000            0.000000
+            ASSORBIMENTO( LABOUR, PROD2)        2.000000            0.000000
+            ASSORBIMENTO( MARKET, PROD1)        1.000000            0.000000
+            ASSORBIMENTO( MARKET, PROD2)        1.000000            0.000000
+
+                                     Row    Slack or Surplus      Dual Price
+                         PROFITTO_TOTALE        5400.000            1.000000
+                      RISORSA_( ROW_MAT)        0.000000            1.000000
+                       RISORSA_( LABOUR)        0.000000            10.00000
+                       RISORSA_( MARKET)        15.00000            0.000000
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+ Ranges in which the basis is unchanged:
+
+                                      Objective Coefficient Ranges
+                                  Current        Allowable        Allowable
+                Variable      Coefficient         Increase         Decrease
+        PROFITTO( PROD1)         120.0000         40.00000         40.00000
+        PROFITTO( PROD2)         40.00000         20.00000         10.00000
+
+                                           Righthand Side Ranges
+                     Row          Current        Allowable        Allowable
+                                      RHS         Increase         Decrease
+      RISORSA_( ROW_MAT)         2200.000         200.0000         600.0000
+       RISORSA_( LABOUR)         320.0000         120.0000         60.00000
+       RISORSA_( MARKET)         100.0000         INFINITY         15.00000
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+

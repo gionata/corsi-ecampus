@@ -1,0 +1,39 @@
+\documentclass{beamer}
+\def\presentationtype{2}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Esercizi}
+
+\begin{frame}
+{Esercizi}
+Con riferimento all'esercizio presentato nelle slide della lezione e agli allegati
+
+\begin{enumerate}
+ \item commentare il modello ed i dati in GNU MathProg;
+ \item descrivere come \`e stato realizzato il vincolo di equit\`a;
+ \item modificare il modello per eliminare l'ultimo dei vincoli di
+	equit\`a;
+ \item controllare che le soluzioni dei due modelli, con e senza vincolo ridondante,
+       siano equivalenti.
+\end{enumerate}
+
+\end{frame}
+
+\section{Allegati}
+
+
+\begin{frame}[allowframebreaks]{Modello in GNU MathProg -- modello}
+\lstinputlisting{allegati/prod_ittica.mod}
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Modello in GNU MathProg -- dati}
+\lstinputlisting{allegati/prod_ittica.dat}
+\end{frame}
+
+
+\end{document}

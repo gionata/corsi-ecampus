@@ -1,0 +1,302 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Costruzione del modello: insiemi e parametri}
+
+\begin{frame}{Stuttura dei problemi decisionali}
+I modelli decisionali hanno tutti la stessa struttura:
+\begin{itemize}
+\item insiemi, sui quali scorrono degli indici;
+\item dati numerici (di valore noto), scalari o vettori indicizzati su un insieme o matrici a due o pi\`u dimensioni (indicizzate su due o pi\`u insiemi);
+\item variabili, scalari, o vettori o matrici
+
+\item una funzione obiettivo $z$, che dipende dai dati e dalle variabili e pu\`o essere minimizzata o massimizzata;
+\item un certo numero di vincoli, di uguaglianza (equazioni) o disuguaglianza
+(disequazioni), singoli oppure raccolti in famiglie indicizzate su uno o pi\`u insiemi.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Mix ottimo di produzione: modello basato su insiemi}
+\definecolor{col_set}{RGB}{128,0,0}
+\definecolor{col_par}{RGB}{91,0,91}
+\definecolor{col_idx}{RGB}{0,91,91}
+\definecolor{col_var}{RGB}{0,0,128}
+\begin{columns}%{}
+
+\column{.49\textwidth}
+
+\begin{minipage}{\textwidth}
+\footnotesize{
+\begin{tabular}{lp{0.85\textwidth}}
+\color{col_set}$P$		&Insieme dei prodotti\\
+\color{col_set}$R$		&Insieme delle risorse\\
+~\\
+$\textcolor{col_par}{a}_{\textcolor{col_idx}{ij}}$	&Assorbimento della risorsa $i\in R$ da un prodotto $j\in P$\\
+$\textcolor{col_par}{b}_{\textcolor{col_idx}{i}}$	&Disponibilit\`a della risorsa $i\in R$\\
+$\textcolor{col_par}{c}_{\textcolor{col_idx}{j}}$	&Profitto unitario prodott $j\in P$\\
+~\\
+$\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}$	&Livello di produzione prodotto \mbox{$j\in P$}\\
+~\\
+\end{tabular}
+\begin{tabular}{ll}
+\hspace*{0.5\textwidth}&\\
+\textcolor{col_set}{\rule{1 em}{1 em} Insiemi} &
+\textcolor{col_idx}{\rule{1 em}{1 em} Indici} \\
+\textcolor{col_par}{\rule{1 em}{1 em} Parametri} &
+\textcolor{col_var}{\rule{1 em}{1 em} Variabili}
+\end{tabular}
+}
+\end{minipage}
+
+\column{.51\textwidth}
+
+\def\funzioneobiettivo{{\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{P}}}
+	\textcolor{col_par}{c}_{\textcolor{col_idx}{j}}\,\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}}
+\def\jinP{\textcolor{col_idx}{j} \in \textcolor{col_set}{P}}
+\def\iinR{\textcolor{col_idx}{i} \in \textcolor{col_set}{R}}
+
+
+\fbox{
+{\footnotesize
+$\begin{array}{rll}
+\max z= & \funzioneobiettivo\\% Funzione obiettivo
+	       & {\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{P}}}
+	       \textcolor{col_par}{a}_{\textcolor{col_idx}{ij}} \,
+	       \textcolor{col_var}{x}_{\textcolor{col_idx}{j}} \leq \textcolor{col_par}{b}_{\textcolor{col_idx}{i}} & \iinR\\
+  & \textcolor{col_var}{x}_{\textcolor{col_idx}{j}}\geq 0 &  \jinP, \, \iinR
+\end{array}$
+}
+}
+\end{columns}%{}
+\end{frame}
+
+
+\section{Insiemi, indici, parametri e iteratori}
+
+\begin{frame}[allowframebreaks,fragile]{Insiemi}
+
+\framebox{
+\parbox[c][24pt]{0.85\textwidth}{
+\hspace{6pt} {\tt set} {\it name} {\it alias} {\it domain} {\tt,}
+{\it attrib} {\tt,} \dots {\tt,} {\it attrib} {\tt;}
+}}
+
+\begin{description}
+
+\item[{\it name}] \`e il nome dell'insieme;
+
+\item[{\it alias}] opzionale, altro nome dell'insieme;
+
+\item[{\it domain}] opzionale, specifica meglio il dominio;
+
+\item[{\it attrib}, \dots, {\it attrib}] attributi opzionali.
+\end{description}
+
+\framebreak
+
+{\small Attributi opzionali}
+
+\vspace*{-8pt}
+
+{\footnotesize \begin{description}
+\item[{\tt dimen} $n$]\hspace*{0pt}\\
+la cardinalit\`a $n$ dell'insieme;
+\item[{\tt within} {\it expression}]\hspace*{0pt}\\
+un insieme che include l'insieme che si sta definendo;
+\item[{\tt:=} {\it expression}]\hspace*{0pt}\\
+i membri dell'insieme (enumerazione o propriet\`a);
+\item[{\tt default} {\it expression}]\hspace*{0pt}\\
+gli elementi dell'insieme se
+non specificati nella sezione dati.
+\end{description}}
+
+\begin{block}{Insiemi ``Prodotti'' e ``Risorse''}
+\begin{lstlisting}
+set Prodotti;
+set Risorse;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[allowframebreaks,fragile]{Indici}
+Due forme delle espressioni di indicizzazione, che permettono di scorrere
+gli indici:
+$$
+{
+\begin{array}{l}
+\mbox{{\tt\{} {\it entry}$_1${\tt,} {\it entry}$_2${\tt,} \dots{\tt,}
+{\it entry}$_m$ {\tt\}}}\\
+\mbox{{\tt\{} {\it entry}$_1${\tt,} {\it entry}$_2${\tt,} \dots{\tt,}
+{\it entry}$_m$ {\tt:} {\it predicate} {\tt\}}}\\
+\end{array}
+}
+$$
+dove {\it entry}{$_1$}, {\it entry}{$_2$}, \dots, {\it entry}{$_m$}
+sono elementi di indicizzazione e {\it predicate} \`e un'espressione
+logica opzionale che deve essere verificata dagli indici.
+
+Ogni {\it indexing entry} \`e in una delle forme:
+$$
+{
+\begin{array}{l}
+\mbox{$i$ {\tt in} $S$}\\
+\mbox{{\tt(}$i_1${\tt,} $i_2${\tt,} \dots{\tt,}$i_n${\tt)} {\tt in}
+$S$}\\
+\mbox{$S$}\\
+\end{array}
+}
+$$
+dove $i_1$, $i_2$, \dots, $i_n$ sono indici, $S$ \`e un insieme base.
+
+Sono usate, ad esempio, per indicizzare i parametri di un modello e di un iteratore
+
+\begin{lstlisting}
+{j in Prodotti};
+{j in Prodotti : j <> prod_1};
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[allowframebreaks,fragile]{Parametri}
+
+\framebox{
+\parbox[c][24pt]{0.85\textwidth}{
+\hspace{6pt} {\tt param} {\it name} {\it alias} {\it domain} {\tt,}
+{\it attrib} {\tt,} \dots {\tt,} {\it attrib} {\tt;}
+}}
+
+\begin{description}
+
+\item[{\it name}] \`e il nome del parametro;
+
+\item[{\it alias}] opzionale, altro nome del parametro;
+
+\item[{\it domain}] opzionale, specifica meglio il dominio;
+
+\item[{\it attrib}, \dots, {\it attrib}] attributi opzionali.
+\end{description}
+
+\framebreak
+
+{\small Attributi opzionali}
+
+\vspace*{-8pt}
+
+{\footnotesize \begin{description}
+\item[{\tt integer}]\hspace*{0pt}\\
+il parametro \`e un numero intero;
+\item[{\tt binary}]\hspace*{0pt}\\
+il parametro \`e binario, 0/1;
+\item[{\tt symbolic}]\hspace*{0pt}\\
+il parametro \`e simbolico;
+\item[{\it relation expression}]\hspace*{0pt}\\
+(dove {\it relation} \`e un simbolo tra: {\tt<}, {\tt<=}, {\tt=}, {\tt==},
+{\tt>=}, {\tt>}, {\tt<>}, {\tt!=})\\
+una condizione che vincola il parametro o i suoi membri a soddisfare
+quella condizione;
+\item[{\tt in} {\it expression}]\hspace*{0pt}\\
+un insieme che vincola il parametro o i suoi membri ad appartenere a tale
+insieme;
+\item[{\tt:=} {\it expression}]\hspace*{0pt}\\
+un valore assegnato al parametro o ai sui membri;
+\item[{\tt default} {\it expression}]\hspace*{0pt}\\
+un valore assegnato al parametro o ai suoi membri se
+non specificati nella sezione dati.
+\end{description}}
+
+Per riferirsi a una componete di un parametro definito come
+matrice si usa il costrutto:
+$$
+\mbox{{\it name}{\tt[}$i_1${\tt,} $i_2${\tt,} \dots{\tt,} $i_n${\tt]}}
+$$
+dove {\it name} \`e il nome del parametro e $i_1$, $i_2$,
+\dots, $i_n$ sono indici.
+
+\begin{block}{Parametri ``profitto'', ``disponibilita'' e ``assorbimento'''}
+\begin{lstlisting}
+param profitto {j in Prodotti};
+param disponibilita {i in Risorse};
+param assorbimento {i in Risorse, j in Prodotti};
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}{Iteratori e quantificatori}
+\noindent\hfil
+\begin{tabular}{@{}lll@{}}
+{\tt sum}&somma&$\displaystyle\sum_{(i_1,\dots,i_n)\in\Delta}
+f(i_1,\dots,i_n)$\\
+{\tt prod}&prodotto&$\displaystyle\prod_{(i_1,\dots,i_n)\in\Delta}
+f(i_1,\dots,i_n)$\\
+{\tt min}&minimo&$\displaystyle\min_{(i_1,\dots,i_n)\in\Delta}
+f(i_1,\dots,i_n)$\\
+{\tt max}&massimo&$\displaystyle\max_{(i_1,\dots,i_n)\in\Delta}
+f(i_1,\dots,i_n)$\\
+{\tt forall}&$\forall$&$\displaystyle
+\forall(i_1,\dots,i_n)\in\Delta[f(i_1,\dots,i_n)],$\\
+{\tt exists}&$\exists$&$\displaystyle
+\exists(i_1,\dots,i_n)\in\Delta[f(i_1,\dots,i_n)],$\\
+\end{tabular}
+
+\noindent \\~\\ dove $i_1$, \dots, $i_n$ sono gli indici degli insiemi,
+$\Delta$ \`e il dominio,
+$f(i_1,\dots,i_n)$ \`e l'integrando, un espressione numerica 
+il cui valore dipende dagli indici.
+\end{frame}
+
+\section{Descrizione di un modello}
+
+\begin{frame}{Sezioni}
+La dichiarazione del programma lineare \`e divisa nelle sezioni modello
+(\emph{model section}) e dati (\emph{data section}).
+
+\begin{description}
+\item [{Model section}] descrive il modello matematico mediante
+le dichiarazioni degli oggetti del modello; essi che sono comuni a
+tutti i problemi definiti sullo stesso modello.
+\item [{Data section}] opzionale, contiene i dati specifici di una
+particolare istanza del problema.
+\end{description}
+
+Le sezioni ``modello'' e ``dati'' possono essere memorizzate in un
+unico file o in due file separati.
+
+La seconda opzione permettedi avere un numero arbitrario di sezioni
+dati differenti da usare con la stessa sezione dati.
+\end{frame}
+
+\section{Implementazione del modello del MIX OTTIMO}
+
+\begin{frame}{Formulazione GNU Mathprog del mix ottimo -- Model}
+\lstinputlisting{allegati/modello_algebrico.mod}
+\end{frame}
+
+\begin{frame}{Formulazione GNU Mathprog del mix ottimo -- Data}
+\lstinputlisting{allegati/dati_mix_ottimo.dat}
+\end{frame}
+
+\section{Per approfondire}
+
+\begin{frame}{Per approfondire}
+
+\beamertemplatebookbibitems
+\begin{thebibliography}{References}
+\bibitem{Cordone}R. Cordone.\newblock
+\textit{Il linguaggio GNU MathProg con esempi commentati e risolti}.\newblock
+2010. Disponibile su internet.
+
+\bibitem{gmplManual} A. Makhorin.\newblock
+\textit{Modeling Language GNU MathProg -- Language Reference}
+\newblock 2013. Distribuito con GLPK.
+
+\bibitem{amplbook} R. Fourer, D. M. Gay, B. W. Kernighan.%
+\newblock \emph{A Modeling Language for Mathematical Programming.}%
+\newblock Management Science, 36, 1990. Disponibile su internet.
+\end{thebibliography}
+\end{frame}
+
+\end{document}

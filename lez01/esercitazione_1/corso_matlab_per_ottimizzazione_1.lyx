@@ -1,0 +1,3126 @@
+#LyX 1.6.6.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+%\usetheme{Warsaw}
+% or ...
+  %\usetheme{Berkeley}   % left bar
+%%%\usetheme{Antibes} % tree header
+  % \usetheme{Boadilla}  % very plain
+  %\usetheme{Warsaw}
+  %\usetheme{Copenhagen}
+  %\usetheme{Madrid}
+  %\usetheme{Rochester} % I like
+  \usetheme{Goettingen}  % right bar
+  %\usetheme{Ilmenau}
+
+\setbeamercovered{transparent}
+% or whatever (possibly just delete it)
+
+% \usepackage{tikz}
+% \usepackage{gnuplot-lua-tikz}
+
+\usepackage{listings} %Per inserire codice
+%%\usepackage[usenames]{color} %Per permettere la colorazione dei caratteri 
+
+% seems to fix typewriter font in outline header:
+\usepackage{ae,aecompl}
+
+% \setbeameroption{show notes}
+\end_preamble
+\use_default_options false
+\language italian
+\inputencoding latin9
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_pagemode FullScreen
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 1
+\tocdepth 1
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Metodi di Ottimizzazione - Introduzione all'ambiente di calcolo MATLAB
+\end_layout
+
+\begin_layout Subtitle
+Esercitazione 1
+\end_layout
+
+\begin_layout Author
+Prof.
+ F.
+ Pezzella 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ G.
+ Massi
+\end_layout
+
+\begin_layout Institute
+Dipartimento di Ingegneria Informatica Gestionale e dell'Automazione
+\begin_inset Newline newline
+\end_inset
+
+Università Politecnica delle Marche
+\end_layout
+
+\begin_layout Date
+Scuola di Dottorato in Scienze dell’Ingegneria XI ciclo n.s.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you have a file called "institution-logo-filename.xxx", where xxx is a
+ graphic format that can be processed by latex or pdflatex, resp., then you
+ can add a logo by uncommenting the following:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+pgfdeclareimage[height=0.5cm]{institution-logo}{institution-logo-filename}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+logo{
+\backslash
+pgfuseimage{institution-logo}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}[page number]
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The following causes the table of contents to be shown at the beginning
+ of every subsection.
+ Delete this, if you do not want it.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<beamer>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Indice}   
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[currentsection, hideothersubsections]{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+If you wish to uncover everything in a step-wise fashion, uncomment the
+ following command:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+beamerdefaultoverlayspecification{<+->}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Indice generale
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents[hideallsubsections]{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+In questa prima esercitazione prenderemo confidenza con l'ambiente di calcolo
+ MATLAB, o di un altro ambiente di calcolo come GNU Octave o SciLab.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Spenderò poche parole per presentare le caratteristiche dell'applicazione
+ e per convincervi dell'utilità della stessa, anche se credo che molti di
+ voi già conoscano e usino un ambiente di calcolo.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Passerò poi a mostrare l'ambiente di calcolo, lanciando l'applicazione e
+ mostrandovi quanto presentato sulle slide.
+ Vedremo come si presenta l'applicazione e come muoversi per ottenere aiuto.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+MATLAB fa uso di variabili.
+ Il concetto di variabile non è molto distante quello che ci proviene dalla
+ matematica, anche se le variabili in MATLAB sono più simili a quelle dei
+ linguaggi di programmazione.
+ Dirò a grandi linee cosa sono le variabili e come usarle.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Mostrerò quindi come effettuare alcune delle operazioni algebriche sulle
+ variabili, rappresentino esse scalari, vettori o matrici.
+ Vi indicherò inoltre come effettuare il calcolo di funzioni elementari
+ su variabili scalari.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Per concludere vi indicherò come accedere a sottomatrici di una matrice
+ e come risolvere sistemi di equazioni lineari di piccole dimensioni.
+\end_layout
+
+\begin_layout Section
+Cos'è MATLAB e perchè usarlo
+\end_layout
+
+\begin_layout BeginFrame
+Cos'è MATLAB
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $MATLAB^{TM}$
+\end_inset
+
+(MATrix LABoratory) è:
+\end_layout
+
+\begin_layout Itemize
+un ambiente interattivo di calcolo scientifico con routines altamente specializz
+ate 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Problem Solving Enviroments (PSE)
+\end_layout
+
+\begin_layout Itemize
+presenta un'interprete dei comandi
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+un linguaggio di programmazione orientato alle matrici
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fornisce un linguaggio di programmazione ad alto livello
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+uno strumento per l'analisi e la visualizzazione dei dati
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+permette di costruire e visualizzare facilmente grafici
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+un'ambiente per la prototipazione di algoritmi e applicazioni multipiattaforma
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+codifica di algoritmi per calcolo scientifico più rapida rispetto a linguaggi
+ 
+\begin_inset Quotes eld
+\end_inset
+
+tradizionali
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+disponibile su sistemi Unix/Linux, Windows e Mac
+\end_layout
+
+\begin_layout Itemize
+i file 
+\begin_inset Quotes eld
+\end_inset
+
+.m
+\begin_inset Quotes erd
+\end_inset
+
+ sono portabili da una piattaforma all'altra
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Perché è utile
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $MATLAB^{TM}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+risolve interattivamente problemi della matematica e delle scienze computazional
+i 
+\end_layout
+
+\begin_layout Itemize
+include toolbox per problemi di varie aree applicative
+\end_layout
+
+\begin_layout Itemize
+fornisce facile accesso ad algoritmi di:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+analisi numerica
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Alert
+status collapsed
+
+\begin_layout Plain Layout
+ottimizzazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+permette di costruire facilmente grafici
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+di funzioni
+\end_layout
+
+\begin_layout Itemize
+di serie di dati
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+permette la rapida prototipazione di algoritmi
+\end_layout
+
+\begin_layout BeginFrame
+Alternative Open Source
+\end_layout
+
+\begin_layout Standard
+Free Software parzialmente compatibile con MATLAB
+\end_layout
+
+\begin_layout Itemize
+GNU Octave (licenza GPL)
+\end_layout
+
+\begin_layout Itemize
+Scilab (licenza compatibile GPL)
+\end_layout
+
+\begin_layout Itemize
+FreeMat (licenza GPL)
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+MATLAB è un software commerciale della MathWorks e come tale non è gratuito
+ e buona parte del codice sorgente non è visibile.
+ Inoltre è un'applicazione che richiede molte risorse di sistema.
+ Esistono però altri ambienti di calcolo simili e spesso parzialmente compatibil
+i con MATLAB.
+ Ve ne elenco tre: Octave, SciLab e FreeMat.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Contro questi sw c'è da dire che non hanno interfacce grafiche molto attraenti,
+ che mancano di molti toolbox di Matlab e che alcuni algoritmi non sono
+ implementati, oppure sono implementati in modo meno efficiente.
+ 
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Questi sw però sono liberi però hanno caratteristiche molto interessanti.
+ Una cosa molto positiva è che sono software gratuiti e che non occorre
+ richiedere la licenza.
+ Un'altra caratteristica non meno importante è la possibilità di vedere
+ e modificare il codice.
+ 
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Personalmente uso GNU octave, che è manca di un'interfaccia grafica ma proprio
+ per questo è un programma molto snello, che occupa poco spazio su disco
+ e in memoria RAM.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+SciLab è un'altro ambiente di calcolo molto interessante e include anche
+ uno strumento per la simulazione.
+ So che viene impiegato anche nel corso di 
+\begin_inset Quotes eld
+\end_inset
+
+Circuiti ed Algoritmi per il trattamento dei Segnali.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Il progetto più recente è FreeMat, che però non conosco.
+\end_layout
+
+\begin_layout Section
+Ambiente MATLAB
+\end_layout
+
+\begin_layout BeginFrame
+Ambiente MATLAB
+\end_layout
+
+\begin_layout Itemize
+avvio
+\end_layout
+
+\begin_layout Itemize
+uscita (quit)
+\end_layout
+
+\begin_layout Itemize
+finestre
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+command window (finestra principale)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inserimento comandi e funzioni
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+workspace
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+ispezione e modifica delle variabili in memoria
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+current directory
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+lista dei file
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+command history
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+cronologia dei comandi eseguiti
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+editor/debugger
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+scrittura e debug delle procedure e funzioni
+\end_layout
+
+\end_deeper
+\begin_layout NoteItem
+
+\size tiny
+Passiamo ora ad usare il programma.
+ Essendo su piattaforma windows andiamo a cercare dal menù start dove si
+ trova l'icona per lanciare il programma.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+La finestra principale è quella dell'interprete dei comandi, detta command
+ window.
+ Qui è possibile inserire i comandi per definire variabili, eseguire delle
+ operazioni, richiamare delle funzioni del matlab o anche del sistema operativo.
+ Gli input e gli output sono stampati qui.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Un'altra finestra importante è chiamata workspace, spazio di lavoro.
+ Permette di visualizzare e modificare le variabili in memoria e ci dà rapido
+ accesso ad alcune informazioni importanti quali lo spazio che le variabili
+ occupano in memoria.
+ Cii torneremo in seguito.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Altre finestre sono...
+\end_layout
+
+\begin_layout BeginFrame
+Ottenere aiuto
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+help
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+comando
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\color green
+help help
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+lookfor
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+argomento
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\color green
+lookfor optimization
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+doc
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+argomento
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\color green
+doc optim
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+manuali dei toolbox
+\end_layout
+
+\begin_layout Itemize
+demo di comandi e toolbox
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Una fonte di conoscenza dell'ambiente ci viene fornita dalle varie forme
+ di documentazione.
+ La principale è l'help in linea richiamato col comado help.
+ Scriviamo nella command window 
+\begin_inset Quotes eld
+\end_inset
+
+help help
+\begin_inset Quotes erd
+\end_inset
+
+ e leggiamo cosa ci dice...
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Può capitare di non conoscere il nome del comando da usare.
+ Matlab e cloni dispongono del comando 
+\begin_inset Quotes eld
+\end_inset
+
+lookfor
+\begin_inset Quotes erd
+\end_inset
+
+ che permette di cercare del testo nella prima riga dell'help in linea.
+ Ad esempio per cercare le funzioni che nell'help usano nella prima riga
+ la parola optimization usiamo il comando 
+\begin_inset Quotes eld
+\end_inset
+
+lookfor optimization
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Un'altra fonte di informazioni è il manuale, che può essere acceduto con
+ il comando 
+\begin_inset Quotes eld
+\end_inset
+
+doc
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Proviamo 
+\begin_inset Quotes eld
+\end_inset
+
+doc optim
+\begin_inset Quotes erd
+\end_inset
+
+...
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Una risorsa più ampia è fornita dalla documentazione dei toolbox, a cui
+ si può accedere dal sito o dalla finestra della documentazione.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Infine molti se non tutti i toolbox forniscono delle 
+\begin_inset Quotes eld
+\end_inset
+
+demo
+\begin_inset Quotes erd
+\end_inset
+
+ dei loro algoritmi.
+\end_layout
+
+\begin_layout Section
+Variabili e dati numerici
+\end_layout
+
+\begin_layout BeginFrame
+Variabili
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Identificatore delle variabili}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+massimo 31 caratteri
+\end_layout
+
+\begin_layout Itemize
+non deve contenere
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+separatori (spazio, tabulazione, punteggiatura)
+\end_layout
+
+\begin_layout Itemize
+simboli di operazione (
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
++
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+*
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+/
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+^
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+=
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+'
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+deve iniziare con un carattere o un underscore
+\end_layout
+
+\begin_layout Itemize
+è case sensitive (
+\begin_inset Quotes eld
+\end_inset
+
+A
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\neq$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout NoteItem
+
+\size tiny
+Le variabili permettono di dare un nome a dei valori e di riferirsi a questi
+ valori successivamente.
+ Una variabile, come dice il nome, può cambiare il proprio valore nel tempo
+ e può rappresentare vari tipi di dato, ad esempio numeri codificati in
+ virgola mobile a precisione doppia o numeri complessi.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Per chi non conosce il concetto di variabile in informatica, brevemente
+ essa è una relazione tra un identificatore (il simbolo compreso dal programmato
+re ed elaborato dall'interprete o dal compilatore), un tipo di dato (predefinito
+ dal linguaggio o definito dall'utente), il suo valore e la localizzazione
+ in memoria in cui tale valore è 
+\begin_inset Quotes eld
+\end_inset
+
+caricato
+\begin_inset Quotes erd
+\end_inset
+
+ secondo una codifica.
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+Il nome della variabile è detto 
+\emph on
+identificatore
+\emph default
+.
+ Gli identificatori devono rispettare alcune regole:...
+\end_layout
+
+\begin_layout NoteItem
+
+\size tiny
+E' importante notare che l'identificatore è case sentitive, distingue cioè
+ fra maiuscole e minuscole.
+ Pertanto gli identificatori A maiuscola e a minuscola si riferiscono a
+ due valori distinti.
+\end_layout
+
+\begin_layout BeginFrame
+Variabili
+\end_layout
+
+\begin_layout Itemize
+non si dichiara il tipo
+\end_layout
+
+\begin_layout Itemize
+il tipo di base è l'array (matrice)
+\end_layout
+
+\begin_layout Itemize
+i tipi elementari degli elementi di un array sono
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+numeri in virgola mobile a doppia precisione (
+\emph on
+double
+\emph default
+, 16 cifre significative)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+rappresentazione di scalari, vettori riga, vettori colonna, matrici 2-dimensiona
+li, matrici 
+\begin_inset Formula $n$
+\end_inset
+
+-dimensionali
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+caratteri
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+stringhe di testo (racchiuse tra apici 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+puntatori
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+function handle
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout NoteItem
+A differenza di molti linguaggi di programmazione procedurali e ad oggetti,
+ non si dichiara il tipo di dato.
+\end_layout
+
+\begin_layout BeginFrame
+Variabili di tipo matrice
+\end_layout
+
+\begin_layout Itemize
+la definizione inizia con una parentesi quadra aperta 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+[
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+ e termina con una parentesi quadra chiusa 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+gli spazi bianchi e le 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+,
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ separano le colonne
+\end_layout
+
+\begin_layout Itemize
+i ritorni a capo e il 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ separano le righe
+\end_layout
+
+\begin_layout Itemize
+sono indicizzate con base 1
+\end_layout
+
+\begin_layout Itemize
+la 
+\begin_inset Quotes eld
+\end_inset
+
+matrice vuota
+\begin_inset Quotes erd
+\end_inset
+
+ è rappresentata da 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+; almeno una delle dimensioni è 0
+\end_layout
+
+\begin_layout BeginFrame
+Altro sulle variabili
+\end_layout
+
+\begin_layout Itemize
+l'operatore di assegnamento è 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+=
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+il separatore decimale è 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+le stringhe sono delimitate da apici singoli 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+'
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Esempio di dichiarazioni
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Dichiarazioni}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+a=pi % scalare
+\end_layout
+
+\begin_layout Description
+b=[4
+\begin_inset space ~
+\end_inset
+
+6] % vettore riga (1x2)
+\end_layout
+
+\begin_layout Description
+c=[3;
+\begin_inset space ~
+\end_inset
+
+7] % vettore colonna (2x1)
+\end_layout
+
+\begin_layout Description
+d=[1
+\begin_inset space ~
+\end_inset
+
+2;
+\begin_inset space ~
+\end_inset
+
+3
+\begin_inset space ~
+\end_inset
+
+4] % matrice (2x2) 
+\end_layout
+
+\begin_layout Description
+e=rand(4,3,2) % matrice aleatoria (4x3x2)
+\end_layout
+
+\begin_layout Description
+f='x' % stringa di caratteri
+\end_layout
+
+\begin_layout Description
+g=[] % matrice vuota
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Note
+\end_layout
+
+\begin_layout Itemize
+il simbolo 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ identifica l'inizio di un commento che si estende fino a fine riga
+\end_layout
+
+\begin_layout Itemize
+per separare le istruzioni si usano ritorni a capo, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+,
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ inibisce la visualizzazione del risultato
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+i letterali {
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+pi
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+j
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ans
+\end_layout
+
+\end_inset
+
+} non sono indicati come nomi di variabili perché
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+pi
+\end_layout
+
+\end_inset
+
+ è una funzione che restituisce il valore approssimato di 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+i
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+j
+\end_layout
+
+\end_inset
+
+ sono funzioni che restituiscono il valore 
+\begin_inset Formula $\sqrt{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ans
+\end_layout
+
+\end_inset
+
+ viene sovrascritto dall'ultimo valore restituito da una funzione
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+per spezzare una riga si usano tre punti (
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ldots{}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout BeginFrame
+Controllare le variabili nell'area di lavoro
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+finestra workspace
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+name
+\end_layout
+
+\begin_layout Itemize
+value
+\end_layout
+
+\begin_layout Itemize
+size
+\end_layout
+
+\begin_layout Itemize
+bytes
+\end_layout
+
+\begin_layout Itemize
+class
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+comandi
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+var
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+who
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+whos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+size
+\end_layout
+
+\end_inset
+
+(
+\emph on
+var
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+clear
+\end_layout
+
+\end_inset
+
+ 
+\emph on
+var
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+clear
+\end_layout
+
+\end_inset
+
+ [all]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Cos'è un array
+\end_layout
+
+\begin_layout Itemize
+un array è definito da
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+tipo
+\end_layout
+
+\begin_layout Itemize
+dimensione
+\end_layout
+
+\begin_layout Itemize
+dati
+\end_layout
+
+\begin_layout Itemize
+se la variabile è reale o complessa, nel caso di tipo numerico
+\end_layout
+
+\begin_layout Itemize
+gli indici degli elementi diversi da 0, nel caso di matrice sparsa
+\end_layout
+
+\begin_layout Itemize
+numero e nomi dei capi per elementi di tipo struttura o oggetto
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\color green
+help size
+\end_layout
+
+\begin_layout Section
+Operazioni fondamentali e funzioni elementari
+\end_layout
+
+\begin_layout BeginFrame
+Operazioni matriciali
+\end_layout
+
+\begin_layout Itemize
+somma e differenza (
+\begin_inset Quotes eld
+\end_inset
+
++
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A+B}\triangleq C_{ij}=A_{ij}+B_{ij}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+prodotto (
+\begin_inset Quotes eld
+\end_inset
+
+*
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A*B}\triangleq C_{ij}=\sum_{k}\, A_{ik}\cdot B_{kj}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+divisione (
+\begin_inset Quotes eld
+\end_inset
+
+/
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A/B}\triangleq C=AB^{-1}$
+\end_inset
+
+ (right division)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A\textbackslash B}\triangleq C=A^{-1}B$
+\end_inset
+
+ (left division)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+elevamento a potenza (
+\begin_inset Quotes eld
+\end_inset
+
+^
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A\textasciicircum n}\triangleq C=\underset{n\,\text{volte}}{\underbrace{A\cdots A}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+sono osservate le precedenze classiche dell'aritmetica
+\end_layout
+
+\begin_layout Itemize
+per alterare l'ordine di valutazione si usano le parentesi tonde 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+(
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+ e 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout BeginFrame
+Esempio
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Operazioni matriciali}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A = [1 2; 3 4]
+\end_layout
+
+\begin_layout Itemize
+B = [2 4; 6 8]
+\end_layout
+
+\begin_layout Itemize
+A+B
+\end_layout
+
+\begin_layout Itemize
+B-A
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A*B
+\end_layout
+
+\begin_layout Itemize
+A^(-1)
+\end_layout
+
+\begin_layout Itemize
+B/A
+\end_layout
+
+\begin_layout Itemize
+A*(B-A)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Operazioni elemento per elemento
+\end_layout
+
+\begin_layout Itemize
+prodotto (
+\begin_inset Quotes eld
+\end_inset
+
+.*
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A.*B}\triangleq C_{ij}=A_{ik}\cdot B_{kj}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+divisione (
+\begin_inset Quotes eld
+\end_inset
+
+./
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A./B}\triangleq C_{ij}=A_{ij}/B_{ij}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+elevamento a potenza (
+\begin_inset Quotes eld
+\end_inset
+
+.^
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\mbox{C=A.\textasciicircum n}\triangleq C_{ij}=A_{ij}^{n}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Operazioni elemento per elemento}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A = [1 2; 3 4]
+\end_layout
+
+\begin_layout Itemize
+B = [2 4; 6 8]
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A.*B
+\end_layout
+
+\begin_layout Itemize
+A.^(-1)
+\end_layout
+
+\begin_layout Itemize
+B./A
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout BeginFrame
+Funzioni matematiche elementari (elfun)
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+trigonometriche
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sin
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+cos
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+tan
+\end_layout
+
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+asin
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+acos
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+atan
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sinh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+cosh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+tanh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+asinh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+acosh
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+atanh
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+esponenziali
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+exp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log10
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+log2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+pow2
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sqrt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+complesse
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+abs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+arrotondamento e resto
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+fix
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+floor
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+ceil
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+round
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+mod
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+rem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+sign
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Manipolazione di matrici e vettori
+\end_layout
+
+\begin_layout BeginFrame
+Definizione di vettori
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+linspace
+\end_layout
+
+\end_inset
+
+(
+\emph on
+inizio
+\emph default
+, 
+\emph on
+fine
+\emph default
+, 
+\emph on
+numero di punti
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+inizio
+\emph default
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+:
+\end_layout
+
+\end_inset
+
+
+\emph on
+passo
+\emph default
+
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+:
+\end_layout
+
+\end_inset
+
+
+\emph on
+fine
+\end_layout
+
+\begin_layout Itemize
+inizio
+\begin_inset Flex CharStyle:Structure
+status collapsed
+
+\begin_layout Plain Layout
+:
+\end_layout
+
+\end_inset
+
+fine
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Definizione di vettori con elementi equispaziati}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+x=linspace(a,b,n)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x_{i}=a+(i-1)\cdot\frac{b-a}{n-1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+y=a:p:b % inizio:passo:fine
+\end_layout
+
+\begin_layout Itemize
+z=a:b % inizio:fine (passo = 1)
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Matrici particolari
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+eye(n) matrice identità 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ (
+\begin_inset Formula $I^{n}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Description
+diag(v) matrice diagonale
+\end_layout
+
+\begin_layout Description
+zeros(n,m) matrice 
+\begin_inset Formula $n\times m$
+\end_inset
+
+ di zeri (evita riallocazioni)
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+ones(n,m) matrice 
+\begin_inset Formula $n\times m$
+\end_inset
+
+ di uni
+\end_layout
+
+\begin_layout Description
+rand(n,m) matrice aleatoria 
+\begin_inset Formula $n\times m$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Accesso a sotto-matrici 
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+var
+\emph default
+(
+\begin_inset Formula $i$
+\end_inset
+
+,
+\begin_inset Formula $j$
+\end_inset
+
+) elemento 
+\emph on
+var
+\begin_inset Formula $_{ij}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+var
+\emph default
+(:,
+\begin_inset Formula $j$
+\end_inset
+
+) colonna 
+\emph on
+var
+\begin_inset Formula $^{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+var
+\emph default
+(
+\begin_inset Formula $i$
+\end_inset
+
+,:) riga 
+\emph on
+var
+\begin_inset Formula $_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+diag(
+\emph on
+var
+\emph default
+) diagonale 
+\emph on
+var
+\begin_inset Formula $_{ii}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+var
+\emph default
+(
+\begin_inset Formula $i_{1}$
+\end_inset
+
+:
+\begin_inset Formula $i_{2}$
+\end_inset
+
+,
+\begin_inset Formula $j_{1}$
+\end_inset
+
+:
+\begin_inset Formula $j_{2}$
+\end_inset
+
+) sottomatrice di 
+\emph on
+var
+\end_layout
+
+\begin_layout Description
+var(:) elementi di 
+\emph on
+var
+\emph default
+ come un'unica colonna
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Alcune funzioni matriciali
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+var
+\emph default
+' trasposta coniugata 
+\end_layout
+
+\begin_layout Description
+var.' trasposta
+\end_layout
+
+\begin_layout Description
+
+\emph on
+inv(var) 
+\emph default
+inversa
+\end_layout
+
+\begin_layout Description
+
+\emph on
+det(var
+\emph default
+) determinante
+\end_layout
+
+\begin_layout Description
+rank(
+\emph on
+var
+\emph default
+) rango
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.5
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\emph on
+norm(var
+\begin_inset space ~
+\end_inset
+
+
+\emph default
+[,
+\emph on
+n
+\emph default
+]) norma
+\end_layout
+
+\begin_layout Description
+eig(
+\emph on
+var) 
+\emph default
+autovalori e autovettori
+\end_layout
+
+\begin_layout Description
+min(
+\emph on
+var
+\emph default
+) minimo
+\end_layout
+
+\begin_layout Description
+max(
+\emph on
+var
+\emph default
+) massimo
+\end_layout
+
+\end_deeper
+\begin_layout BeginFrame
+Soluzione di sistemi lineari
+\end_layout
+
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.3
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Problema: determinare 
+\begin_inset Formula $x$
+\end_inset
+
+ tale che
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $A\, x=b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.7
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+per sistemi di 
+\begin_inset Quotes eld
+\end_inset
+
+piccole
+\begin_inset Quotes erd
+\end_inset
+
+ dimensioni si può usare
+\end_layout
+
+\begin_layout Itemize
+
+\color green
+x=A^(-1)*b
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+inefficiente
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\color green
+x=A
+\backslash
+b
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+se 
+\begin_inset Formula $A\in\mathbb{R}^{n\times n}$
+\end_inset
+
+ allora impiega l'eliminazione di Gauss
+\end_layout
+
+\begin_layout Itemize
+altrimenti fattorizzazione per determinare il rango e calcolo di una soluzione
+ a norma minima
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

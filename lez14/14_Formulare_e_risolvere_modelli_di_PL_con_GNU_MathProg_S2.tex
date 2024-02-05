@@ -1,0 +1,37 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{2}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+
+
+\begin{frame}%[allowframebreaks]
+{Esercizi}
+
+Risolvere il seguente problema di PL con GNU MathProg
+utilizzando il modello del problema del mix ottimo
+di produzione e scrivendone i dati su di un file
+di dati:
+
+\begin{enumerate}
+{\footnotesize \item
+$$\begin{array}{crrrcr}
+\max z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} &  x_1 &-&  x_2 & \leq & 5 \\
+           &- x_1 &+&  x_2 & \leq & 5  \\
+ %          &  x_1 &+&  x_2 & \geq & 3  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+$$%
+}
+\end{enumerate}
+
+
+%~\\~\\Caricare la soluzione sulla piattaforma di e-learning.
+\end{frame}
+\end{document}

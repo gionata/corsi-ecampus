@@ -1,0 +1,36 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+
+\begin{frame}{\esercizi}
+Effettuare l'analisi di stabilit\`a (variazione dei termini
+noti e dei coefficienti in funzione obiettivo) del seguente 
+problema di PL:
+
+%\begin{listaesercizi}
+\begin{enumerate}
+% massimo, ammissibile, limitato, vertice, degenere
+\item
+\[\begin{array}{crrrcr}
+\max z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} & x_1 & &       & \leq &  60 \\
+           &     & &   x_2 & \leq &  50  \\
+           & x_1 &+& 2 x_2 & \leq & 120  \\
+           & x_1 &+&   x_2 & \leq &  90  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+\]%
+%\end{listaesercizi}
+\end{enumerate}
+
+Verificare con GeoGebra la correttezza del proprio lavoro.
+\end{frame}
+
+\end{document}

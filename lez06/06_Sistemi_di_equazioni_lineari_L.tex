@@ -1,0 +1,335 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Sistemi di equazioni lineari e matrici}
+
+\begin{frame}[allowframebreaks]{Forma generale di un sistema lineare}
+  
+  \modelbox{Sistema lineare di $m$ equazioni in $n$ incognite}{%
+  \[%
+% \left\{\begin{array}{lclccclcr}
+%   a_{11} x_1 &+& a_{12} x_2 &+& \cdots &+& a_{1n} x_n &=& b_1\\
+%   a_{21} x_1 &+& a_{22} x_2 &+& \cdots &+& a_{2n} x_n &=& b_2\\
+%              & &            & & \ddots & &            &\vdots& \vdots\\
+%   a_{m1} x_1 &+& a_{m2} x_2 &+& \cdots &+& a_{mn} x_n &=& b_m
+% \end{array}\right.%
+\left\{
+\begin{matrix} 
+a_{11}x_1 + a_{12}x_2 +\cdots + a_{1n}x_n = b_1\\
+a_{21}x_1 + a_{22}x_2 +\cdots + a_{2n}x_n = b_2\\
+\vdots\\
+a_{m1}x_1 + a_{m2}x_2 +\cdots + a_{mn}x_n = b_m\\
+\end{matrix}
+\right.
+\]}
+
+  \framebreak
+  
+  \begin{itemize}
+  \item  Il numero $n$ delle incognite \`e detto ordine del sistema
+
+  \item  I numeri $a_{11},\ a_{12}, \ldots,\ a_{mn}$  sono i coefficienti del sistema
+
+  \item  I numeri $b_1,\ b_2, \ldots,\ b_m$ sono i termini noti del sistema
+  
+  \item  Noti $m$ ed $n$ \`e possibile scrivere un sistema di equazioni lineari usando
+  la notazione matriciale
+  \end{itemize}
+  
+  \framebreak
+  
+  I coefficienti del sistema possono essere raccolti in una tabella di numeri detta \emph{matrice dei coefficienti}
+
+  \modelbox{Matrice dei coefficienti}{%
+  \[
+  \matr{A} = 
+  \begin{bmatrix}\begin{array}{cccc}
+  a_{11} & a_{12} & \cdots & a_{1n}\\
+  a_{21} & a_{22} & \cdots & a_{2n}\\
+         &        & \ddots \\
+  a_{m1} & a_{m2} & \cdots & a_{mn}
+  \end{array}\end{bmatrix}
+  \]
+  }
+
+  \framebreak
+  
+   I termini noti del sistema possono essere raccolti nel vettore colonna detto \emph{vettore dei termini noti}
+
+  \modelbox{Vettore dei termini noti}{%
+  \[
+  \vec{b} = 
+  \begin{bmatrix}\begin{array}{c}
+  b_{1}\\
+  b_{2}\\
+  \vdots \\
+  b_{m}
+  \end{array}\end{bmatrix}
+  \]
+  }
+  
+  \framebreak
+  
+  Le incognite possono essere rappresentate dal \emph{vettore delle incognite}
+
+  \modelbox{Vettore delle incognite}{%
+  \[
+  \vec{x} = 
+  \begin{bmatrix}\begin{array}{c}
+  x_{1}\\
+  x_{2}\\
+  \vdots \\
+  x_{n}
+  \end{array}\end{bmatrix}
+  \]
+  }
+
+  \small{L'intero sistema lineare  di $m$ equazioni in $n$ incognite \`e rappresentato dalla \emph{matrice completa} (o \emph{matrice aumentata}) del sistema}
+
+  \modelbox{Matrice completa}{%
+  \[
+  [\matr{A}|\vec{b}] = 
+  \begin{bmatrix}
+  \left.\begin{array}{cccc}
+  a_{11} & a_{12} & \cdots & a_{1n}\\
+  a_{21} & a_{22} & \cdots & a_{2n}\\
+         &        & \ddots \\
+  a_{m1} & a_{m2} & \cdots & a_{mn}
+  \end{array}\right|
+  \begin{array}{c}
+  b_{1}\\
+  b_{2}\\
+  \vdots\\
+  b_{m}
+  \end{array}
+  \end{bmatrix}
+  \]
+  }
+\end{frame}
+
+\section{Prodotto di una matrice per un vettore}
+
+\begin{frame}{Matrici}
+\footnotesize{
+  \begin{itemize}
+  \item In generale una matrice con $m$ righe e $n$ colonne \`e
+  una tabella rettangolare di numeri con $m$ righe e $n$
+  colonne
+  
+  \item L'insieme delle matrici con $m$ righe e $n$ colonne ($m$x$n$) a coefficienti
+  reali \`e indicato con $M_{m,n}(\mathbb{R})$
+
+  \item Sia $\matr{A} \in M_{m,n}(\mathbb{R})$ una matrice $m$x$n$
+  \begin{description}
+   \item[$a_{ij}$] \`e il coefficiente di posto $(i, j)$ della matrice $\matr{A}$
+   \item[$i$]  \`e l'indice di riga
+   \item[$j$] \`e l'indice di colonna
+   \item[$A_i$] \`e la riga $i$-esima; $A_i=\left[\begin{array}{cccc}a_{i1}&a_{i2}&\cdots&a_{in}\end{array}\right]$
+   \item[$A^j$] \`e la colonna $j$-esima; $A^j=\left[\begin{array}{c}a_{1j}\\a_{2j}\\\vdots\\a_{mj}\end{array}\right]$
+  \end{description}
+  \end{itemize}
+}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Prodotto di una matrice per un vettore}
+Si definisce il prodotto di una matrice $\matr{A} \in M_{m,n}(\mathbb{R})$
+per un vettore $x \in \mathbb{R}^n$ come:
+
+\modelbox{Prodotto di una matrice per un vettore}{%
+  \small\[
+  \matr{A} \vec{x} = 
+  \begin{bmatrix}\begin{array}{cccc}
+  a_{11} & a_{12} & \cdots & a_{1n}\\
+  a_{21} & a_{22} & \cdots & a_{2n}\\
+         &        & \ddots \\
+  a_{m1} & a_{m2} & \cdots & a_{mn}
+  \end{array}\end{bmatrix}
+  \begin{bmatrix}\begin{array}{c}
+  x_{1}\\
+  x_{2}\\
+  \vdots \\
+  x_{n}
+  \end{array}\end{bmatrix} =
+  x_{1} A^1 + x_{2} A^2 + \cdots + x_{n} A^n 
+  \]
+}
+
+\framebreak
+
+ che può essere riscritto come il vettore 
+
+\modelbox{Prodotto di una matrice per un vettore}{%
+  \small\[
+  \matr{A} \vec{x} = 
+  \begin{bmatrix}\begin{array}{cccc}
+  a_{11} x_{1} +& a_{12} x_{2} +& \cdots +& a_{1n} x_{n}\\
+  a_{21} x_{1} +& a_{22} x_{1} +& \cdots +& a_{2n} x_{n}\\
+         &        & \ddots \\
+  a_{m1} x_{1} +& a_{m2} x_{2} +& \cdots +& a_{mn} x_{n}
+  \end{array}\end{bmatrix}
+  \]
+}
+\end{frame}
+
+\begin{frame}{Forma matriciale di un sistema di equazioni lineari}
+
+\scriptsize{
+ Dalla precedente definizione di prodotto di una matrice per un vettore abbiamo che il sistema di equazioni lineari
+
+\[
+\left\{\begin{array}{lclccclcc}
+  a_{11} x_1 &+& a_{12} x_2 &+& \cdots &+& a_{1n} x_n &=& b_1\\
+  a_{21} x_1 &+& a_{22} x_2 &+& \cdots &+& a_{2n} x_n &=& b_2\\
+             & &            & & \ddots & &            &\vdots& \vdots\\
+  a_{m1} x_1 &+& a_{m2} x_2 &+& \cdots &+& a_{mn} x_n &=& b_m
+\end{array}\right.
+\]
+
+può essere espresso come
+
+\[
+\begin{bmatrix}\begin{array}{cccc}
+  a_{11} x_{1} +& a_{12} x_{2} +& \cdots +& a_{1n} x_{n}\\
+  a_{21} x_{1} +& a_{22} x_{1} +& \cdots +& a_{2n} x_{n}\\
+         &        & \ddots \\
+  a_{m1} x_{1} +& a_{m2} x_{2} +& \cdots +& a_{mn} x_{m}
+\end{array}\end{bmatrix} 
+=
+  \begin{bmatrix}\begin{array}{c}
+  b_{1}\\
+  b_{2}\\
+  \vdots \\
+  b_{m}
+  \end{array}\end{bmatrix}
+\]
+
+o anche: \begin{center}{$\matr{A} \vec{x} = \vec{b}$}\end{center}
+}
+\end{frame}
+
+\section{Definizioni e teoremi di Algebra Lineare}
+
+\begin{frame}[allowframebreaks]{Definizioni}
+
+\begin{definition}[soluzione]
+   Una soluzione del sistema di equazioni lineari \`e una
+   $n$-upla $(v_1, v_2, \ldots, v_n)$ di numeri che sostituiti
+   ordinatamente alle incognite $(x_1, x_2, \ldots, x_n)$
+   soddisfano  tutte le equazioni del sistema.
+\end{definition}
+
+\begin{definition}[combinazione lineare]
+  Una combinazione lineare dei vettori $v_1, v_2, \ldots, v_k \in V$
+  \`e un vettore $w = \alpha_1 v_1+ \alpha_2 v_2 +\ldots+ \alpha_k v_k\quad\alpha_j \in \mathbb{R} \text{ per } j = 1, 2, \ldots, k$
+\end{definition}
+
+\framebreak
+
+\begin{definition}[dipendenza lineare]
+  Un insieme di vettori $v_1, v_2, \cdots, v_k \in V$ si  dicono
+  linearmente dipendenti se esistono 
+  $\alpha_1\in \mathbb{R}, \alpha_2\in \mathbb{R},\ldots, \alpha_k \in \mathbb{R}$
+  non tutti nulli tali che
+  $\alpha_1 v_1+ \alpha_2 v_2 +\cdots+ \alpha_k v_k = 0 $
+\end{definition}
+
+\begin{definition}[lineare indipendenza]
+  Un insieme di vettori $v_1, v_2, \cdots, v_k$ si dicono linearmente indipendenti se 
+  $\alpha_1 v_1+ \alpha_2 v_2 +\cdots+ \alpha_k v_k = 0$ implica
+  $\alpha_1 = \alpha_2 = \cdots = \alpha_k = 0$
+\end{definition}
+
+\begin{definition}[base]
+  Una base per un insieme di vettori \`e un sottoinsieme di vettori linearmente indipendenti tali che ogni altro vettore dell'insieme può essere espresso come una loro combinazione lineare.
+\end{definition}
+
+\begin{definition}[rango]
+  Il rango di un insieme di vettori \`e il più grande numero di vettori linearmente indipendenti che si possono scegliere nell'insieme.
+
+  Il rango di riga di una matrice quadrata \`e il rango dell'insieme dei suoi vettori riga. Il rango di colonna di una matrice quadrata \`e il rango dell'insieme dei suoi vettori colonna. 
+
+  Il rango di riga e il rango di colonna di una matrice sono uguali tra loro e sono uguali al numero di pivot (calcolabili con una qualsiasi eliminazione di Gauss) 
+\end{definition}
+
+\begin{definition}[singolarit\`a]
+  Una matrice \`e detta non singolare se il rango \`e uguale sia al suo numero di righe che al suo numero di colonne, cio\`e possiede tutti i pivot. E detta singolare altrimenti.
+\end{definition}
+
+\begin{definition}[sottomatrice]
+   Una sottomatrice di una matrice
+   $\matr{A} \in M_{m,n}(\mathbb{R})$
+   \`e una matrice
+   $\matr{A} \in M_{r,s}(\mathbb{R})$
+   ottenuta da $\matr{A}$
+   rimuovendo $m - r$ righe e $n - s$ colonne
+\end{definition}
+   
+\begin{definition}[minore]
+  Un minore \`e una sottomatrice quadrata, cio\`e con $r = s$.
+  Il numero $r$ \`e definito ordine del minore
+\end{definition}
+   
+\begin{definition}[minore complementare]  
+  Un minore complementare  di una matrice
+  $\matr{A} \in M_{m,n}(\mathbb{R})$  \`e un suo minore ottenuto togliendo
+  una sola riga e una sola colonna.
+  Il minore ottenuto togliendo l'$i$-esima riga e la $j$-esima colonna si indica con
+  $A(i,j)$
+\end{definition}
+   
+\begin{definition}[rango di una matrice rettangolare]
+  Se una matrice non \`e quadrata il rango \`e il
+  massimo ordine di un minore non singolare
+\end{definition}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Teoremi}
+\begin{theorem}[Rouché-Capelli]
+ dato un sistema di equazioni lineari
+ $\matr{A}\vec{x} = \vec{b}$, con
+ $\matr{A} \in M_{m,n}(\mathbb{R}),\ \vec{x} \in \mathbb{R}^n$ e $\vec{b} \in \mathbb{R}^m$
+  esistono soluzioni per il sistema se
+  e solo se il rango della matrice completa $[\matr{A}|\vec{b}]$
+  è uguale al rango della matrice $\matr{A}$;
+  se esistono soluzioni e il rango di $\matr{A}$
+  è uguale a $n$, allora la soluzione è unica;
+  se esistono soluzioni e il rango di $\matr{A}$
+  è minore di $n$, esistono infinite soluzioni
+\end{theorem}
+il teorema afferma che le soluzioni formano
+  un sottospazio affine di dimensione $n - \operatorname{rango}\matr{A}$
+\framebreak
+
+\begin{theorem}[Regola di Cramer]
+    dato un sistema di equazioni lineari
+    $\matr{A}\vec{x} = \vec{b}$, con
+    $\matr{A} \in M_{n,n}(\mathbb{R})$ e invertibile,
+    $\vec{x} \in \mathbb{R}^n$  e $\vec{b} \in \mathbb{R}^n$
+    è possibile calcolare gli elementi del vettore soluzione come
+
+    \[x_i=\frac{\det(\matr{A}(i))}{\det(\matr{A}	)}\]
+ 
+    dove $\matr{A}(i)$ è la matrice formata sostituendo la $i$-esima colonna di
+    $\matr{A}$ con il vettore $\vec{b}$.
+
+\end{theorem}
+
+\framebreak
+
+\begin{exampleblock}{Sistemi di equazioni rettangolari $m < n$}
+    Dato un sistema di $m$ equazioni in $n$ incognite ($m$ < $n$)
+    
+  sia $\operatorname{rango}\matr{A} = \operatorname{rango}[\matr{A}|\vec{b}]$;
+  
+  sia $\operatorname{rango}\matr{A} = m$ (se non è uguale si eliminino le equazioni linearmente dipendenti);
+  
+      allora il sistema ha infinite soluzioni in quanto $n - m$ variabili sono arbitrarie.
+ \end{exampleblock}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,12 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows,shapes,matrix}
+
+\begin{document}
+\begin{tikzpicture}
+\draw  (0,1) node (p) {Pivot in $a_{hk}$};
+\draw (7,0) node (in) {$x_k$ entra in base};
+\draw (7,2 )node (out) {$x_{s_h}$ esce dalla base};
+\draw[->,color=blue,thick=5pt] (p) -- (out.west);
+\draw[->,color=blue,thick=5pt] (p) -- (in.west);
+\end{tikzpicture}
+\end{document}

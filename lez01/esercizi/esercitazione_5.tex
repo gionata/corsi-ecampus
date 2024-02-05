@@ -1,0 +1,86 @@
+\documentclass[italian,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[italian]{babel}
+\usepackage[a4paper, margin=2.5cm,noheadfoot]{geometry}
+\usepackage{enumerate}
+\begin{document}
+
+\pagestyle{empty}
+
+\section*{Esercitazione n. 5 - Ottimizzazione vincolata}
+
+Determinare i punti di ottimo e calcolare il valore assunto dalla funzione in tali punti.
+
+\begin{enumerate}[1)]
+	\item % 1
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x_{1},x_{2}) & =\frac{1}{2} (x_{1}^{2} + x_{2}^{2})\\
+					h(x) & =x_{1}+x_{2}-1=0\\
+					g(x) & =(x_{1}-1)^2 + x_{2}^2 - \frac{1}{4} \leq 0\end{align*}
+			\end{minipage}
+			
+		\item % 2
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =(x_{1}-2)^{2}+(x_{2}-1)^{2}\\
+					& \phantom{=}x_{1}-2x_{2}^2+1=0\\
+					& \phantom{=}\frac{1}{4}x_{1}^2+x_{2}^2-1\leq 0\end{align*}
+			\end{minipage}
+		
+		\item % 3
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =(x_{1}-1)^{2}+(x_{2}-2)^{2}\\
+					& \phantom{=}x_{1}^2-x_{2} \leq 0\\
+					& \phantom{=}x_{1}+x_{2}-2\leq 0\end{align*}
+			\end{minipage}
+			
+		\item % 4
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =(x_{1}-2)^{2}+x_{2}^{2}\\
+					& \phantom{=}-x_{1}+x_{2}-2 \leq 0\\
+					& \phantom{=}x_{1}^2-x_{2}+1 \leq 0\\
+					& \phantom{=}-x_1 \leq 0 \end{align*}
+			\end{minipage}
+			
+		\item % 5
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =0.04(x_{1}-95)^{2}+0.02(x_{2}-125)^{2}\\
+					& \phantom{=}0.2 x_{1} + 0.2 x_{2} \leq 20\\
+					& \phantom{=}0.8 x_{1} + 0.3 x_{2} \leq 60\\
+					& \phantom{=}-x_1 \leq 0\\
+					& \phantom{=}-x_2 \leq 0\end{align*}
+		\end{minipage}
+		
+		
+		\item % 6
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & = 2 x_{1} + x_{1} x_{2} + 3 x_{2}\\
+					& \phantom{=}x_{1}^2+x_{2} = 3\end{align*}
+		\end{minipage}
+		
+		\item % 7
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =x_{1}+x_{2}+x_{3}\\
+					& \phantom{ =}x_{1}^2+x_{2}=3\\
+					& \phantom{ =}x_{1}+3x_{2}+2x_{3} = 7\end{align*}
+			\end{minipage}
+			
+		\item % 8
+		\begin{minipage}[c]{0.8\textwidth}%
+			\begin{align*}
+				\min f(x) & =-4-3(1-x_{1})^{2}-(1-x_{2})^{2}\\
+					& \phantom{=}3x_{1}+x_{2}=5\end{align*}
+			\end{minipage}
+\end{enumerate}
+
+\end{document}

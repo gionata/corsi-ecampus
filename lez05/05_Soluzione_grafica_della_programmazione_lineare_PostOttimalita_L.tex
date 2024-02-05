@@ -1,0 +1,348 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Analisi post-ottimale}
+
+\begin{frame}{Analisi di post-ottimalit\`a}
+  \begin{itemize}
+  \item La determinazione di una soluzione ottima di un problema di programmazione
+  lineare non completa l'analisi da compiere sul modello matematico
+  (e sul problema in esame)
+  %in quanto dalla soluzione del modello possono essere
+  %estratte informazioni aggiuntive
+
+  \item L'analisi di post-ottimalit\`a (detta anche di sensitività) ha lo scopo di
+  verificare entro quali limiti la soluzione ottima trovata resta invariata se
+  vengono modificati alcuni parametri del problema
+
+  \item Quando un problema di P.L. presenta due variabili decisionali è possibile
+  impiegare un metodo di analisi di post-ottimalità basato su considerazioni
+  geometriche e rappresentabile graficamente sul piano cartesiano $Ox_1x_2$
+  \end{itemize}
+\end{frame}
+
+\section{Programma lineare di esempio}
+
+\begin{frame}[allowframebreaks]{Problema di esempio}
+\fontsize{7}{8.4}{
+\begin{block}{Mix ottimo di produzione}
+Un'azienda di produzione vuole determinare il tasso di produzione mensile di due prodotti
+in modo da massimizzare il profitto netto totale,  sapendo che:
+ \begin{itemize}
+  \item per produrre un quintale di prodotto 1 occorrono 40 quintali di materia prima e 8 ore di lavoro;
+  \item per produrre un quintale di prodotto 2 occorrono 20 quintali di materia prima e 2 ore di lavoro;
+  \item il commerciale ha stabilito che la produzione totale mensile non pu\`o superare 100 quintali;
+  \item la disponibilità mensile di materia prima \`e di 2200 quintali e quella di lavoro di 320 ore;
+  \item il profitto netto per la vendita dei prodotti 1 e 2 sia rispettivamente 120 e 40 euro.
+ \end{itemize}
+\end{block}
+}
+
+\framebreak
+
+\modelbox{Modello}{%
+\small{%
+$$\begin{array}{crrrlcr}
+\max z=& 120 x_1 &+& 40 x_2    &           & (0) & [\text{profitto}]\\
+{\rm s.t.} & 40 x_1 &+& 20 x_2 & \leq 2200 & (1) & [\text{materie prime}]\\
+           &  8 x_1 &+&  2 x_2 & \leq 320  & (2) & [\text{lavoro}]\\
+           &    x_1 &+&    x_2 & \leq 100  & (3) & [\text{mercato}]\\
+           \multicolumn{5}{c}{x_1 \geq 0,\ x_2 \geq 0} & & [\text{non negativit\`a}]
+\end{array}$$}}
+
+
+\end{frame}
+
+\begin{frame}{Soluzione ottima}
+\centering
+\includegraphics{img/mix_ottimo_sol}
+\end{frame}
+
+\section{Analisi delle risorse}
+
+\begin{frame}{Variazioni del valore dei parametri}
+\begin{itemize}
+\item 
+  Nel problema di produzione \`e interessante conoscere come
+  sono utilizzate le risorse disponibili,
+  in particolare capire se:
+  \begin{itemize}
+  \item 
+  si possono avere vantaggi da un aumento della loro disponibilit\`a,
+  \item 
+  si può diminuire la loro disponibilit\`a senza modificare il valore ottimo dell'obiettivo.
+  \end{itemize}
+  
+  \item \`E, inoltre, interessante capire come cambierebbe la soluzione
+  (le quantità ottime di prodotti da realizzare)
+  se variassero i prezzi di vendita.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Analisi delle risorse}
+\begin{itemize}
+\item 
+  Consideriamo due tipi di variazione rispetto alla disponibilità delle risorse:
+  \begin{itemize}
+  \item 
+  come aumentare le risorse per migliorare la soluzione ottima
+  \item 
+  come ridurre le risorse disponibili lasciando invariata la soluzione ottima
+  \end{itemize}
+  
+  \item  Notiamo che i vincoli del problema hanno tutti la seguente forma
+  \begin{itemize}
+  \item quantità di risorsa usata $\leq$ disponibilit\`a di risorsa
+  \end{itemize}
+  
+  \item I vincoli $(1)$ e $(2)$ sono soddisfatti all'uguaglianza dalla soluzione ottima,
+  rappresentata dal punto $B$ di coordinate $(25,60)$,
+
+  \item quindi il livello ottimo di produzione per i due prodotti \`e tale da utilizzare
+  tutte le materie prime e tutta la disponibilit\`a di lavoro.
+
+  \item I vincoli $(1)$ e $(2)$ si dicono saturi, e le materie prime e la capacità produttiva,
+  poich\'e sono utilizzate completamente, si dicono risorse scarse.
+  
+  \item \`E possibile aumentare la disponibilit\`a di una risorsa scarsa per migliorare
+  la soluzione ottima.
+
+  \item \`E possibile diminuire la disponibilità di una risorsa abbondante senza variare
+  la soluzione ottima.
+\end{itemize}
+\end{frame}
+
+\section{Variazione dei termini noti}
+
+\begin{frame}{Analisi delle risorse -- variazioni di $b_1$}
+\mbox{\parbox[c][0.8\textheight]{6.8cm}{
+ \includegraphics{img/mix_ottimo_b1_2400}}
+\parbox[c][0.8\textheight]{4cm}{
+   \tiny{%
+    Supponiamo di voler aumentare la disponibilità della sola risorsa
+    \emph{scarsa} $b_1$ (materia prima) e verifichiamo qual è il
+    massimo incremento che ha senso introdurre.
+
+  \vspace*{1em}
+  
+  Aumentando la risorsa $b_1$ il vincolo (1), saturo nel punto di ottimo,
+  trasla parallelamente a se stesso verso  destra e di conseguenza variano la regione
+  ammissibile e il punto di ottimo
+  
+  \vspace*{1em}
+
+  In figura è illustrata la variazione della risorsa da 
+  $b_1 = 2200$ a  $b_1^\prime = 2400$
+  
+  \vspace*{1em}
+  
+  Oltre $G = (20, 80)$, intersezione di $(2)$ e $(3)$, non ha più senso aumentare $b_1$
+  Se si aumentasse ulteriormente la risorsa  b1 non si modificherebbe la regione di 
+  ammissibilità.
+
+  Ha senso incrementare  $b_1$ fino a quando tale risorsa è usata completamente,
+  in questo caso fino al valore $2400$.
+  }}}
+\end{frame}
+
+\begin{frame}{Analisi delle risorse -- variazioni di $b_2$}
+\mbox{\parbox[c][0.8\textheight]{6.8cm}{
+ \includegraphics{img/mix_ottimo_b2_440}}
+\parbox[c][0.8\textheight]{4cm}{
+   \tiny{%
+   Si può sviluppare un discorso analogo per variazioni della risorsa scarsa
+   $b_2$ (lasciando invariate le altre risorse)
+
+  \vspace*{1em}
+  
+  Aumentando la risorsa $b_2$ il vincolo (2), saturo nel punto di ottimo,
+  trasla parallelamente a se stesso verso destra e di conseguenza variano la regione
+  ammissibile e il punto di ottimo
+  
+  \vspace*{1em}
+
+  In figura è illustrata la variazione della risorsa da 
+  $b_2 = 320$ a  $b_2^\prime = 440$
+  
+  \vspace*{1em}
+  
+ La nuova soluzione ottima vale 6600 in corrispondenza del punto $E = (55, 0)$.
+ 
+ Aumentando oltre 440 la risorsa $b_2$ questa risorsa non sarebbe più scarsa
+ nella soluzione ottima e non cambierebbe il valore dell’ottimo.
+ }}}
+\end{frame}
+
+\begin{frame}{Analisi delle risorse -- variazioni di $b_3$}
+\mbox{\parbox[c][0.8\textheight]{6.8cm}{
+ \includegraphics{img/mix_ottimo_b3_85}}
+\parbox[c][0.8\textheight]{4cm}{
+   \tiny{%
+    La risorsa $b_3$ è \emph{abbondante} (non scarsa):
+    ci sono delle unità di risorsa in eccedenza che possono essere diminuite,
+    entro un certo limite, senza alterare la soluzione ottima
+  \vspace*{1em}
+  
+  All'ottimo si ha un'eccedenza di 15 unità di risorsa $b_3$:
+  $x_1 + x_2$ all'ottimo $(25, 60)$ vale 85.
+
+  \vspace*{1em}
+
+   Il vincolo (3), non saturo, può essere traslato parallelamente a se stesso
+   verso  sinistra senza che il punto di ottimo esca dalla regione di
+   ammissibilità.
+
+  \vspace*{1em}
+   
+  In figura è illustrata la variazione della risorsa da  $b_3 = 100$
+  a  $b_3^\prime = 85$
+  
+  \vspace*{1em}
+
+  La soluzione ottima non varia.
+  }}}
+\end{frame}
+
+\section{Valore di una risorsa}
+
+\begin{frame}{Analisi delle risorse}
+ Dopo aver verificato la convenienza di una possibile maggiore
+ disponibilità delle risorse $b_1$ e $b_2$, è interessante
+ determinare quale sia tra le due la risorsa che di più convenga
+ aumentare.
+
+ \vspace*{1em}
+ 
+ Nell'esempio, lìazienda potrebbe avere una limitata disponibilità
+ finanziaria che vorrebbe far fruttare al meglio, acquisendo
+ un'ulteriore quantità di una delle risorse (materia prima o lavoro)
+ in modo da incrementare maggiormente i propri profitti.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Valore di una risorsa}
+
+Si può calcolare il valore di una unità di risorsa $y_i$:
+
+\modelbox{Valore della risorsa $i$-esima}{\large{\[y_i=\frac{\partial z}{\partial b_i}\]}}
+
+\framebreak
+
+\small{
+Se la variazione della risorsa $i$-esima è sufficientemente piccola
+da far si che il punto di ottimo sia intersezione degli stessi
+vincoli saturi, allora:}
+
+\modelbox{Valore della risorsa $i$-esima}{\large{\[y_i=\frac{\Delta z}{\Delta b_i}\]}}
+
+\small{
+La quantità $y_i$ indica di quanto aumenta l'obiettivo in corrispondenza
+dell’acquisizione di un'ulteriore unità di risorsa}
+
+\framebreak
+
+\footnotesize{
+Consideriamo le massime variazioni delle risorse e del punto
+di ottimo affinché la soluzione sia intersezione degli stessi
+vincoli (saturi)
+
+% Il valore di una unità di risorsa $y_1$ è:
+\[
+y_1=\frac{\Delta z}{\Delta b_1}
+   =\frac{5600-5400}{2400-2200}
+   =\frac{200}{200}
+   =1 [\text{\euro / q}]
+\]
+
+% Il valore di una unità di risorsa $y_2$ è:
+\[
+y_2=\frac{\Delta z}{\Delta b_2}
+   =\frac{6600-5400}{440-320}
+   =\frac{1200}{120}
+   =10 [\text{h / q}]
+\]
+
+% Il valore di una unità di risorsa $y_3$ è:
+\[
+y_3=\frac{\Delta z}{\Delta b_3}
+   =\frac{5400-5400}{85-100}
+   =-\frac{0}{15}
+   =0 [\text{\euro / dim. mercato}]
+\]}
+\end{frame}
+
+\section{Variazione dei coefficienti della funzione obiettivo}
+
+\begin{frame}[allowframebreaks]{Variazione dei coefficienti della f.o.}
+ Analizziamo ora entro quali limiti di tolleranza possono variare
+ i prezzi di vendita dei due prodotti senza alterare la soluzione
+ ottima (la produzione associata al punto $B$)
+
+ Variando i coefficienti $c_1$ e $c_2$ cambia la pendenza della
+ funzione obiettivo
+
+ Le curve di livello della funzione obiettivo sono il fascio di
+ rette $c_1 x_1 + c_2 x_2 = k$
+
+ Nel piano cartesiano $Ox_1x_2$ sono rette con coefficiente angolare
+ $-\frac{c_1}{c_2}$ e intercetta $\frac{k}{c_2}$
+
+\framebreak
+
+La pendenza della funzione obiettivo è data da $-\frac{c_1}{c_2}$.
+Affinché la soluzione ottima rimanga in $B$ tale valore deve essere
+compreso fra quelli delle pendenze dei vincoli attivi:
+
+La pendenza del vincolo $(1)$ è $-\frac{a_{11}}{a_{12}}=-\frac{40}{20}=-2$
+e quella di $(2)$ è $-\frac{a_{21}}{a_{22}}=-\frac{8}{2}=-4$
+
+\[\implies -4\leq-\frac{c_1}{c_2}\leq -2\]
+
+\framebreak
+
+Se si lascia invariato $c_2$ e si fa variare $c_1$,
+il punto $B$ rimane soluzione ottima fino a che la
+pendenza della funzione obiettivo diventa uguale a
+quella dei vincoli (1) e (2)
+
+\[
+\begin{array}{rlrlrlrlrlr}
+ -\frac{c_1}{c_2}&=&-\frac{c_1}{40}&=&-2&\text{ pendenza di }(1)&\implies&c_1=80\\	
+ -\frac{c_1}{c_2}&=&-\frac{c_1}{40}&=&-4&\text{ pendenza di }(2)&\implies&c_1=160\\
+\end{array}
+\]
+
+\[\implies  80 \leq c_1 \leq 160 \]
+
+\framebreak
+
+Se si lascia invariato $c_1$ e si fa variare $c_2$:
+
+\[
+\begin{array}{rlrlrlrlrlr}
+ -\frac{c_1}{c_2}&=&-\frac{120}{c_2}&=&-2&\text{ pendenza di }(1)&\implies&c_2=60\\	
+ -\frac{c_1}{c_2}&=&-\frac{120}{c_2}&=&-4&\text{ pendenza di }(2)&\implies&c_2=30\\
+\end{array}
+\]
+\[\implies  30 \leq c_1 \leq 60 \]
+
+\framebreak
+
+\mbox{\parbox[c][0.8\textheight]{6.8cm}{
+ \includegraphics{img/mix_ottimo_var_coeff}}
+\parbox[c][0.8\textheight]{4cm}{
+   \tiny{%
+ Il punto di ottimo rimane $B$ se:
+
+ $80 \leq c_1 \leq 160,\text{ con }c_2 = 40$
+ 
+ $30 \leq c_2 \leq 60,\text{ con }c_1 = 120$
+}}}
+\end{frame}
+
+
+\end{document}

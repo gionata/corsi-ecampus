@@ -1,0 +1,14 @@
+MODEL: TITLE: Problema della dieta ottima;
+SETS:  Nutrienti: req_nutrizionale;
+       Alimenti: costo, x; ! quantita dell alimento;
+       ApportoNutrienti(Nutrienti, Alimenti): apporto;
+ENDSETS
+[COSTO_DIETA] MIN = @SUM(Alimenti: costo * x);
+@FOR(Nutrienti(i):
+  @SUM(Alimenti(j): apporto(i, j) * x(j)) >= req_nutrizionale(i) );
+DATA:   Nutrienti = @FILE('dieta_dat.ldt');
+        Alimenti = @FILE('dieta_dat.ldt');
+        costo = @FILE('dieta_dat.ldt');
+        req_nutrizionale = @FILE('dieta_dat.ldt');
+        apporto = @FILE('dieta_dat.ldt');
+ENDDATA        END

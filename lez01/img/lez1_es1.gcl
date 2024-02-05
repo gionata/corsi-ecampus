@@ -1,0 +1,60 @@
+ang_unit 10 
+ang_picture 0 0 120 90
+ang_origin 60 45
+linethickness 0.2
+ang_drawsystem_p 3 2 3 2 2
+
+linethickness 0.2
+
+ang_point O 0 0
+
+expression yA { 1.8*(1-exp(3/10)*sin(pow(3,2))) }
+ang_point a -3 0
+ang_point AA -3 yA
+
+expression yB { 1.8*(1-exp(-3/10)*sin(pow(3,2))) }
+ang_point b 3 0
+ang_point BB 3 yB
+
+expression yX1 { 1.8*(1-exp(2/10)*sin(pow(2,2))) }
+ang_point x_1 -2 0
+ang_point XX1 -2 yX1
+
+expression yX2 { 1.8*(1-exp(1.25/10)*sin(pow(1.25,2))) }
+ang_point x_2 -1.25 0
+ang_point XX2 -1.25 yX2
+
+expression yX3 { 1.8*(1-exp(-1/10)*sin(pow(1,2))) }
+ang_point x_3 1 0
+ang_point XX3 1 yX3
+
+expression yX4 { 1.8*(1-exp(-2/10)*sin(pow(2,2))) }
+ang_point x_4 2 0
+ang_point XX4 2 yX4
+
+
+drawsegment a AA
+drawsegment b BB
+
+drawsegment x_1 XX1
+drawsegment x_2 XX2
+drawsegment x_3 XX3
+drawsegment x_4 XX4
+
+cmark_b a
+cmark_b b
+
+cmark_b x_1
+cmark_t x_2
+cmark_b x_3
+cmark_b x_4
+    
+color 255 0 0 
+linethickness 0.4
+ang_draw_parametric_curve x {-3;x<=3;x+0.05}{x;1.8*(1-exp(-x/10)*sin(pow(x,2)))}
+
+
+
+% animation_frames 50 5
+
+

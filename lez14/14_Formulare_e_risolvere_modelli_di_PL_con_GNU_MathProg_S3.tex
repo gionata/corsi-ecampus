@@ -1,0 +1,44 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+\begin{frame}%[allowframebreaks]
+{Esercizi}
+
+\begin{enumerate}
+\item
+  Si determini un modello di programmazione lineare per
+  il seguente problema e lo si implementi in GNU MathProg.
+\end{enumerate}
+
+\begin{block}{}
+Un'azienda produce mangimi per animali a partire da quattro prodotti grezzi (orzo, avena, sesamo, arachidi). Le proteine e i grassi contenuti per unità nei materiali grezzi, insieme al costo unitario, sono riportati in tabella.%~\ref{tab:istanza}
+
+Si vuole determinare la composizione di una mistura alimentare di minimo costo soddisfacente le esigenze nutritive. 
+\end{block}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+{Esercizi}
+
+\begin{table}
+\begin{tabular}{c|cccc|c}\toprule
+&\bf Orzo&\bf Avena&\bf Sesamo&\bf Arachidi&\parbox{1.5cm}{{\bf \begin{center}Requisiti nutritivi\end{center}}}\\\midrule
+\bf Proteine & 12& 12 & 40 & 60 & 20 \\
+\bf Grassi   &  2&  6 & 12 &  2 &  5 \\\midrule
+\bf Costi    & 24& 30 & 40 & 50 &    \\\bottomrule
+\end{tabular}
+\caption{Composizione degli alimenti, costo e requisiti nutritivi}
+\label{tab:istanza}
+\end{table}
+
+% Caricare la soluzione sulla piattaforma di e-learning.
+\end{frame}
+
+\end{document}

@@ -1,0 +1,10 @@
+max	# direction: max or min
+3	# m: numero di righe
+5	# n: numero di colonne
+0	# d: costo fisso 
+120 40 0 0 0	# c: costi ridotti
+2200 320 100	# b: termini noti
+80 40 1 0 0	# A_1: prima riga della matrice dei coefficienti tecnologici
+ 8  2 0 1 0	# A_2: prima riga della matrice dei coefficienti tecnologici
+ 1  1 0 0 1	# A_3: prima riga della matrice dei coefficienti tecnologici
+3 4 5		# B: indici delle variabili di base

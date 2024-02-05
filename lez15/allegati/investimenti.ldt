@@ -1,0 +1,11 @@
+! Investimenti;
+1 2~
+! proporzione;
+ 1 2
+ 0 1~
+! ritorno;
+0.15 0.25~
+! minimo;
+25  0~
+! budget;
+100~

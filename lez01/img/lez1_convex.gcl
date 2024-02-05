@@ -1,0 +1,57 @@
+ang_unit 10 
+ang_picture 0 0 120 90
+ang_origin 40 20
+% ang_drawsystem_a
+ang_drawsystem_p 3 2 3 2 2
+
+linethickness 0.2
+
+ang_point O 0 0
+
+ang_point x_1 1 0
+ang_point x_b 4 0
+ang_point x_2 7 0
+
+ang_point XX1 1 4
+ang_point XXb 4 3
+ang_point XXe 4 2.385
+ang_point XX2 7 2
+
+ang_point y_1 0 4
+ang_point y_b 0 3
+ang_point y_e 0 2.385
+ang_point y_2 0 2
+
+
+drawdashsegment x_1 XX1
+drawdashsegment x_b XXb
+drawdashsegment x_2 XX2
+
+drawdashsegment y_1 XX1
+drawdashsegment y_b XXb
+drawdashsegment y_e XXe
+drawdashsegment y_2 XX2
+
+color 0 0 0
+
+mark_b x_1
+printat_b x_b {\beta x_1 + (1 - \beta) x_2}
+mark_b x_2
+
+printat_l y_1 {f(x_1)}
+printat_l y_b {\beta f( x_1) + (1 - \beta) f(x_2)}
+printat_l y_e {f(\beta x_1 + (1 - \beta) x_2)}
+printat_l y_2 {f(x_2)}
+
+cmark XX1
+cmark XXb
+cmark XXe
+cmark XX2
+
+linethickness 0.4
+color 255 0 0
+ang_point c   9 4
+drawellipsearc c XX1 XX2 45
+
+color 0 0 255
+drawsegment XX1 XX2

@@ -1,0 +1,279 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Forma standard della Programmazione Lineare}
+
+\begin{frame}[allowframebreaks]{Forma standard della PL}
+
+{\scriptsize Ogni problema di Programmazione Lineare pu\`o essere espresso in una forma, detta \alert{forma standard}:
+
+\vspace*{0.4cm}
+
+\modelbox{Forma standard della PL} %
+{\[
+\begin{array}{crrrcccrcr}
+\min z=& c_1 x_1 &+& c_2 x_2    &+&\cdots&+& c_n x_n &+& d\\
+{\rm s.t.} & a_{11} x_1 &+& a_{12} x_2 &+&\cdots&+& a_{1n} x_n & = & b_1\\
+                & a_{21} x_1 &+& a_{22} x_2 &+&\cdots&+& a_{2n} x_n & = & b_2\\
+           &          & &           &  &\ddots&   &                   \\
+           &  a_{m1} x_1 &+&  a_{m2} x_2 &+&\cdots&+& a_{mn} x_n & = & b_m\\
+           \multicolumn{10}{c}{x_1 \geq 0,\cdots\ x_n \geq 0} 
+\end{array}
+\]}
+}
+
+\framebreak
+
+\begin{itemize}
+\item Il problema \`e di minimizzazione 
+\item I vincoli sono tutti di uguaglianza 
+\item Le variabili sono tutte non negative 
+\end{itemize}
+
+
+\modelbox{Forma standard della PL} %
+{\[
+\begin{array}{crrr}
+\min z=& \vec{c}^T \vec{x} &+& d \\
+{\rm s.t.} & \matr{A} \vec{x} & =& \vec{b} \\
+&\multicolumn{3}{c}{\vec{x} \geq \vec{0}} 
+\end{array}
+\]}
+
+\framebreak
+
+\begin{itemize}
+\item    $\vec{c}$ \`e un vettore di dimensione $n$ di parametri reali noti;
+\item     $\vec{x}$ \`e un vettore di dimensione $n$ di variabili reali non negative (incognite);
+\item     $\vec{b}$ \`e un vettore di dimensione $m$ dei parametri reali noti;
+\item     $\matr{A}$ una matrice di dimensione $m$x$n$, con parametri reali noti e $m < n$ ($\infty$ soluzioni);
+\item     $d$ \`e un parametro reale noto.
+\end{itemize}
+
+\framebreak
+
+\begin{description}
+\item [$c_j$] coefficienti dei costi variabili $\quad j=1,2,\ldots,n$
+
+\item [$b_i$] coefficienti delle risorse o richieste $\quad  i=1,2,\ldots,m$
+
+\item [$d$] costante di costo fisso
+
+\item [$z$] funzione obiettivo che definisce il costo totale se il problema di partenza \`e di minimo, il profitto totale se il problema di partenza \`e di massimo
+
+\item [$a_{ij}$] coefficienti tecnologici $\quad i=1,2,\ldots,m,\, j=1,2,\ldots,n$
+
+\item [$x_{j}$] variabili decisionali $\quad j=1,2,\ldots,n$
+\end{description}
+
+\framebreak
+
+\begin{description}
+\item [Problema di minimo]
+            un problema di P.L. in forma standard \`e espresso in forma di minimo
+
+\item [Vincoli di eguaglianza]
+		le equazioni dei vincoli devono essere espresse mediante relazioni di uguaglianza
+
+\item [Vincoli di non negativit\`a delle variabili]
+	le soluzioni ammissibili devono avere tutte le variabili non negative
+
+\framebreak 
+
+\item [Sistema consistente e non ridondante]
+	\item  Si assume che il problema ammetta soluzioni. Tale condizioni sono verificate analiticamente se:
+		\begin{itemize}
+		\item                 $\rm rango ([A|b] ) = rango (A ) = m$, il che implica che esista almeno una soluzione e che il sistema non \`e ridondante, ossia non esistono vincoli combinazione lineare degli altri
+		\item $m < n$, il che implica che esistono infinite soluzioni alternative
+		\end{itemize}
+\end{description}
+\end{frame}
+
+\section{Soluzioni di base}
+
+\begin{frame}[allowframebreaks]{Soluzioni di base}
+
+Sia dato un sistema di equazioni lineari $\matr{A}\vec{x}  = \vec{b}$ con $\matr{A} \in M_{m,n}(\mathbb{R}),\ m < n,\ \vec{b} \in \mathbb{R}^m$ e
+$\rm rango ([A|b] ) = \rm rango (A ) = m$. Questo sistema verifica le ipotesi della forma standard della P.L.
+
+\begin{definition}[soluzione]
+  Ogni vettore $\vec{x}$ che soddisfa $\matr{A}\vec{x}  = \vec{b}$ si dice soluzione del sistema di equazioni lineari
+\end{definition}
+
+\begin{definition}[soluzione ammissibile]
+    Una soluzione $\vec{x}$ si dice ammissibile (realizzabile) se soddisfa
+    $\vec{x} \geq \vec{0}$
+\end{definition}
+
+\framebreak
+
+\begin{definition}[regione ammissibile]
+  L’insieme di tutte le soluzioni ammissibili si dice regione (insieme) ammissibile.
+\end{definition}
+
+\begin{definition}[soluzione di base]
+  Si riordino le colonne di $\matr{A}$ in modo da partizionare la matrice in modo che $\matr{A} = [\matr{B|N}]$ dove $\matr{B}$ \`e una matrice invertibile di ordine $m$ e $\matr{N} \in M_{m,n-m}(\mathbb{R})$. Il sistema $\matr{A}\vec{x}  = \vec{b}$ \`e equivalente al sistema $\matr{B} \vec{x}_B + \matr{N} \vec{x}_N  = \vec{b}$.
+
+ La soluzione $\vec{x}=\left[\begin{array}{c}\vec{x}_B\\ \vec{x}_N\end{array}\right]=\left[\begin{array}{c}\matr{B}^{-1}\vec{b}\\ \vec{0}\end{array}\right]$ si dice soluzione di base.
+ \end{definition}
+
+ \framebreak
+
+\begin{definition}[soluzione di base ammissibile]
+  Se una soluzione di base soddisfa $\vec{x}_B \geq \vec{0}$ \`e detta soluzione di base ammissibile.
+ \end{definition}
+
+\begin{definition}[matrice di base]
+     La matrice quadrata $\matr{B} $ \`e detta matrice di base.
+ \end{definition}
+
+\begin{definition}[matrice non di base]
+    La matrice $\matr{N}$ \`e detta matrice non di base.
+ \end{definition}
+
+\begin{definition}[variabili di base]
+   Il vettore $\vec{x}_B$ \`e il vettore delle variabili di base.
+\end{definition}
+\framebreak
+\begin{definition}[variabili non di base]
+    Il vettore $\vec{x}_N$ \`e il vettore delle variabili non di base.
+\end{definition}
+ 
+ \begin{definition}[soluzione di base degeneri]
+    Se una soluzione di base soddisfa $\vec{x}_B > 0$ allora $\vec{x}$ \`e detta soluzione non degenere. Se invece almeno una componente di $\vec{x}_B$ \`e nulla allora $\vec{x}$ \`e detta soluzione degenere. 
+   \end{definition}
+  
+%  \begin{definition}[soluzione di base ammissibile]
+{\small 
+    Il numero di soluzioni di base per un problema di P.L. in forma standard con $n$ variabili e
+   $m$ equazioni \`e al pi\`u uguale al numero di possibili scelte di $m$ su $n$ colonne, ossia il numero di
+  soluzioni di base \`e limitato superiormente da
+  \[ C(n ; m) = {n \choose m} = \frac{n!}{m! \cdot \left( n - m \right) !}\qquad n,k\in\mathbb{N}; 0\leq m \leq n \]
+}
+
+%   \end{definition}
+  
+\framebreak
+
+  \begin{block}{Soluzioni di base - riepilogo}
+  \begin{itemize}
+  \item Una soluzione del sistema di equazioni lineari $\matr{A}\vec{x}  = \vec{b}$ ottenuta annullando un insieme di variabili non di base si dice soluzione di base.
+  
+   \item Una soluzione di base $\vec{x}$ che soddisfa $\vec{x} \geq \vec{0}$ \` e detta soluzione di base ammissibile.
+  
+   \item Una soluzione di base $\vec{x}$ in cui almeno una delle componenti di base \`e nulla \`e detta soluzione degenere. 
+    
+  \end{itemize}
+   \end{block}
+  
+  \begin{definition}[soluzione ottima]
+    Una soluzione di base ammissibile $\vec{x}^\star$ si dice ottima se verifica $\vec{c}^T\vec{x}^\star \leq  \vec{c}^T \vec{x}$ per ogni $\vec{x}$ soluzione ammissibile.
+   \end{definition}
+  
+  \begin{definition}[soluzioni adiacenti]
+    Due soluzioni di base $\vec{x} = \left[\begin{array}{c}\vec{x}_B\\ \vec{x}_N\end{array}\right]$ e $\vec{x}^\prime = \left[\begin{array}{c}\vec{x}_B^\prime\\ \vec{x}_N^\prime\end{array}\right]$ si dicono adiacenti se i vettori $\vec{x}$ e $\vec{x}^\prime$ contengono 
+  le stesse variabili eccetto una.
+ \end{definition}
+\end{frame} 
+
+\section{Teoremi fondamentali della Programmazione Lineare}
+
+\begin{frame}[allowframebreaks]{Teoremi}
+
+\begin{theorem}[esistenza delle soluzioni di base]
+Se un sistema di equazioni lineari $\matrA\vecX  = \vecB$ ammette soluzioni ammissibili, ammette almeno una soluzione di base ammissibile
+\end{theorem}
+
+\begin{theorem}[equivalenza di punti estremi e soluzioni di base ammissibili]
+   Sia $S$ il politopo convesso costituito da tutti i vettori $\vecX \in \fieldR^n$  che soddisfano $\matrA\vecX = \vecB, \vecX \geq \vec{0}$.
+   
+   Un vettore $\vecX$ \`e un punto estremo (vertice) di $S$ se e solo se $\vecX$ \`e una soluzione di base ammissibile di 
+   $S := \{\matrA\vecX = \vecB, \vecX \geq \vec{0}\}$
+\end{theorem}
+
+\framebreak
+
+\begin{block}{Corollario}
+Se l’insieme convesso $S$ corrispondente al problema di P.L. in forma standard \`e non vuoto, allora esiste almeno un punto estremo
+\end{block}
+
+\begin{block}{Corollario}
+L’insieme convesso $S$ corrispondente al problema di P.L. in forma standard possiede al pi\`u un numero finito di punti estremi
+\end{block}
+
+\begin{block}{Corollario}
+ Se il politopo convesso $S$ corrispondente al problema di P.L. in forma standard \`e limitato allora $S$ \`e un poliedro convesso, ossia \`e costituito da punti che sono combinazione convessa di un numero finito di punti estremi
+\end{block}
+
+\framebreak
+
+\begin{theorem}[Punti estemi e soluzione ottima]
+  La funzione obiettivo lineare $z = \vecC^T\vecX + d$ con $\vecX$ appartenente al poliedro convesso $S$ raggiunge il minimo in corrispondenza di un punto estremo di $S$
+\end{theorem}
+
+\begin{theorem}[Soluzione ottima e soluzione di base]
+    Se esiste una soluzione ammissibile ottima finita per il problema di P.L. in forma standard allora esiste almeno una soluzione di base ammissibile ottima
+\end{theorem}
+
+\end{frame}
+
+\section{Forma canonica della Programmazione Lineare}
+
+\begin{frame}{Forma canonica}
+Un problema di P.L. in forma standard si dice in forma canonica rispetto ad una sequenza di base  $S = [s_1, s_2, \ldots, s_m]$ se:
+
+
+\[\begin{array}{ll}
+\alpha) & \matrA_S = [\matrA^{s_1} \matrA^{s_2} \cdots \matrA^{s_m}] = \matr{I}_m \\
+\beta) & \vecC_S = \vec{0} \\
+\gamma) & \vecB \geq \vec{0}
+\end{array}
+\begin{array}{ll}
+\Bigg\} \text{ f.c. debole}\\
+\phantom{x}
+\end{array}
+\left.\begin{array}{ll}
+\phantom{x}\\
+\phantom{x}\\
+\phantom{x}\\
+\end{array}
+\right\rbrace \text{ f.c. forte}
+\]
+
+Se valgono $\alpha$) e $\beta$) il problema \`e in forma canonica debole. Se vale anche $\gamma$) il sistema \`e in forma canonica forte
+\end{frame}
+
+
+\begin{frame}[allowframebreaks]{Forma canonica: perch\'e?}
+
+La condizione $\alpha$)  per cui $\matrA_S = [\matrA^{s_1} \matrA^{s_2} \cdots \matrA^{s_m}] = \matr{I}_m$  significa che il sistema $\matrA\vecX = \vecB$ \`e stato risolto rispetto alle variabili di base $x_{s_1}, x_{s_2}, \ldots, x_{s_m}$.
+  
+
+   La condizione $\beta$) per cui $\vecC_S = \vec{0}$ afferma che i coefficienti della funzione obiettivo $c_{s_1}, c_{s_2}, \ldots, c_{s_m}$ sono tutti nulli.
+
+  La condizione $\gamma$) stabilisce che i termini noti sono tutti non negativi, ovvero che la soluzione di base \`e ammissibile.
+
+\framebreak
+
+{\footnotesize In corrispondenza di una forma canonica forte esiste una soluzione di base ammissibile data da: }
+
+\small$$
+\begin{array}{ll}
+  x_{s_i} = b_i	& i=1,2,\ldots,m \\
+  x_j = 0			&  j : j \notin S \\
+  z = d				& \left( z= 
+  \cancelto{0 \text{ per } c_{s_i }=0}{\displaystyle \sum_{i=1}^{m} c_{s_i} x_{s_i}} +
+  \cancelto{0 \text{ per } x_j = 0}{\displaystyle \sum_{j:j\notin S} c_j x_j}
+  +d \hspace*{0.8cm}
+   \right)
+\end{array}
+$$
+{\footnotesize A partire dalla forma canonica, attraverso l'operazione di pivot, sar\`a sviluppato il metodo del simplesso tableau}
+\end{frame}
+
+\end{document}

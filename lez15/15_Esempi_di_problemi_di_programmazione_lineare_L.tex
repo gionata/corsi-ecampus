@@ -1,0 +1,165 @@
+\documentclass{beamer}
+\def\presentationtype{0}
+\input{../template/savoia_benincasa}
+
+\begin{document}
+
+\generatitolo
+
+\section{Il problema della dieta}
+
+\begin{frame}%[allowframebreaks]
+{Il problema della dieta -- esempio}
+
+\begin{block}{}
+Un'azienda produce mangimi per animali a partire da quattro prodotti grezzi (orzo, avena, sesamo, arachidi). Le proteine e i grassi contenuti per unità nei materiali grezzi, insieme al costo unitario, sono riportati in tabella.%~\ref{tab:istanza}
+
+Si vuole determinare la composizione di una mistura alimentare di minimo costo soddisfacente le esigenze nutritive. 
+\end{block}
+\end{frame}
+
+\begin{frame}%[allowframebreaks]
+{Il problema della dieta -- istanza di esempio}
+
+\begin{table}
+\begin{tabular}{c|cccc|c}\toprule
+&\bf Orzo&\bf Avena&\bf Sesamo&\bf Arachidi&\parbox{1.5cm}{{\bf \begin{center}Requisiti nutritivi\end{center}}}\\\midrule
+\bf Proteine & 12& 12 & 40 & 60 & 20 \\
+\bf Grassi   &  2&  6 & 12 &  2 &  5 \\\midrule
+\bf Costi    & 24& 30 & 40 & 50 &    \\\bottomrule
+\end{tabular}
+\caption{Composizione degli alimenti, costo e requisiti nutritivi}
+\label{tab:istanza}
+\end{table}
+
+\end{frame}
+
+\section{Costruzione del modello}
+
+\begin{frame}{Insiemi e parametri}
+	\begin{block}{Insiemi}
+		\begin{description}
+			\item[Nutrienti] insieme dei nutrienti
+			\item[Alimenti] insieme degli alimenti
+%			\item[Apporti] insieme $\rm Nutrienti \times \rm Alimenti$
+		\end{description}
+	\end{block}
+	\begin{block}{Parametri}
+		\begin{description}
+			\item[costo] costo di un unit\`a di un alimento
+			\item[req\_nutrizionale] quantit\`a minima di nutrienti necessaria
+			\item[apporto] quantit\`a di nutriente apportata da
+			 un'unit\`a di alimento
+		\end{description}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Variabili decisionali}
+Si deve determinare la composizione della mistura alimentare, per cui definiamo quattro variabili che rappresentano le unità di prodotto grezzo che saranno impiegate per la composizione del mangime.
+\begin{block}{Variabili}
+	\begin{description}
+		\item[$x_1$]		unità di orzo,
+		\item[$x_2$]		unità di avena,
+		\item[$x_3$]		unità di sesamo,
+		\item[$x_4$]		unità di arachidi.
+	\end{description}
+\end{block}
+
+  Le variabili sono continue e non negative.
+
+\end{frame}
+
+\begin{frame}{Funzione obiettivo}
+Si deve determinare la composizione della mistura che minimizzi il costo totale. Il costo, espresso in funzione delle variabili decisionale \`e:
+
+$$z=24 x_1 + 30 x_2 + 40 x_3 + 50 x_4$$
+
+In generale:
+
+$$  \sum_{j \in {\rm \textcolor{col_set}{Alimenti}}} {\rm \textcolor{col_par}{costo}}_j \, x_j$$
+
+Il costo è espresso da una funzione lineare: rispetta le ipotesi di proporzionalit\`a, additivit\`a e divisibilit\`a.
+\end{frame}
+
+\begin{frame}{Vincoli}
+
+Il mangime prodotto deve soddisfare le esigenze nutritive apportando un quantitativo minimo di nutrienti
+
+la quantit\`a di nutrienti non pu\`o essere inferiore al requisito nutrizionale corrispondente
+
+$$  \sum_{j \in {\rm \textcolor{col_set}{Alimenti}}} {\rm \textcolor{col_par}{apporto}}_{ij}  \, x_j \geq {\rm \textcolor{col_par}{req\_nutrizionale}} \quad i \in {\rm \textcolor{col_set}{Nutrienti}}$$
+
+Inoltre valgono i vincoli di non negativit\`a delle variabili
+\end{frame}
+
+\begin{frame}{Dieta ottima: modello basato su insiemi}
+\begin{columns}%{}
+
+\column{.49\textwidth}
+
+\begin{minipage}{\textwidth}
+\footnotesize{
+\begin{tabular}{lp{0.85\textwidth}}
+\color{col_set}$N$		&Insieme dei nutrienti\\
+\color{col_set}$A$		&Insieme degli alimenti\\
+~\\
+$\textcolor{col_par}{a}_{\textcolor{col_idx}{ij}}$	&Apporto del nutriente $i\in N$ da un alimento $j\in A$\\
+$\textcolor{col_par}{b}_{\textcolor{col_idx}{i}}$	&Requisito del nutriente $i\in N$\\
+$\textcolor{col_par}{c}_{\textcolor{col_idx}{j}}$	&Costo unitario alimento $j\in A$\\
+~\\
+$\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}$	&Quantit\`a di alimento \mbox{$j\in A$}\\
+~\\
+\end{tabular}
+\begin{tabular}{ll}
+\hspace*{0.5\textwidth}&\\
+\textcolor{col_set}{\rule{1 em}{1 em} Insiemi} &
+\textcolor{col_idx}{\rule{1 em}{1 em} Indici} \\
+\textcolor{col_par}{\rule{1 em}{1 em} Parametri} &
+\textcolor{col_var}{\rule{1 em}{1 em} Variabili}
+\end{tabular}
+}
+\end{minipage}
+
+\column{.51\textwidth}
+
+\def\funzioneobiettivo{{\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{A}}}
+	\textcolor{col_par}{c}_{\textcolor{col_idx}{j}}\,\textcolor{col_var}{x}_{\textcolor{col_idx}{j}}}
+\def\jinP{\textcolor{col_idx}{j} \in \textcolor{col_set}{A}}
+\def\iinR{\textcolor{col_idx}{i} \in \textcolor{col_set}{N}}
+
+
+\fbox{
+{\footnotesize
+$\begin{array}{rll}
+\min z= & \funzioneobiettivo\\% Funzione obiettivo
+	       & {\displaystyle \sum_{\textcolor{col_idx}{j} \in \textcolor{col_set}{A}}}
+	       \textcolor{col_par}{a}_{\textcolor{col_idx}{ij}} \,
+	       \textcolor{col_var}{x}_{\textcolor{col_idx}{j}} \geq \textcolor{col_par}{b}_{\textcolor{col_idx}{i}} & \iinR\\
+  & \textcolor{col_var}{x}_{\textcolor{col_idx}{j}}\geq 0 &  \jinP
+\end{array}$
+}
+}
+\end{columns}%{}
+\end{frame}
+
+\begin{frame}[fragile]{Modello in LINGO -- modello}
+\lstinputlisting{allegati/dieta_mod.lng}
+\end{frame}
+
+
+\begin{frame}[fragile]{Modello in LINGO -- dati}
+\lstinputlisting{allegati/dieta_dat.ldt}
+\end{frame}
+
+
+\begin{frame}{Modello in GNU MathProg -- modello}
+\lstinputlisting{allegati/dieta.mod}
+\end{frame}
+
+\begin{frame}[fragile]{Modello in GNU MathProg -- dati}
+\lstinputlisting{allegati/dieta.dat}
+\end{frame}
+
+\end{document}
+
+minoxidyl

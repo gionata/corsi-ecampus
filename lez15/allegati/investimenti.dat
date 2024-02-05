@@ -1,0 +1,9 @@
+data;
+set Investimenti := 1 2;
+param ritorno := 1 0.15 2 0.25;
+param minimo := 1 25 2 0;
+param proporzione :   1 2 :=
+	          1   1 2
+                  2   0 1;
+param budget := 100;
+end;

@@ -1,0 +1,68 @@
+\documentclass{beamer}
+\usepackage{booktabs}
+\def\presentationtype{3}
+\input{../template/savoia_benincasa}
+\setbeamersize{description width=10pt}
+
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+\begin{document}
+
+\generatitolo
+
+\begin{frame}{\esercizi}
+Risolvere su carta, evidenziando 
+\begin{itemize}
+ \item regione ammissibile
+ \item gradiente della funzione obiettivo
+ \item vertice/segmento ottimo
+ \item curva isoprofitto passante per l'ottimo
+\end{itemize}
+i seguenti problemi di PL:
+\end{frame}
+
+\begin{frame}[allowframebreaks]{\esercizi}
+%\begin{listaesercizi}
+\begin{enumerate}
+% massimo, ammissibile, illimitato, non esiste ottimo
+\item
+\[\begin{array}{crrrcr}
+\max z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} &  x_1 &-&  x_2 & \leq & 5 \\
+           &- x_1 &+&  x_2 & \leq & 5  \\
+           &  x_1 &+&  x_2 & \geq & 3  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+\]%
+
+\framebreak
+
+% minimo, ammissibile, illimitato, segmento ottimo
+\item
+\[\begin{array}{crrrcr}
+\min z=& 20 x_1 &+& 30 x_2\\
+{\rm s.t.} &  x_1 &-&  x_2 & \leq & 5 \\
+           &- x_1 &+&  x_2 & \leq & 5  \\
+           &  x_1 &+&  x_2 & \geq & 3  \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+\]%
+
+
+% non ammissibile (x - y ≥ 5) ∧ (y - x ≥ 5)
+\item
+\[\begin{array}{crrrcr}
+\min z=& 10 x_1 &-&  3 x_2\\
+{\rm s.t.} & x_1 &-&   x_2 & \geq & 5 \\
+           &-x_1 &+&   x_2 & \geq & 5 \\
+           \multicolumn{6}{c}{x_1 \geq 0,\ x_2 \geq 0}
+\end{array}%
+\]%
+%\end{listaesercizi}
+\end{enumerate}
+
+\framebreak
+
+Verificare con GeoGebra la correttezza del proprio lavoro.
+\end{frame}
+
+\end{document}

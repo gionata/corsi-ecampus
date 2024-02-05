@@ -1,0 +1,51 @@
+\documentclass{beamer}
+\def\presentationtype{1}
+\input{../template/savoia_benincasa}
+\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}
+
+\begin{document}
+
+\generatitolo
+
+\def\mixottimo{$$
+\begin{array}{cccrcrcc}
+	\max z		&=	& 	&120 x_{1}	&+&40 x_{2}\\
+	\mbox{s.t.}	&	& 	&40 x_{1}	&+&20 x_{2}	&\leq	&2200\\
+					&	& &8 x_{1}	&+&2 x_{2}	&\leq	&320\\
+					&	& & x_{1}	&+& x_{2}	&\leq	&100\\
+	&	&\multicolumn{4}{c}{x_{1} \geq 0,\ x_{2}\geq 0}
+\end{array}
+$$}
+
+\def\rombo{$$
+\begin{array}{cccrcrcc}
+	\max z	&=	& 	&5 x_{1}	&+&5 x_{2}\\
+	\mbox{s.t.}	&	& & x_{1}	&-& x_{2}	&\leq	& 5\\
+				&	& & x_{1}	& &     	&\leq	&10\\
+				&	& &			&+& x_{2}	&\leq	&10\\
+				&	&-& x_{1}	&+& x_{2}	&\leq	& 5\\
+	&	&\multicolumn{4}{c}{x_{1} \geq 0,\ x_{2}\geq 0}
+\end{array}
+$$}
+
+\begin{frame}[allowframebreaks]{Esercizi}
+
+{\footnotesize Mettere in corrispondenza le soluzione trovate dal metodo
+	del simplesso in forma tabellare con i vertici ottimi della
+	risoluzione grafica dei programmi lineari:
+
+\begin{enumerate}
+\item \mixottimo
+\item \rombo
+\end{enumerate}
+}
+\end{frame}
+
+\section{Risoluzione mediante simplesso tableau Es. \nolezione.\presentationtype.1}
+\input{./include/mix_ottimo_smpx}
+
+
+\section{Risoluzione mediante simplesso tableau Es. \nolezione.\presentationtype.2}
+\input{./include/rombo}
+
+\end{document}

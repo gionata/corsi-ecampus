@@ -1,0 +1,378 @@
+\input{metadata_lesson}
+
+\usepackage[italian]{babel}
+%
+% Hyperref info for PDF
+%
+\usepackage{hyperref}
+\hypersetup{%
+%pdfpagemode=FullScreen,
+pdfpagemode=FullScreen,
+pdfstartview=Fit,
+pdfsubject={\argomenti},
+pdfkeywords={\insegnamento,\titolo}
+}
+
+\definecolor{ecampus@engred}{RGB}{227,28,23}
+\setbeamercolor{normal text}{fg=black,bg=}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+\setbeamercolor{structure}{fg=ecampus@engred,bg=}
+\usetheme{default}
+\useinnertheme{rounded}%{circles}
+\setbeamertemplate{blocks}[default]
+\setbeamercolor{block title}{bg=}
+\setbeamercolor{block body}{bg=}
+
+\ifnum\presentationtype>0 {\setbeamertemplate{enumerate item}{Es. \nolezione.\presentationtype.\arabic{enumi})}} \fi
+
+%\setbeamertemplate{frametitle continuation}[from second][(cont'd)]
+\usefonttheme[stillsansseriftext,stillsansserifsmall]{serif}
+\setbeamertemplate{headline}{%
+\leavevmode%
+   \hspace*{4.75cm}
+   \scalebox{0.90}{%
+    \begin{minipage}{\linewidth}%
+      \tiny
+ 	\begin{tabular}{ll}
+	  \\
+% 	  \textcolor{gray}{Classe}					& \corsodilaurea\\
+%	  \textcolor{gray}{Argomento:}					& \insegnamento\\
+%	  \textcolor{gray}{Lezione n}:							& \nolezione \\
+	  \textcolor{gray}{Titolo:}			& \titolo \\
+	  \textcolor{gray}{Attivit\`a}:		& 	  \ifnum\presentationtype=0 {Lezione \nolezione} \else {Sessione di studio \nolezione.\presentationtype} \fi
+	\end{tabular}%
+    \end{minipage}%
+   }%
+}
+\setbeamertemplate{footline}[text line]{%
+  \begin{minipage}{\linewidth}%
+    \hfill\insertpagenumber%
+%    
+    \begin{center}%
+      \rule{\linewidth}{0.4pt}
+    \end{center}
+    \vspace*{-0.65cm}
+    \begin{center}%
+      \scalebox{0.55}{%
+	\begin{minipage}{\linewidth}%
+	  \begin{center}%
+	    {\tiny
+	    \copyright \ 2022 Gionata Massi - \color{blue}{\href{mailto:gionata.massi@savoiabenincasa.it}{gionata.massi@savoiabenincasa.it}}\\
+	    \phantom{XXX}}
+	  \end{center}
+	\end{minipage}%
+      }%
+    \end{center}%
+%
+  \end{minipage}%
+  }
+\setbeamertemplate{navigation symbols}{}
+
+%% Save up on ink for the 4-up handouts
+\mode<handout>{%
+  \pgfpagesuselayout{4 on 1}[a4paper, landscape, border shrink=10mm]
+  \pgfpageslogicalpageoptions{1}{border code=\pgfstroke}
+  \pgfpageslogicalpageoptions{2}{border code=\pgfstroke}
+  \pgfpageslogicalpageoptions{3}{border code=\pgfstroke}
+  \pgfpageslogicalpageoptions{4}{border code=\pgfstroke}
+}
+
+\mode<presentation>{\AtBeginSection{%
+  \begin{frame}
+    \frametitle{Piano della presentazione}
+    \tableofcontents[currentsection]
+  \end{frame}}
+}
+
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[osfss]{libertine}
+\usepackage{palatino}
+\usepackage[scaled=.77]{beramono}
+\usepackage{booktabs}
+% \usepackage{attachfile}
+
+% Toglie l'enorme spazione prima di description
+%\setbeamersize{description width=0pt}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations,arrows,shapes,backgrounds,matrix,positioning}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{eurosym}
+\usepackage{pgfpages}
+
+\usepackage{zref-savepos}
+\newcounter{restofframe}
+\newsavebox{\restofframebox}
+\newlength{\mylowermargin}
+\setlength{\mylowermargin}{2pt}
+
+\newenvironment{restofframe}{%
+    \par%\centering
+    \stepcounter{restofframe}%
+    \zsavepos{restofframe-\arabic{restofframe}-begin}%
+    \begin{lrbox}{\restofframebox}%
+}{%
+    \end{lrbox}%
+    \setkeys{Gin}{keepaspectratio}%
+    \raisebox{\dimexpr-\height+\ht\strutbox\relax}[0pt][0pt]{%
+    \resizebox*{!}{\dimexpr\zposy{restofframe-\arabic{restofframe}-begin}sp-\zposy{restofframe-\arabic{restofframe}-end}sp-\mylowermargin\relax}%
+        {\usebox{\restofframebox}}%
+    }%
+    \vskip0pt plus 1filll\relax
+    \mbox{\zsavepos{restofframe-\arabic{restofframe}-end}}%
+    \par
+}
+
+\title{\titolo}
+\author{Gionata Massi}
+\date{\today}
+
+\setbeamercolor*{frametitle}{fg=black}
+\setbeamercolor*{title}{fg=black}
+\setbeamerfont{frametitle}{shape=\scshape,family=\rmfamily,size=\large,series=\bfseries}
+
+\setbeamersize{}
+\makeatletter
+\newcommand\thefontsize[1]{{#1 The current font size is: \f@size pt\par}}
+\makeatother
+
+\tikzstyle{nicebox}=[draw=gray!100, fill=blue!10, very thick,
+rounded corners, rectangle, inner sep=4pt, inner ysep=16pt]
+\tikzstyle{niceboxtitle}=[draw=gray!100, fill=white, text=black,
+rounded corners, very thick, rectangle]
+\newcommand\nicebox[2]{
+{\centering
+\begin{tikzpicture}
+\node [nicebox](box){
+\begin{minipage}{0.95\textwidth}\centering
+\begin{minipage}{0.95\textwidth}
+#2
+\end{minipage}\end{minipage}};
+\node[niceboxtitle, right=10pt] at (box.north west)
+{\small\textbf{#1}};
+\end{tikzpicture}\par}
+}
+
+\tikzstyle{modelbox}=[draw=structure!100, fill=white!50, very thick,
+rounded corners, rectangle, inner sep=4pt, inner ysep=16pt, text=blue!50!black]
+\tikzstyle{modelboxtitle}=[draw=structure!100, fill=white!50, text=blue!50!black,
+rounded corners, very thick, rectangle]
+\newcommand\modelbox[2]{
+{\centering
+\begin{tikzpicture}
+\node [modelbox](box){
+\begin{minipage}{0.95\textwidth}\centering
+\begin{minipage}{0.95\textwidth}
+#2
+\end{minipage}\end{minipage}};
+\node[modelboxtitle, right=10pt] at (box.north west)
+{\small\textbf{\mbox{#1}}};
+\end{tikzpicture}\par}
+}
+
+% % %
+% Tipi di sessioni di studio
+% % %
+\def\domande{Domande}
+\def\approfondimenti{Approfondimenti}
+\def\esercizi{Esercizi}
+\def\esempi{Esempi svolti}
+\def\relazioni{Relazioni}
+\def\attivitapratica{Attivit\`a pratica}
+% % %
+
+\newcommand{\generatitolo}{ %
+\begin{frame}[plain]
+\pdfbookmark{\ifnum\presentationtype=0 {Lezione \nolezione} \else {Sessione di studio \nolezione.\presentationtype} \fi}{\ifnum\presentationtype=0 {Lezione \nolezione} \else {Sessione di studio \nolezione.\presentationtype} \fi}
+\noindent\hspace*{3.715cm}
+   \scalebox{0.90}{%
+    \begin{minipage}{\linewidth}%
+      \tiny
+ 	\begin{tabular}{ll}
+	  \\
+% 	  \textcolor{gray}{Classe}					& \corsodilaurea\\
+%	  \textcolor{gray}{Argomento:}					& \insegnamento\\
+%	  \textcolor{gray}{Lezione n}:							& \nolezione \\
+	  \textcolor{gray}{Titolo:}			& \titolo \\
+	  \textcolor{gray}{Attivit\`a}:		& 	  \ifnum\presentationtype=0 {Lezione \nolezione} \else {Sessione di studio \nolezione.\presentationtype} \fi
+	\end{tabular}%
+    \end{minipage}%
+   }%
+   
+  \begin{center}
+    \large{\textbf{\insegnamento}}
+  \end{center}
+
+  \vspace*{0.5cm}
+  
+  \begin{center}
+    \huge{\titolo}
+  \end{center}
+  
+  \begin{center}
+	  \ifnum\presentationtype=0
+	    {Lezione n$^{\circ}$ \nolezione}
+	  \else
+	    {Sessione di studio n$^{\circ}$ \nolezione .\presentationtype}
+	  \fi
+  \end{center}
+  
+  \vspace*{0.5cm}
+
+  \begin{center}
+    \large{\textsl{Gionata Massi}}\\
+    \scriptsize\color{blue}{<\href{mailto:gionata.massi@savoiabenincasa.it}{gionata.massi@savoiabenincasa.it}>}
+  \end{center}
+  
+  \newcounter{pageleft}
+  \zsaveposy{pageleft}
+  \vspace*{\dimexpr\zposy{pageleft}sp-1.67cm}
+
+  \begin{minipage}{\linewidth}%
+   \hfill\phantom{\insertpagenumber}%
+
+  \begin{center}%
+      \rule{\linewidth}{0.4pt}
+    \end{center}
+    
+    \vspace*{-0.95cm}
+    
+    \begin{center}%
+      \scalebox{0.55}{%
+	\begin{minipage}{\linewidth}%
+	  %\begin{center}%
+	  %  \tiny
+	  %  \copyright \ 2022 Gionata Massi - \color{blue}{\href{mailto:gionata.massi@savoiabenincasa.it}{gionata.massi@savoiabenincasa.it}}\\
+	  %  \color{blue}{\href{mailto:gionata.massi@savoiabenincasa.it}{gionata.massi@savoiabenincasa.it}}\\
+	  %  \phantom{XXX}
+	  %\end{center}
+	\end{minipage}%
+      }%
+    \end{center}%
+     \phantom{XXX}
+%
+  \end{minipage}%
+
+\end{frame}
+}
+
+\renewcommand{\vec}{\mathbf}
+\newcommand{\matr}{\mathbf}
+
+\uselanguage{italian}
+\languagepath{italian}
+\deftranslation[to=italian]{Theorem}{Teorema}
+\deftranslation[to=italian]{theorem}{teorema}
+\deftranslation[to=italian]{Definition}{Definizione}
+\deftranslation[to=italian]{definition}{definizione}
+\deftranslation[to=italian]{Corollary}{Corollario}
+\deftranslation[to=italian]{corollary}{corollario}
+
+\let\definition\relax
+\let\enddefinition\relax
+
+%\theoremstyle{example}
+\newtheorem{definition}[theorem]{\translate{Definition}}
+
+\def\fieldN{\mathbb{N}}
+\def\fieldR{\mathbb{R}}
+\def\fieldZ{\mathbb{Z}}
+
+\def\matrA{\matr{A}}
+\def\vecB{\vec{b}}
+\def\vecC{\vec{c}}
+\def\vecX{\vec{x}}
+
+\usepackage{cancel}
+\usepackage{bookmark}
+
+% tkiz ball item
+\newcommand*\circled[1]{\raisebox{2.5pt}{\tikz[baseline=(char.base)]{
+            \node[circle,ball color=purple, shade, 
+ color=white,inner sep=1.2pt] (char) {\tiny #1};}}}
+
+% tkiz rounded item
+\newcommand*\rounded[1]{\tikz[baseline=(char.base)]{
+            \node[draw=none,ball color=purple, shade, 
+ color=white, rounded corners=3.5pt, inner sep=2.5pt] (char) {\scriptsize #1};}}
+
+ \usepackage{etoolbox}
+\makeatletter
+\apptocmd{\beamer@@frametitle}{\write\@auxout{\string\@writefile{frm}{\string\frametitleentry{\the\c@framenumber}{#1}{#2}}}}{}{}
+\newcommand*{\frametitleentry}[3]{\@namedef{frametitleshort#1}{#2}\@namedef{frametitle#1}{#3}}
+\AtEndDocument{\if@filesw\newwrite\tf@frm\immediate\openout\tf@frm\jobname.frm\relax\fi}
+\@input{\jobname.frm}
+\makeatother
+ 
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{../img/sfondo_ecampus.png}}
+
+\usepackage{listings}
+% Extension for listings package
+\lstdefinelanguage{ampl}{
+  % See AMPL book (1993 edition), Appendix A
+  morekeywords={%
+    % Table A.1
+    % Excluding symbols and "not X", where X (and not) are keywords
+    if, then, else, or,  exists, forall,  and, in, within, 
+    not, union, diff, symdiff, inter, cross, setof, by, 
+    % Skipping: less,  sum, prod, min, max, div, mod,
+    % Skipping built-in functions (Tables A-2 and A-3)
+    % Section A.5 -- Declarations of model entities (subject to ->
+    % subject, to)
+    set, param, var, arc, minimize, maximize, subject, to, node,
+    % Section A.6 -- Set declarations (not repeating set or within)
+    dimen, default, card, ordered, by, reversed, circular,
+    % Section A.7 -- Parameter declarations (not repeating in, default)
+    param, binary, integer, symbolic, check, Infinity
+    % Section A.8 -- Variable declarations
+    var,  coeff, cover, obj,
+    % Section A.13 -- Command language
+    % Skipping most commands!
+    include, model, data, let, objective, drop, restore, solve,
+    solution, quit, end, option, reset, update, commands,
+    % A.14 -- Imported functions
+    function, pipe, 
+    % A.17 synonyms for previously-defined keywords
+    coef, difference, dimen, dimension, intersect, intersection, s.t., 
+    % 
+    % must be defined somewhere ...
+    for, while, repeat, break,
+    % NEW language features (http://www.ampl.com/NEW/newlang.html)
+    % Grouped by page
+    purge, problem, redeclare, xref,
+    complements, 
+    table, IN, OUT, INOUT, read, write, 
+    expand,
+    for, commands, repeat, until, while, break, continue,
+  },
+  sensitive=true,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  string=[b]",
+  morestring=[b]',
+}[keywords,comments,strings]
+
+\definecolor{comment_c}{RGB}{60,128,49}
+\definecolor{rowname_c}{RGB}{128,60,49}
+\definecolor{reserved_c}{RGB}{49,60,128}
+
+\lstset{
+	language=ampl,%
+	commentstyle=\color{comment_c},%
+	backgroundcolor=\color{blue!15},%
+    basicstyle=\small\ttfamily,%
+    %emph={s.t.},emphstyle={\bfseries},%
+    otherkeywords={s.t.},%
+    numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt,%
+}
+
+\definecolor{col_set}{RGB}{128,0,0}
+\definecolor{col_par}{RGB}{91,0,91}
+\definecolor{col_idx}{RGB}{0,91,91}
+\definecolor{col_var}{RGB}{0,0,128}
+
+\def\insieme{%1}{\rm \textcolor{col_set}{%1}}}

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="140mm" height="100mm" viewBox="0 0 140 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<title>GCLCOutputFigure</title>
+
+<!-- Drawing 2D Cartesian system -->
+<line x1="0.00" y1="80.00" x2="120.00" y2="80.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="117.03" y1="79.61" x2="120.00" y2="80.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="117.03" y1="79.61" x2="119.00" y2="80.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="117.03" y1="80.39" x2="120.00" y2="80.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="117.03" y1="80.39" x2="119.00" y2="80.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="40.00" y1="100.00" x2="40.00" y2="10.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="39.61" y1="12.97" x2="40.00" y2="10.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="39.61" y1="12.97" x2="40.00" y2="11.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="40.39" y1="12.97" x2="40.00" y2="10.00" style="stroke:#000000; stroke-width:0.16"/>
+<line x1="40.39" y1="12.97" x2="40.00" y2="11.00" style="stroke:#000000; stroke-width:0.16"/>
+
+<!-- Drawing segment x_1 XX1 -->
+<line x1="50.00" y1="80.00" x2="50.00" y2="78.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="77.75" x2="50.00" y2="76.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="75.50" x2="50.00" y2="74.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="73.25" x2="50.00" y2="71.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="71.00" x2="50.00" y2="69.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="68.75" x2="50.00" y2="67.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="66.50" x2="50.00" y2="65.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="64.25" x2="50.00" y2="62.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="62.00" x2="50.00" y2="60.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="59.75" x2="50.00" y2="58.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="57.50" x2="50.00" y2="56.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="55.25" x2="50.00" y2="53.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="53.00" x2="50.00" y2="51.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="50.75" x2="50.00" y2="49.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="48.50" x2="50.00" y2="47.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="46.25" x2="50.00" y2="44.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="44.00" x2="50.00" y2="42.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="50.00" y1="41.75" x2="50.00" y2="40.40" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment x_b XXb -->
+<line x1="80.00" y1="80.00" x2="80.00" y2="78.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="77.75" x2="80.00" y2="76.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="75.50" x2="80.00" y2="74.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="73.25" x2="80.00" y2="71.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="71.00" x2="80.00" y2="69.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="68.75" x2="80.00" y2="67.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="66.50" x2="80.00" y2="65.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="64.25" x2="80.00" y2="62.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="62.00" x2="80.00" y2="60.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="59.75" x2="80.00" y2="58.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="57.50" x2="80.00" y2="56.55" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="55.25" x2="80.00" y2="53.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="53.00" x2="80.00" y2="51.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.00" y1="50.75" x2="80.00" y2="50.40" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment x_2 XX2 -->
+<line x1="110.00" y1="80.00" x2="110.00" y2="78.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="77.75" x2="110.00" y2="76.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="75.50" x2="110.00" y2="74.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="73.25" x2="110.00" y2="71.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="71.00" x2="110.00" y2="69.50" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="68.75" x2="110.00" y2="67.25" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="66.50" x2="110.00" y2="65.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="64.25" x2="110.00" y2="62.75" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="110.00" y1="62.00" x2="110.00" y2="60.50" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment y_1 XX1 -->
+<line x1="40.00" y1="40.00" x2="41.50" y2="40.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="42.25" y1="40.00" x2="43.75" y2="40.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="44.50" y1="40.00" x2="46.00" y2="40.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="46.75" y1="40.00" x2="48.25" y2="40.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="49.00" y1="40.00" x2="49.60" y2="40.00" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment y_b XXb -->
+<line x1="40.00" y1="50.00" x2="41.50" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="42.25" y1="50.00" x2="43.75" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="44.50" y1="50.00" x2="46.00" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="46.75" y1="50.00" x2="48.25" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="49.00" y1="50.00" x2="50.50" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="51.25" y1="50.00" x2="52.75" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="53.50" y1="50.00" x2="55.00" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="55.75" y1="50.00" x2="57.25" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="58.00" y1="50.00" x2="59.50" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="60.25" y1="50.00" x2="61.75" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="62.50" y1="50.00" x2="64.00" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="64.75" y1="50.00" x2="66.25" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="67.00" y1="50.00" x2="68.50" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="69.25" y1="50.00" x2="70.75" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="71.50" y1="50.00" x2="73.00" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="73.75" y1="50.00" x2="75.25" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="76.00" y1="50.00" x2="77.50" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="78.25" y1="50.00" x2="79.60" y2="50.00" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment y_e XXe -->
+<line x1="40.00" y1="56.15" x2="41.50" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="42.25" y1="56.15" x2="43.75" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="44.50" y1="56.15" x2="46.00" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="46.75" y1="56.15" x2="48.25" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="49.00" y1="56.15" x2="50.50" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="51.25" y1="56.15" x2="52.75" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="53.50" y1="56.15" x2="55.00" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="55.75" y1="56.15" x2="57.25" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="58.00" y1="56.15" x2="59.50" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="60.25" y1="56.15" x2="61.75" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="62.50" y1="56.15" x2="64.00" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="64.75" y1="56.15" x2="66.25" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="67.00" y1="56.15" x2="68.50" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="69.25" y1="56.15" x2="70.75" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="71.50" y1="56.15" x2="73.00" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="73.75" y1="56.15" x2="75.25" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="76.00" y1="56.15" x2="77.50" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="78.25" y1="56.15" x2="79.60" y2="56.15" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Drawing segment y_2 XX2 -->
+<line x1="40.00" y1="60.00" x2="41.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="42.25" y1="60.00" x2="43.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="44.50" y1="60.00" x2="46.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="46.75" y1="60.00" x2="48.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="49.00" y1="60.00" x2="50.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="51.25" y1="60.00" x2="52.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="53.50" y1="60.00" x2="55.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="55.75" y1="60.00" x2="57.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="58.00" y1="60.00" x2="59.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="60.25" y1="60.00" x2="61.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="62.50" y1="60.00" x2="64.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="64.75" y1="60.00" x2="66.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="67.00" y1="60.00" x2="68.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="69.25" y1="60.00" x2="70.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="71.50" y1="60.00" x2="73.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="73.75" y1="60.00" x2="75.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="76.00" y1="60.00" x2="77.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="78.25" y1="60.00" x2="79.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="80.50" y1="60.00" x2="82.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="82.75" y1="60.00" x2="84.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="85.00" y1="60.00" x2="86.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="87.25" y1="60.00" x2="88.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="89.50" y1="60.00" x2="91.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="91.75" y1="60.00" x2="93.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="94.00" y1="60.00" x2="95.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="96.25" y1="60.00" x2="97.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="98.50" y1="60.00" x2="100.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="100.75" y1="60.00" x2="102.25" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="103.00" y1="60.00" x2="104.50" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="105.25" y1="60.00" x2="106.75" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+<line x1="107.50" y1="60.00" x2="109.00" y2="60.00" style="stroke:#000000; stroke-width:0.20"/>
+
+<!-- Changing color 0 0 0 -->
+
+<!-- Marking point x_1 -->
+<text x="50.00" y="81.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="middle" dy="2.811951">x_1</text>
+
+<!-- Printing text at point x_b -->
+<text x="80.00" y="81.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="middle" dy="2.811951">\beta x_1 + (1 - \beta) x_2</text>
+
+<!-- Marking point x_2 -->
+<text x="110.00" y="81.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="middle" dy="2.811951">x_2</text>
+
+<!-- Printing text at point y_1 -->
+<text x="39.00" y="40.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="end" dy="1.405975">f(x_1)</text>
+
+<!-- Printing text at point y_b -->
+<text x="39.00" y="50.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="end" dy="1.405975">\beta f( x_1) + (1 - \beta) f(x_2)</text>
+
+<!-- Printing text at point y_e -->
+<text x="39.00" y="56.15" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="end" dy="1.405975">f(\beta x_1 + (1 - \beta) x_2)</text>
+
+<!-- Printing text at point y_2 -->
+<text x="39.00" y="60.00" style="font-size:2.81pt; font-style:italic; fill:#000000" text-anchor="end" dy="1.405975">f(x_2)</text>
+
+<!-- Marking point XX1 by circle -->
+<circle cx="50.00" cy="40.00" r="0.40" fill="none" stroke="#000000" stroke-width="0.20"/>
+
+<!-- Marking point XXb by circle -->
+<circle cx="80.00" cy="50.00" r="0.40" fill="none" stroke="#000000" stroke-width="0.20"/>
+
+<!-- Marking point XXe by circle -->
+<circle cx="80.00" cy="56.15" r="0.40" fill="none" stroke="#000000" stroke-width="0.20"/>
+
+<!-- Marking point XX2 by circle -->
+<circle cx="110.00" cy="60.00" r="0.40" fill="none" stroke="#000000" stroke-width="0.20"/>
+
+<!-- Changing color 255 0 0 -->
+
+<!-- Drawing ellipse arc c XX1 XX2 45.00 -->
+<line x1="50.02" y1="40.45" x2="50.02" y2="40.40" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.04" y1="40.68" x2="50.02" y2="40.45" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.08" y1="40.90" x2="50.04" y2="40.68" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.12" y1="41.13" x2="50.08" y2="40.90" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.17" y1="41.35" x2="50.12" y2="41.13" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.23" y1="41.58" x2="50.17" y2="41.35" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.30" y1="41.80" x2="50.23" y2="41.58" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.39" y1="42.02" x2="50.30" y2="41.80" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.48" y1="42.25" x2="50.39" y2="42.02" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.58" y1="42.47" x2="50.48" y2="42.25" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.68" y1="42.70" x2="50.58" y2="42.47" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.80" y1="42.92" x2="50.68" y2="42.70" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="50.93" y1="43.14" x2="50.80" y2="42.92" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.07" y1="43.36" x2="50.93" y2="43.14" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.22" y1="43.59" x2="51.07" y2="43.36" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.37" y1="43.81" x2="51.22" y2="43.59" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.54" y1="44.03" x2="51.37" y2="43.81" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.71" y1="44.25" x2="51.54" y2="44.03" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="51.90" y1="44.47" x2="51.71" y2="44.25" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="52.09" y1="44.69" x2="51.90" y2="44.47" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="52.29" y1="44.91" x2="52.09" y2="44.69" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="52.50" y1="45.13" x2="52.29" y2="44.91" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="52.73" y1="45.35" x2="52.50" y2="45.13" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="52.96" y1="45.56" x2="52.73" y2="45.35" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="53.20" y1="45.78" x2="52.96" y2="45.56" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="53.44" y1="46.00" x2="53.20" y2="45.78" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="53.70" y1="46.21" x2="53.44" y2="46.00" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="53.97" y1="46.43" x2="53.70" y2="46.21" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="54.25" y1="46.64" x2="53.97" y2="46.43" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="54.53" y1="46.85" x2="54.25" y2="46.64" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="54.82" y1="47.06" x2="54.53" y2="46.85" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="55.13" y1="47.28" x2="54.82" y2="47.06" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="55.44" y1="47.49" x2="55.13" y2="47.28" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="55.76" y1="47.70" x2="55.44" y2="47.49" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="56.09" y1="47.90" x2="55.76" y2="47.70" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="56.43" y1="48.11" x2="56.09" y2="47.90" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="56.78" y1="48.32" x2="56.43" y2="48.11" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="57.13" y1="48.52" x2="56.78" y2="48.32" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="57.50" y1="48.73" x2="57.13" y2="48.52" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="57.87" y1="48.93" x2="57.50" y2="48.73" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="58.25" y1="49.14" x2="57.87" y2="48.93" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="58.64" y1="49.34" x2="58.25" y2="49.14" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="59.04" y1="49.54" x2="58.64" y2="49.34" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="59.45" y1="49.74" x2="59.04" y2="49.54" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="59.86" y1="49.94" x2="59.45" y2="49.74" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="60.29" y1="50.13" x2="59.86" y2="49.94" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="60.72" y1="50.33" x2="60.29" y2="50.13" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="61.16" y1="50.52" x2="60.72" y2="50.33" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="61.61" y1="50.72" x2="61.16" y2="50.52" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="62.06" y1="50.91" x2="61.61" y2="50.72" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="62.53" y1="51.10" x2="62.06" y2="50.91" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="63.00" y1="51.29" x2="62.53" y2="51.10" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="63.48" y1="51.48" x2="63.00" y2="51.29" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="63.97" y1="51.66" x2="63.48" y2="51.48" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="64.47" y1="51.85" x2="63.97" y2="51.66" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="64.97" y1="52.03" x2="64.47" y2="51.85" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="65.48" y1="52.21" x2="64.97" y2="52.03" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="66.00" y1="52.40" x2="65.48" y2="52.21" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="66.53" y1="52.57" x2="66.00" y2="52.40" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="67.07" y1="52.75" x2="66.53" y2="52.57" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="67.61" y1="52.93" x2="67.07" y2="52.75" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="68.16" y1="53.10" x2="67.61" y2="52.93" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="68.72" y1="53.28" x2="68.16" y2="53.10" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="69.28" y1="53.45" x2="68.72" y2="53.28" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="69.85" y1="53.62" x2="69.28" y2="53.45" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="70.43" y1="53.79" x2="69.85" y2="53.62" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="71.02" y1="53.95" x2="70.43" y2="53.79" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="71.61" y1="54.12" x2="71.02" y2="53.95" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="72.21" y1="54.28" x2="71.61" y2="54.12" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="72.82" y1="54.45" x2="72.21" y2="54.28" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="73.43" y1="54.61" x2="72.82" y2="54.45" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="74.05" y1="54.76" x2="73.43" y2="54.61" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="74.68" y1="54.92" x2="74.05" y2="54.76" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="75.31" y1="55.08" x2="74.68" y2="54.92" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="75.95" y1="55.23" x2="75.31" y2="55.08" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="76.60" y1="55.38" x2="75.95" y2="55.23" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="77.25" y1="55.53" x2="76.60" y2="55.38" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="77.91" y1="55.68" x2="77.25" y2="55.53" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="78.58" y1="55.82" x2="77.91" y2="55.68" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="79.25" y1="55.97" x2="78.58" y2="55.82" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="79.61" y1="56.04" x2="79.25" y2="55.97" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="80.61" y1="56.25" x2="80.40" y2="56.21" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="81.30" y1="56.39" x2="80.61" y2="56.25" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="81.99" y1="56.52" x2="81.30" y2="56.39" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="82.70" y1="56.66" x2="81.99" y2="56.52" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="83.40" y1="56.79" x2="82.70" y2="56.66" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="84.11" y1="56.92" x2="83.40" y2="56.79" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="84.83" y1="57.05" x2="84.11" y2="56.92" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="85.55" y1="57.17" x2="84.83" y2="57.05" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="86.28" y1="57.30" x2="85.55" y2="57.17" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="87.02" y1="57.42" x2="86.28" y2="57.30" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="87.75" y1="57.54" x2="87.02" y2="57.42" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="88.50" y1="57.66" x2="87.75" y2="57.54" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="89.25" y1="57.77" x2="88.50" y2="57.66" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="90.00" y1="57.89" x2="89.25" y2="57.77" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="90.76" y1="58.00" x2="90.00" y2="57.89" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="91.52" y1="58.11" x2="90.76" y2="58.00" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="92.29" y1="58.22" x2="91.52" y2="58.11" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="93.06" y1="58.32" x2="92.29" y2="58.22" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="93.84" y1="58.42" x2="93.06" y2="58.32" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="94.62" y1="58.53" x2="93.84" y2="58.42" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="95.40" y1="58.62" x2="94.62" y2="58.53" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="96.19" y1="58.72" x2="95.40" y2="58.62" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="96.98" y1="58.81" x2="96.19" y2="58.72" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="97.78" y1="58.91" x2="96.98" y2="58.81" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="98.58" y1="59.00" x2="97.78" y2="58.91" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="99.39" y1="59.08" x2="98.58" y2="59.00" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="100.19" y1="59.17" x2="99.39" y2="59.08" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="101.00" y1="59.25" x2="100.19" y2="59.17" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="101.82" y1="59.33" x2="101.00" y2="59.25" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="102.64" y1="59.41" x2="101.82" y2="59.33" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="103.46" y1="59.49" x2="102.64" y2="59.41" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="104.28" y1="59.56" x2="103.46" y2="59.49" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="105.11" y1="59.63" x2="104.28" y2="59.56" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="105.94" y1="59.70" x2="105.11" y2="59.63" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="106.78" y1="59.77" x2="105.94" y2="59.70" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="107.61" y1="59.83" x2="106.78" y2="59.77" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="108.45" y1="59.89" x2="107.61" y2="59.83" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="109.29" y1="59.95" x2="108.45" y2="59.89" style="stroke:#FF0000; stroke-width:0.40"/>
+<line x1="109.29" y1="59.95" x2="109.60" y2="59.97" style="stroke:#FF0000; stroke-width:0.40"/>
+
+<!-- Changing color 0 0 255 -->
+
+<!-- Drawing segment XX1 XX2 -->
+<line x1="50.38" y1="40.13" x2="79.62" y2="49.87" style="stroke:#0000FF; stroke-width:0.40"/>
+<line x1="80.38" y1="50.13" x2="109.62" y2="59.87" style="stroke:#0000FF; stroke-width:0.40"/>
+</svg>
