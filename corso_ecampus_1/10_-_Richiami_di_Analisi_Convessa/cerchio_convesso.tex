@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{calc,intersections,through,backgrounds}
+
+\usepackage[italian]{babel}
+
+\begin{document}
+
+Dimostrare che $C := x^2 + y^2 \leq 1$ \`e un insieme convesso.
+
+\vspace{1cm}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=3]
+\draw[fill=gray!20] (0,0) circle (1cm);
+\coordinate [label=above:\textcolor{blue}{$O$}] (O) at (0, 0);
+\coordinate [label=left:\textcolor{blue}{$A$}]  (A) at (-0.9, 0.25);
+\coordinate [label=right:\textcolor{blue}{$B$}](B) at (0.45, -0.85);
+\node [fill=red,inner sep=1pt,label=below:$P$] (P) at ($ (A)!.4!(B) $) {};
+\node (C) at (O) [name path=C, help lines,circle through=(P),draw] {};
+\draw[help lines] (O) -- (A);
+\draw[help lines] (O) -- (B);
+\draw[blue] (A) -- (B);
+\draw[red] (O) -- (P);
+\foreach \point in {A,B,O}
+ \fill [blue,opacity=.5] (\point) circle (1pt);
+\fill [red,opacity=.5] (P) circle (1pt);
+\end{tikzpicture}
+\end{figure}
+\vspace{1cm}
+
+Il problema di
+
+terzo libro dei Elementi di Euclide
+
+Si prendano due punti $A$ e $B$ appartenenti all'insieme $C$ ed un generico punto $P$ sul segmento $\overline{AB}$.
+
+$A : x_A^2 + y_A^2 \leq 1$
+
+$B : x_B^2 + y_B^2 \leq 1$ 
+
+$P = \lambda A + (1-\lambda) B, 0\leq\lambda\leq 1$
+
+Vogliamo verificare che per $P$ vale $x_P^2 + y_P^2 \leq 1$.
+
+Sia $||\cdot||$ la norma euclidea.
+
+$x_P^2 + y_P^2 = \left(\lambda x_A + (1-\lambda) x_B\right)^2 + \left(\lambda y_A + (1-\lambda) y_B\right)^2 =|| \lambda A + (1-\lambda) B ||^2 \leq $
+
+$\leq \left(||\lambda A|| + ||(1 - \lambda) B||\right)^2 = \left(\lambda ||A|| + (1-\lambda) ||B||\right)^2$
+
+L'ultimo passaggio \`e vero per la disuguaglianza triangolare. Per definizione di $A$ e $B$ le loro norme euclidee sono minori o uguali a 1, quindi $x_P^2 + y_P^2$ risulta, a maggior ragione, essere minore o uguale a
+
+$\left( \lambda\cdot 1 + (1 - \lambda) \cdot 1 \right)^2 = 1^2 = 1$
+
+\`E quindi dimostrato che per ogni coppia di punti $A$ e $B$ appartenti a $C$ i punti del segmento $\overline{AB}$ appartengono ancora all'insieme $C$, ossia  \`e dimostrata la convessit\`a dell'insieme  $x^2 + y^2 \leq 1$.
+
+\vspace{2cm}
+Senza ricorrere alla norma.
+
+$x_P^2 + y_P^2 = \left(\lambda x_A + (1-\lambda) x_B\right)^2 + \left(\lambda y_A + (1-\lambda) y_B\right)^2 =$
+
+$=\lambda^2 (x_A^2 + x_B^2) + (1-\lambda)^2 (x_B^2+y_B^2) + 2\lambda(1-\lambda)(x_A  x_B + y_A y_B) \leq$
+
+$\leq \lambda^2+(1-\lambda)^2 + 2\lambda(1-\lambda) = 1$
+
+
+In quanto
+
+$|x_A  x_B + y_A y_B| = A \cdot B = |A| |B| \cos\theta \leq \cos\theta \leq 1$.
+
+
+\end{document}

@@ -1,0 +1,82 @@
+\documentclass[a4wide,12pt]{article}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+\usepackage{preview}
+\ 
+
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\linespread{1.05}         % Palatino needs more leading (space between lines)
+
+\usepackage[italian]{babel}
+\usepackage[left=2cm,top=2cm,right=2cm,nohead,nofoot]{geometry}
+%
+%
+%
+%
+
+\begin{document}
+\pagestyle{empty}
+%
+%
+%
+
+% \enlargethispage{100cm}
+% Start of code
+\begin{tikzpicture}[>=latex',join=bevel,]
+%
+\begin{scope}
+  \pgfsetstrokecolor{black}
+  \pgfsetstrokecolor{red}
+  \draw (8bp,33bp) -- (8bp,154bp) -- (90bp,154bp) -- (90bp,33bp) -- cycle;
+  \pgfsetstrokecolor{black}
+  \draw (49bp,141bp) node {Origini};
+\end{scope}
+\begin{scope}
+  \pgfsetstrokecolor{black}
+  \pgfsetstrokecolor{blue}
+  \draw (168bp,16bp) -- (168bp,180bp) -- (252bp,180bp) -- (252bp,16bp) -- cycle;
+  \pgfsetstrokecolor{black}
+  \draw (210bp,167bp) node {Destinazioni};
+\end{scope}
+  
+  \node (a1) at (49bp,102bp) [draw,circle] {$a_1$};
+  \node at (24bp, 102bp) {[16]};
+  
+  \node (a2) at (49bp,59bp) [draw,circle] {$a_2$}; 
+  \node at (24bp, 59bp) {[6]};
+  
+  \node (b1) at (210bp,128bp) [draw,circle] {$b_1$};
+  \node at (235bp, 128bp) {[-10]};
+  
+  \node (b2) at (210bp,85bp) [draw,circle] {$b_2$};
+  \node at (235bp, 85bp) {[-8]};
+  
+  \node (b3) at (210bp,42bp) [draw,circle] {$b_3$};
+  \node at (235bp, 42bp) {[-4]};
+  
+  \draw [->] (a1) ..controls (69bp,133bp) and (82bp,148bp)  .. (98bp,156bp) .. controls (124bp,167bp) and (134bp,162bp)  .. (160bp,156bp) .. controls (165bp,155bp) and (169bp,153bp)  .. (b1);
+  \draw (129bp,171bp) node {$c_{11} = 5$};
+  \draw [->] (a1) ..controls (100bp,134bp) and (135bp,147bp)  .. (160bp,130bp) .. controls (169bp,124bp) and (161bp,116bp)  .. (168bp,107bp) .. controls (169bp,106bp) and (170bp,105bp)  .. (b2);
+  \draw (129bp,146bp) node {$c_{12} = 4$};
+  \draw [->] (a1) ..controls (87bp,89bp) and (93bp,87bp)  .. (98bp,85bp) .. controls (126bp,78bp) and (135bp,83bp)  .. (160bp,70bp) .. controls (165bp,69bp) and (165bp,67bp)  .. (168bp,64bp) .. controls (169bp,64bp) and (169bp,63bp)  .. (b3);
+  \draw (129bp,97bp) node {$c_{13} = 6$};
+  \draw [->] (a2) ..controls (84bp,75bp) and (87bp,78bp)  .. (90bp,81bp) .. controls (97bp,88bp) and (91bp,95bp)  .. (98bp,100bp) .. controls (120bp,118bp) and (133bp,105bp)  .. (160bp,111bp) .. controls (163bp,111bp) and (165bp,112bp)  .. (b1);
+  \draw (129bp,121bp) node {$c_{21} = 1$};
+  \draw [->] (a2) ..controls (103bp,47bp) and (135bp,45bp)  .. (160bp,55bp) .. controls (165bp,57bp) and (164bp,61bp)  .. (168bp,63bp) .. controls (169bp,64bp) and (169bp,64bp)  .. (b2);
+  \draw (129bp,64bp) node {$c_{22} = 3$};
+  \draw [->] (a2) ..controls (78bp,34bp) and (88bp,28bp)  .. (98bp,25bp) .. controls (121bp,18bp) and (148bp,22bp)  .. (b3);
+  \draw (129bp,37bp) node {$c_{23} = 7$};
+%
+\end{tikzpicture}
+% End of code
+
+%
+\end{document}
+%
+
+
+dot -Txdot E20090204_1.dot | dot2tex -tmath -ftikz  > graph.tex && pdflatex graph.tex 

@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pstricks-add}
+\pagestyle{empty}
+\begin{document}
+\newrgbcolor{zzttqq}{0.6 0.2 0}
+\newrgbcolor{qqwuqq}{0 0.39 0}
+\psset{xunit=0.1cm,yunit=0.1cm,algebraic=true,dotstyle=o,dotsize=3pt 0,linewidth=0.8pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-10,-10)(130,130)
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=20,Dy=20,ticksize=-2pt 0,subticks=2]{->}(0,0)(-10,-10)(130,130)[$x_1$,140] [$x_2$,-40]
+\pspolygon[linewidth=0.4pt,linecolor=zzttqq,hatchcolor=zzttqq,fillstyle=hlines,hatchangle=45.0,hatchsep=1.23](0,0)(40,0)(25,60)(10,90)(0,100)
+\psplot{-10}{130}{(--2200-40*x)/20}
+\psplot{-10}{130}{(--320-8*x)/2}
+\psplot{-10}{130}{(--100-1*x)/1}
+\psline[linewidth=0.4pt,linecolor=zzttqq](0,0)(40,0)
+\psline[linewidth=0.4pt,linecolor=zzttqq](40,0)(25,60)
+\psline[linewidth=0.4pt,linecolor=zzttqq](25,60)(10,90)
+\psline[linewidth=0.4pt,linecolor=zzttqq](10,90)(0,100)
+\psline[linewidth=0.4pt,linecolor=zzttqq](0,100)(0,0)
+\psline{->}(0,0)(30.68,7.67)
+\psplot[linestyle=dashed,dash=6pt 6pt]{-10}{130}{(--4800-120*x)/30}
+\pscustom[linecolor=qqwuqq,fillcolor=qqwuqq,fillstyle=solid,opacity=0.1]{\parametricplot{-0.0}{0.24497866312686414}{6.93*cos(t)+0|6.93*sin(t)+0}\lineto(0,0)\closepath}
+\rput[tl](63.6,113.09){$\Delta b_1 = 0$}
+\rput[tl](63.6,105.69){$\Delta b_2 = 0$}
+\rput[tl](63.6,98.28){$\Delta b_3 = 0$}
+\rput[tl](63.6,90.88){$\Delta c_1 = 0$}
+\rput[tl](63.6,83.47){$\Delta c_2 = -10$}
+\rput[tl](63.6,76.07){$B = (25, 60)$}
+\rput[tl](63.6,49.91){$\alpha =  14.04\,^{\circ}$}
+\rput[tl](63.6,68.67){$z^* = 4800$}
+\rput[tl](63.6,62){$-\frac{c_1}{c_2} =-4$}
+\begin{scriptsize}
+\rput[bl](2.11,106.67){$V1$}
+\rput[bl](16.9,106.43){$V2$}
+\rput[bl](-11.53,102.48){$V3$}
+\psdots[dotstyle=*,linecolor=darkgray](0,0)
+\rput[bl](-3.21,4.25){\darkgray{$O$}}
+\psdots[dotstyle=*,linecolor=darkgray](40,0)
+\rput[bl](40.94,1.54){\darkgray{$A$}}
+\psdots[dotstyle=*,linecolor=darkgray](25,60)
+\rput[bl](25.92,61.51){\darkgray{$B$}}
+\psdots[dotstyle=*,linecolor=darkgray](10,90)
+\rput[bl](10.66,90.88){\darkgray{$C$}}
+\psdots[dotstyle=*,linecolor=darkgray](0,100)
+\rput[bl](0.95,100.26){\darkgray{$D$}}
+\psdots[dotstyle=*,linecolor=darkgray](55,0)
+\rput[bl](55.97,1.54){\darkgray{$E$}}
+\psdots[dotstyle=*,linecolor=darkgray](100,0)
+\rput[bl](100.81,1.54){\darkgray{$F$}}
+\psdots[dotstyle=*,linecolor=darkgray](20,80)
+\rput[bl](20.83,81.5){\darkgray{$G$}}
+\psdots[dotstyle=*,linecolor=darkgray](0,160)
+\rput[bl](-15,120){\darkgray{$H$}}
+\psdots[dotstyle=*,linecolor=darkgray](0,110)
+\rput[bl](0.95,111.36){\darkgray{$I$}}
+\rput[bl](3.26,-0.69){\qqwuqq{$\alpha$}}
+\end{scriptsize}
+\end{pspicture*}
+\end{document}

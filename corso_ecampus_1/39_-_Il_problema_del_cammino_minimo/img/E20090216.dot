@@ -1,0 +1,229 @@
+digraph "G" {
+	graph [
+		nodesep = "0.2"
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		ranksep = "0.2 equally"
+		ratio = "0.5"
+		rankdir = "LR"
+		rank = "max"
+		splines = "spline"
+	]
+	node [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		shape = "circle"
+		width = "0.75
+	]
+	edge [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		style = "solid"
+		minlen = "2"
+	]
+	"N1" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "1"
+		shape = "circle"
+		//style = "filled"
+		width = "0.75"
+		//color = "red"
+	]
+	"N2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "2"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "3"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N5" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "5"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "6"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "7"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N8" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "8"
+		shape = "circle"
+		style = "solid"
+		width = "0.75"
+		color = "black"
+	]
+	"N4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "4"
+		shape = "circle"
+		//style = "filled"
+		width = "0.75"
+		//color = "blue"
+	]
+	"N1" -> "N2" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "3"
+		style = "solid"
+		minlen = "2"
+	]
+	"N1" -> "N7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "5"
+		style = "solid"
+		minlen = "2"
+	]
+	"N1" -> "N8" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "1"
+		style = "solid"
+		minlen = "2"
+	]
+	"N4" -> "N6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "10"
+		style = "solid"
+		minlen = "2"
+	]
+	"N4" -> "N7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "2"
+		style = "solid"
+		minlen = "2"
+	]
+	"N2" -> "N3" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "4"
+		style = "solid"
+		minlen = "2"
+	]
+	"N2" -> "N7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "3"
+		style = "solid"
+		minlen = "2"
+	]
+	"N3" -> "N4" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "1"
+		style = "solid"
+		minlen = "2"
+	]
+	"N3" -> "N7" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "5"
+		style = "solid"
+		minlen = "2"
+	]
+	"N4" -> "N5" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "3"
+		style = "solid"
+		minlen = "2"
+	]
+	"N5" -> "N6" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "2"
+		style = "solid"
+		minlen = "2"
+	]
+	"N5" -> "N8" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "5"
+		style = "solid"
+		minlen = "2"
+	]
+	"N6" -> "N8" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "1"
+		style = "solid"
+		minlen = "2"
+	]
+	"N7" -> "N8" [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		dir = "none"
+		label = "0"
+		style = "solid"
+		minlen = "2"
+	]
+}

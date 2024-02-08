@@ -1,0 +1,34 @@
+digraph {
+	graph [rankdir=LR, splines=true, nslimit=50, nslimit1=50]
+
+	node [shape=circle]
+	A [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "A"
+		shape = "circle"
+		style = "filled"
+		//width = "0.75"
+		color = "blue"
+	]
+	F [
+		fontsize = "14"
+		fontname = "Times-Roman"
+		fontcolor = "black"
+		label = "F"
+		shape = "circle"
+		style = "filled"
+		//width = "0.75"
+		color = "red"
+	]
+	A->B [label="9"];
+	A->C [label="7"];
+	B->D [label="7"];
+	B->E [label="2"];
+	C->D [label="4"];
+	C->E [label="6"];
+	D->E [label="3"];
+	D->F[label="6"];
+	E->F [label="9"];
+}
