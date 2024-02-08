@@ -1,0 +1,55 @@
+% Copyright 2013 by Andrea Claudi
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackage{beamerthemeUnivpm} % This style was created by Andrea Claudi
+\RequirePackage{etoolbox}
+
+\newcommand\Title[2][]{%
+  \ifstrempty{#1}{%
+    \def\univpm@titleone{\uppercase{#2}}
+  }{%
+    \def\univpm@titleone{\uppercase{#2}}\def\univpm@titletwo{\uppercase{#1}}
+  }%
+}
+\newcommand{\curriculum}[1]{\def\univpm@curriculum{#1}}
+\newcommand{\doctoralschool}[1]{\def\univpm@doctoral{#1}}
+\newcommand{\tutor}[1]{\def\univpm@tutor{#1}}
+\newcommand{\faculty}[1]{\def\univpm@faculty{#1}}
+\newcommand{\Institute}[3]{\def\univpm@shortInstitute{#1}\def\univpm@InstituteOne{#2}\def\univpm@InstituteTwo{#3}}
+\newcommand{\cycle}[1]{\def\univpm@cycle{#1}}
+\newcommand{\address}[1]{\def\univpm@address{#1}}
+
+\DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections=#1}{beamerouterthemesidebar}}
+
+%\DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{left}{\PassOptionsToPackage{left}{beamerouterthemesidebar}}
+\DeclareOptionBeamer{right}{\PassOptionsToPackage{right}{beamerouterthemesidebar}}
+\ProcessOptionsBeamer
+
+\selectcolormodel{rgb}
+\mode<presentation>
+
+\useoutertheme{univpmsidebar}
+\useinnertheme{rectangles}
+
+\usefonttheme{univpm}
+
+\newenvironment<>{halfblock}[2][.425\paperwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+\mode
+<all>

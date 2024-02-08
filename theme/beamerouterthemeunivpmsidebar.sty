@@ -1,0 +1,188 @@
+% Copyright 2013 by Andrea Claudi
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackage{beamerouterthemeunivpmsidebar} % This style was created by Andrea Claudi
+
+
+\newdimen\beamer@sidebarwidth
+\newdimen\beamer@headheight
+\usebeamerfont{frametitle}
+\beamer@sidebarwidth=0.095\paperwidth
+\beamer@headheight=0.115\paperheight
+\reset@font
+
+\def\beamer@lefttext{left}
+
+\DeclareOptionBeamer{hideothersubsections}[]{\beamer@nav@subsectionstyle{show/show/hide}}
+\DeclareOptionBeamer{hideallsubsections}[]{\beamer@nav@subsectionstyle{hide}}
+
+\DeclareOptionBeamer{width}{\beamer@sidebarwidth=#1}
+\DeclareOptionBeamer{height}{\beamer@headheight=#1}
+\DeclareOptionBeamer{left}{\def\beamer@sidebarside{left}}
+\DeclareOptionBeamer{right}{\def\beamer@sidebarside{right}}
+\ExecuteOptionsBeamer{left}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+\ifdim\beamer@headheight>0pt
+% if head height is 0pt, use default frame title
+
+  \setbeamercolor*{frametitle}{parent=sidebar}
+
+  \defbeamertemplate*{headline}{sidebar theme}
+  {%
+    \begin{beamercolorbox}[wd=\paperwidth]{frametitle}
+      % Logo and rulebar
+%       \insertlogo
+	\begin{tikzpicture}[inner sep=0pt,outer sep=0pt,scale=5,every node/.style={transform shape},background
+rectangle/.style={fill=univpm-bg}, show background rectangle]
+	\node (phd) [black,scale=1.5,yscale=2.5] {\textbf{phd}};
+	\node (num) at (phd.south west) [black,yshift=1.4ex,xshift=0.6ex,yscale=2.6,anchor=north west]
+{\textbf{\univpm@cycle}};
+	\node (card) at (num.north east) [black,scale=2,yshift=-1.2ex,xshift=-0.1ex,yscale=1.3,anchor=base west]
+  {$\circ$};
+	\node (cycle) at (num.east) [black,scale=0.525,xscale=0.8,yscale=2.2,yshift=-0.2ex,anchor=north west] {ciclo};
+	\node (space) at (cycle.east) [xshift=0.35ex] {};
+      \end{tikzpicture}
+      \hskip-0.15cm \textcolor{univpm-red}{\rule{.69\paperwidth}{5mm}}
+      % Header setup
+      \vskip-8cm
+      \usebeamerfont{postertitle}
+      \usebeamercolor[univpm-red]{postertitle}%
+      \ifdefined\univpm@titletwo
+        \hskip.095\paperwidth\hskip5mm\scalebox{0.75}[1]{\parbox{0.905\paperwidth}{\univpm@titleone\\\univpm@titletwo}}	% Title
+      \else
+        \hskip.095\paperwidth\hskip5mm\scalebox{0.75}[1]{\parbox{0.905\paperwidth}{\univpm@titleone}}\vskip1.1cm	% Title
+      \fi
+      \vskip2.6cm
+      \usebeamercolor[univpm-grey]{postertitle}%
+      \hskip.095\paperwidth\hskip7cm\scalebox{0.75}[1]{\parbox{10cm}{\textbf{Dottorando:\\\insertshortauthor}}}
+      \hskip10cm
+      \scalebox{0.75}[1]{\parbox{20cm}{\textbf{Tutor:\\\univpm@tutor}}}
+      \usebeamerfont{postershort}
+      \vskip-14mm
+      \hfill\scalebox{0.75}[1]{\univpm@shortInstitute\hspace*{10mm}}
+      \vskip2mm
+      \usebeamerfont{posterinstitute}
+      \hfill\scalebox{0.75}[1]{\parbox{.25\paperwidth}{\hfill\univpm@InstituteOne\hspace*{10mm}}}
+      \vskip0.5mm
+      \hfill\scalebox{0.75}[1]{\parbox{.25\paperwidth}{\hfill\univpm@InstituteTwo\hspace*{10mm}}}
+      \vskip-2mm
+    \end{beamercolorbox}
+  }
+\fi
+
+
+\def\beamer@sidebarformat#1#2#3{%
+  \begin{beamercolorbox}[wd=\beamer@sidebarwidth,leftskip=#1,rightskip=1ex plus1fil,vmode]{#2}
+    \vbox{}%
+    #3\par%
+    \vbox{}%
+    \vskip-1.5ex%
+  \end{beamercolorbox}
+}
+
+\defbeamertemplate*{section in sidebar}{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionhead}%
+  }%
+}
+
+\defbeamertemplate*{section in sidebar shaded}{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionhead}%
+  }%
+}
+
+\defbeamertemplate*{subsection in sidebar}{sidebar theme}
+{%
+  \beamer@sidebarformat{5pt}{subsection in sidebar}{\insertsubsectionhead}%
+}
+
+\defbeamertemplate*{subsection in sidebar shaded}{sidebar theme}
+{%
+  \beamer@sidebarformat{5pt}{subsection in sidebar shaded}{\insertsubsectionhead}%
+}
+
+\defbeamertemplate*{subsubsection in sidebar}{sidebar theme}
+{%
+  \beamer@sidebarformat{7pt}{subsubsection in sidebar}{\insertsubsubsectionhead}%
+}
+
+\defbeamertemplate*{subsubsection in sidebar shaded}{sidebar theme}
+{%
+  \beamer@sidebarformat{7pt}{subsubsection in sidebar shaded}{\insertsubsubsectionhead}%
+}
+
+
+\ifdim\beamer@sidebarwidth>0pt
+
+  % Sidebar
+  \setbeamersize{sidebar width \beamer@sidebarside=\beamer@sidebarwidth}
+  \defbeamertemplate*{sidebar \beamer@sidebarside}{sidebar theme}
+  {
+    \beamer@tempdim=\beamer@sidebarwidth%
+    \advance\beamer@tempdim by -6pt%
+    \vskip2cm
+    {
+      \hskip-0.5mm
+      \usebeamerfont{postertitle}
+      \usebeamercolor[black]{postertitle}
+      \scalebox{.57}[1.5]{\textbf{\insertdate}}
+    }
+    \vskip1mm
+    \hskip-1mm
+    \usebeamerfont{postertitle}
+    \begin{sideways}
+    {
+      \scalebox{.75}[1]{\textbf{Scuola di Dottorato di Ricerca in \textbf{\univpm@doctoral}}}
+    }
+    \end{sideways}
+    \hskip-2mm
+    \begin{sideways}
+    {
+      \scalebox{.75}[1]{\textbf{\parbox{10cm}{\vspace{-1.9cm} Curriculum} \hskip1cm \parbox{30cm}{\textbf{\univpm@curriculum}}}}
+    }
+    \end{sideways}
+    \vfill
+    \usebeamerfont{postershort}
+    \hskip0.8cm
+    \begin{sideways}
+    {
+      \scalebox{.75}[1]{\textbf{Universit\`{a} Politecnica delle Marche}}
+    }
+    \end{sideways}
+    \begin{sideways}
+    {
+      \scalebox{.75}[1]{\textbf{\univpm@faculty}}
+    }
+    \end{sideways}
+    \begin{sideways}
+    {
+      \scalebox{.75}[1]{\textbf{\univpm@address \hskip2.2cm 60131 - Ancona, Italy}}
+    }
+    \end{sideways}
+    \vskip1mm
+    {
+      \hskip1.5mm
+      \includegraphics[scale=0.46]{images/logo-univpm.png}
+      \vskip1.5mm
+    }
+  }%
+  % Margins
+  \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
+\fi
+
+\mode
+<all>
